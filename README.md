@@ -11,3 +11,9 @@ Techstack: MERN (MongoDB, Express, ReactJS, NodeJS)
 - [Brainstorming doc](https://docs.google.com/document/d/1zo7Y78hqRt5Y6DlvqzMewt8645pc6ixZ2LDVWqdc1c8/edit)
 - Figma mockups (to do)
 
+## How to run
+
+Server and client must be running simultaneously, for this you need two terminals running.
+1. Server: In one terminal window, `cd` into the `/server` folder and run `npm start` to start the server.
+2. Client: In another terminal window, `cd` into the `/client` folder and run `npm start` to start the client.
+3. Visit `localhost:3000` to see the client in action.
