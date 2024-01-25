@@ -1,0 +1,17 @@
+{
+  "name": "seniorforum",
+  "version": "1.0.0",
+  "description": "Seniors need a place to socialize with like-minded individuals, ask questions, or learn about events. App is to be used by seniors and possibly by caretakers as well.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "create-react-app": "^5.0.1",
+    "express": "^4.18.2"
+  }
+}
