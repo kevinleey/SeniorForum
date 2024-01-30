@@ -3,6 +3,8 @@ import React, {useEffect, useState} from "react";
 function App() {
   const [message, setMessage] = useState("");
 
+  // add comment
+
   useEffect(() => {
 
     // fetching input from server's "/test" endpoint
