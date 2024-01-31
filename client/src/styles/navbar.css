@@ -1,0 +1,45 @@
+header {
+  background-color: #900f0f;
+  color: white;
+}
+
+#nav-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 120px;
+}
+
+#nav-title-box {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  min-width: 250px;
+  justify-content: space-between;
+}
+
+#nav-title {
+  font-weight: normal;
+  font-size: 25px;
+}
+
+#nav-subtitle {
+  font-size: 12px;
+}
+
+#nav-title-box img {
+  height: 50px;
+}
+
+.nav-item {
+  font-size: 12px;
+  list-style: none;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+}
