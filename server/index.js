@@ -4,9 +4,9 @@ const app = express();
 
 // test server endpoint
 app.get("/test", (req, res) => {
-    res.send("Hello world! - from Express");
+  res.send("Hello world! - from Express");
 });
 
 app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
