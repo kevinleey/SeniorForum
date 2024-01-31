@@ -12,10 +12,7 @@ header {
 
 #nav-title-box {
   margin-right: auto;
-  display: flex;
-  align-items: center;
   min-width: 250px;
-  justify-content: space-between;
 }
 
 #nav-title-box #nav-title-link {
@@ -23,6 +20,9 @@ header {
   background-color: #900f0f;
   border: none;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #nav-title {
@@ -45,7 +45,7 @@ header {
   padding: 0 20px;
 }
 
-.nav-item .nav-link{
+.nav-item .nav-link {
   color: white;
   background-color: #900f0f;
   border: none;
