@@ -9,7 +9,7 @@ Techstack: MERN (MongoDB, Express, ReactJS, NodeJS)
 - [Kanban board](https://trello.com/invite/b/hdwoN30o/ATTIdba27cd137d485b23d0aa044ce93184eCD0FE8D9/cs-495-kanban-board)
 - [Pitch presentation](https://docs.google.com/presentation/d/1QS5a9HF5ync9hC1AEP0dQ1LnQmpf7cvBAOkL0lOAX88/edit#slide=id.g35f391192_029)
 - [Brainstorming doc](https://docs.google.com/document/d/1zo7Y78hqRt5Y6DlvqzMewt8645pc6ixZ2LDVWqdc1c8/edit)
-- Figma mockups (to do)
+- [Figma mockups](https://www.figma.com/file/1MNb1uiDmYJ0lnBoh6EGTt/Figma-basics?type=design&node-id=601%3A10&mode=design&t=bobscEtjodvUaQMU-1)
 - [Commit](https://www.conventionalcommits.org/en/v1.0.0/)/[Branch](https://medium.com/@abhay.pixolo/naming-conventions-for-git-branches-a-cheatsheet-8549feca2534) naming conventions
 
 ## How to run (in a local dev environment)
