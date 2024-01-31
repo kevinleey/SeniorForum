@@ -4,6 +4,6 @@ _Provide some context for your changes and add images wherever applicable_
 
 ### Checklist
 
-[] Unit tests added where applicable
-[] Does not introduce any breaking changes
-[] Ran `Prettier`
+- [ ] Unit tests added or not applicable
+- [ ] Does not introduce any breaking changes
+- [ ] Ran `Prettier`
