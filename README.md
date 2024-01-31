@@ -10,8 +10,14 @@ Techstack: MERN (MongoDB, Express, ReactJS, NodeJS)
 - [Pitch presentation](https://docs.google.com/presentation/d/1QS5a9HF5ync9hC1AEP0dQ1LnQmpf7cvBAOkL0lOAX88/edit#slide=id.g35f391192_029)
 - [Brainstorming doc](https://docs.google.com/document/d/1zo7Y78hqRt5Y6DlvqzMewt8645pc6ixZ2LDVWqdc1c8/edit)
 - Figma mockups (to do)
+- [Commit](https://www.conventionalcommits.org/en/v1.0.0/)/[Branch](https://medium.com/@abhay.pixolo/naming-conventions-for-git-branches-a-cheatsheet-8549feca2534) naming conventions
 
-## How to run
+## How to run (in a local dev environment)
+
+### Prerequisites
+- Install NodeJS
+- Clone the repo
+- Run `npm install` in the root directory as well as the `./client` folder
 
 Server and client must be running simultaneously, for this you need two terminals running.
 1. Server: In one terminal window, `cd` into the `/server` folder and run `npm start` to start the server.
