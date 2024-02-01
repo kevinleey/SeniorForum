@@ -38,8 +38,9 @@ header {
   padding: 0 20px;
 }
 
-.nav-item a {
+.nav-item .nav-link{
+  color: white;
+  background-color: #900f0f;
+  border: none;
   text-decoration: none;
-  font-weight: bold;
-  color: inherit;
 }
