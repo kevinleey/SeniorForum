@@ -16,6 +16,7 @@ function Home() {
     <div>
       <Navbar />
       <h1>{message ? message : "Loading..."}</h1>
+      <h2>Home Message</h2>
     </div>
   );
 }

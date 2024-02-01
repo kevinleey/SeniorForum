@@ -17,6 +17,7 @@ Techstack: MERN (MongoDB, Express, ReactJS, NodeJS)
 ## How to run (in a local dev environment)
 
 ### Prerequisites
+
 - Install NodeJS
 - Clone the repo
 - Run `npm install` in the root directory as well as the `./client` folder
