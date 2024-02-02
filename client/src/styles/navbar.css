@@ -18,6 +18,13 @@ header {
   justify-content: space-between;
 }
 
+#nav-title-box #nav-title-link {
+  color: white;
+  background-color: #900f0f;
+  border: none;
+  text-decoration: none;
+}
+
 #nav-title {
   font-weight: normal;
   font-size: 25px;
@@ -43,4 +50,8 @@ header {
   background-color: #900f0f;
   border: none;
   text-decoration: none;
+}
+
+.nav-item .nav-link:hover {
+  color: #9a9a9a;
 }

@@ -8,14 +8,16 @@ function Navbar() {
       <div className="container">
         <div id="nav-box">
           <div id="nav-title-box">
-            <img
-              src="https://brand.ua.edu/wp-content/themes/ua-theme/assets/img/ua-square-logo.png"
-              alt="alabamaLogo"
+            <Link id="nav-title-link" to={'/'}><img
+                src="https://brand.ua.edu/wp-content/themes/ua-theme/assets/img/ua-square-logo.png"
+                alt="alabamaLogo"
             />
-            <div>
-              <h1 id="nav-title">Senior Forum</h1>
-              <span id="nav-subtitle">Connecting caregivers of Alabama</span>
-            </div>
+              <div>
+                <h1 id="nav-title">Senior Forum</h1>
+                <span id="nav-subtitle">Connecting caregivers of Alabama</span>
+              </div>
+            </Link>
+
           </div>
           <nav>
             <ul>
