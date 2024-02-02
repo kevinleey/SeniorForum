@@ -1,38 +1,36 @@
 import React from "react";
+import NavbarItem from "./NavbarItem";
+import { NAV_ITEMS as navItems } from "../constants";
+import { NAV_RESOURCES as navResources } from "../constants";
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const {
+    NAVBAR_TITLE: title,
+    NAVBAR_SUBTITLE: subtitle,
+    NAVBAR_ICON_URL: iconUrl,
+    NAVBAR_ALT_TEXT: altText,
+  } = navResources;
+
   return (
     <header>
       <div className="container">
         <div id="nav-box">
           <div id="nav-title-box">
-            <Link id="nav-title-link" to={'/'}><img
-                src="https://brand.ua.edu/wp-content/themes/ua-theme/assets/img/ua-square-logo.png"
-                alt="alabamaLogo"
-            />
+            <Link id="nav-title-link" to={"/"}>
+              <img src={iconUrl} alt={altText} />
               <div>
-                <h1 id="nav-title">Senior Forum</h1>
-                <span id="nav-subtitle">Connecting caregivers of Alabama</span>
+                <h1 id="nav-title">{title}</h1>
+                <span id="nav-subtitle">{subtitle}</span>
               </div>
             </Link>
-
           </div>
           <nav>
             <ul>
-              <li className="nav-item">
-                <Link className="nav-link" to={'/'}>HOME</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={'/categories'}>CATEGORIES</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={'/about'}>ABOUT</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={'/account'}>MY ACCOUNT</Link>
-              </li>
+              {navItems.map((item) => (
+                <NavbarItem text={item.text} href={item.href} />
+              ))}
             </ul>
           </nav>
         </div>
