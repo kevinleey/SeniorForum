@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import express from "express";
 import User from "./models/User.js";
+import Post from "./models/Post.js";
 
 dotenv.config();
 
@@ -15,9 +16,9 @@ mongoose.connect(uri);
 const users = await User.find({});
 console.log(users);
 
-// test server endpoint
-app.get("/test", (req, res) => {
-  res.send("Hello world! - from Express");
+app.get("/posts", async (req, res) => {
+  const allPosts = await Post.find();
+  return res.status(200).json(allPosts);
 });
 
 app.listen(PORT, () => {

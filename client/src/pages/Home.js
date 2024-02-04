@@ -1,22 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts, selectAllPosts } from "../features/posts/postsSlice";
 
 function Home() {
-  const [message, setMessage] = useState("");
+  const dispatch = useDispatch();
+  const posts = useSelector(selectAllPosts);
+
+  const postsStatus = useSelector((state) => state.posts.status);
 
   useEffect(() => {
-    // fetching input from server's "/test" endpoint
-    fetch("/test")
-      .then((res) => res.text())
-      .then((data) => setMessage(data))
-      .catch((err) => console.log(err));
-  }, []);
+    if (postsStatus === "idle") {
+      dispatch(fetchPosts());
+    }
+  }, [postsStatus, dispatch]);
 
   return (
     <div>
       <Navbar />
-      <h1>{message ? message : "Loading..."}</h1>
-      <h2>Home Message</h2>
+      {posts.map((post, index) => (
+        <div key={post._id}>
+          <p>
+            Post {index + 1} title: {post.title}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
