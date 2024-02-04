@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts, selectAllPosts } from "../features/posts/postsSlice";
+import Footer from "../components/Footer";
 
 function Home() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function Home() {
           </p>
         </div>
       ))}
+      <Footer />
     </div>
   );
 }
