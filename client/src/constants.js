@@ -12,10 +12,18 @@ export const NAV_ITEMS = [
   {
     href: "/about",
     text: "ABOUT",
+    subItems: [
+      { href: "/about", text: "About Us" },
+      { href: "/about", text: "Contact"} //Contact page not created yet, will send to About Us
+    ],
   },
   {
     href: "/account",
     text: "MY ACCOUNT",
+    subItems: [
+      { href: "/account", text: "Account Settings" },
+      { href: "/", text: "Logout" }, //Not sure what ref to put for the logout. For now, it will redirect to the home page.
+    ],
   },
 ];
 
