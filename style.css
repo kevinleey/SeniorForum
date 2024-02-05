@@ -1,0 +1,81 @@
+.header {
+    font-size: 20px;
+    text-align: center;
+}
+
+.headerLeft {
+    font-size: 20px;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 30px
+}
+
+.indented {
+    font-size: 15px;
+    text-align: left;
+    margin-left: 50px
+}
+
+.doubleIndented {
+    font-size: 15px;
+    text-align: left;
+    margin-left: 70px
+}
+
+.ThreeIndented {
+    font-size: 15px;
+    text-align: left;
+    margin-left: 90px
+}
+
+.body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    /* margin-top: 70px;
+    margin-bottom: 10000px !important; */
+}
+
+.button {
+    padding: 100px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#button1 {
+    background-color: #fe8080;
+    color: black;
+}
+
+#button2 {
+    background-color: #73cf73;
+    color: black;
+}
+
+#output {
+    margin-top: 20px;
+    white-space: pre-line;
+}
+
+navBarHeader {
+    background-color: #feabab;
+    padding: 10px;
+}
+
+navBar list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+navBar item {
+    display: inline;
+    margin-right: 20px;
+    width: 100%;
+}
+
+/* anchor to hyper links */
+navBar a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+}
