@@ -1,0 +1,55 @@
+#user-image {
+  width: 80px;
+  border-radius: 50%;
+}
+
+.post-overview-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#author-date-info {
+  font-size: 15px;
+}
+
+.post-overview-text-container {
+  margin-left: 20px;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+#post-title {
+  max-width: 810px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#post-overview-header {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+#post-overview-footer {
+  display: flex;
+  margin-top: 12px;
+  height: 22px;
+  margin-left: auto;
+  justify-content: space-between;
+}
+
+#comment-icon {
+  width: 14px;
+  margin-right: 5px;
+}

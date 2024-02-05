@@ -17,8 +17,14 @@ const users = await User.find({});
 console.log(users);
 
 app.get("/posts", async (req, res) => {
-  const allPosts = await Post.find();
+  const allPosts = await Post.find().populate("postedBy").exec();
   return res.status(200).json(allPosts);
+});
+
+app.get("/posts/:postId", async (req, res) => {
+  const postId = req.params.postId;
+  const post = await Post.findById(postId).populate("postedBy").exec();
+  return res.status(200).json(post);
 });
 
 app.listen(PORT, () => {

@@ -34,3 +34,13 @@ export const NAV_RESOURCES = {
     "https://brand.ua.edu/wp-content/themes/ua-theme/assets/img/ua-square-logo.png",
   NAVBAR_ALT_TEXT: "alabama logo",
 };
+
+// Temporary image links before adding functionality for saving images to MongoDB
+
+export const imageLinks = {
+  USER: {
+    USER_PICTURE_LINK:
+      "https://www.challengedathletes.org/wp-content/uploads/2023/08/portrait-square-03.jpg",
+    USER_PICTURE_TEXT: "smiling man",
+  },
+};
