@@ -1,14 +1,9 @@
-#user-image {
-  width: 80px;
-  border-radius: 50%;
-}
-
 .post-overview-container {
   cursor: pointer;
   display: flex;
   align-items: center;
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 20px;
   margin-bottom: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

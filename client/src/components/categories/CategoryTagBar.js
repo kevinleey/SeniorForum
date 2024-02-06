@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/categoryTagBar.css";
+import "../../styles/category-tag-bar.css";
 
 function CategoryTagBar({ categories }) {
   return (
