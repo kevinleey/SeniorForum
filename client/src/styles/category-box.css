@@ -9,18 +9,27 @@
 }
 
 #content-container {
-    background-image: url("https://media.istockphoto.com/id/1344512181/vector/icon-red-loudspeaker.jpg?s=612x612&w=0&k=20&c=MSi3Z2La8OYjSY-pr0bB6f33NOuUKAQ_LBUooLhLQsk=");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
+    position: relative;
     width: 100%;
-    padding-bottom: 100%;
+}
+
+#content-container img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 #category-title {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 20px;
+    text-align: center;
     margin: auto;
     width: fit-content;
-    font-size: 30px;
+    border: darkgrey solid 3px;
 }
 
 #thread-count {
