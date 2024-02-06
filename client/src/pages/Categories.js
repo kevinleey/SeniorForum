@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import CategoryBox from "../components/CategoryBox";
+import CategoryBox from "../components/categories/CategoryBox";
 import "../styles/categories.css"
 
 function Categories() {

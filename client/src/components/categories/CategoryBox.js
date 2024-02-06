@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/navbar.css";
-import "../styles/category-box.css"
+import "../../styles/navbar.css";
+import "../../styles/category-box.css"
 
 function CategoryBox(props) {
     return (
