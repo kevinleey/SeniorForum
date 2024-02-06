@@ -1,9 +1,9 @@
 import React from "react";
-import "../../styles/postOverview.css";
-import { imageLinks } from "../../constants";
+import "../../styles/post-overview.css";
 import CategoryTagBar from "../categories/CategoryTagBar";
 import { timeSince } from "../../utility/timeSince";
 import { useNavigate } from "react-router-dom";
+import UserInfoSmall from "../userInfo/UserInfoSmall";
 
 function PostOverview({ post }) {
   const navigate = useNavigate();
@@ -17,11 +17,7 @@ function PostOverview({ post }) {
       className="post-overview-container"
       onClick={() => handlePostClick(post._id)}
     >
-      <img
-        id="user-image"
-        src={imageLinks.USER.USER_PICTURE_LINK}
-        alt={imageLinks.USER.USER_PICTURE_TEXT}
-      />
+      <UserInfoSmall user={post.postedBy} />
       <div className="post-overview-text-container">
         <div id="post-overview-header">
           <h2 id="post-title">{post.title}</h2>
