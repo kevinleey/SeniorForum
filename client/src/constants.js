@@ -19,9 +19,9 @@ export const NAV_ITEMS = [
   },
   {
     href: "/account",
-    text: "MY ACCOUNT",
+    text: "MY ACCOUNT", //sends to user profile
     subItems: [
-      { href: "/account", text: "Account Settings" },
+      { href: "", text: "Account Settings" }, //will send to account settings page (unmade)
       { href: "/", text: "Logout" }, //Not sure what ref to put for the logout. For now, it will redirect to the home page.
     ],
   },

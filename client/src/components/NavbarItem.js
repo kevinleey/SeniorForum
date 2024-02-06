@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function NavbarItem({ href, text, subItems }) {
-    const isLinkDisabled = text === "ABOUT" || text === "MY ACCOUNT"; //Disable the ABOUT and MY ACCOUNT links
+    const isLinkDisabled = text === "ABOUT"; //Disable the ABOUT link
 
   return (
     <li className="nav-item">
