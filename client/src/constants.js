@@ -43,4 +43,13 @@ export const imageLinks = {
       "https://www.challengedathletes.org/wp-content/uploads/2023/08/portrait-square-03.jpg",
     USER_PICTURE_TEXT: "smiling man",
   },
+  ERROR: {
+    ERROR_PICTURE_LINK:
+      "https://static-00.iconduck.com/assets.00/process-error-icon-1024x1024-qxlzzqvg.png",
+    ERROR_PICTURE_TEXT: "error icon",
+  },
+};
+
+export const ERROR_MESSAGES = {
+  INVALID_POSTID: "Invalid post ID",
 };
