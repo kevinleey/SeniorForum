@@ -1,9 +1,9 @@
 import React from "react";
 import NavbarItem from "./NavbarItem";
-import { NAV_ITEMS as navItems } from "../constants";
-import { NAV_RESOURCES as navResources } from "../constants";
-import "../styles/navbar.css";
-import "../styles/dropdown.css";
+import { NAV_ITEMS as navItems } from "../../constants";
+import { NAV_RESOURCES as navResources } from "../../constants";
+import "../../styles/navbar.css";
+import "../../styles/dropdown.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {

@@ -1,16 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchPosts } from "./postsThunks";
 
 const initialState = {
   posts: [],
   status: "idle",
   error: null,
 };
-
-export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await fetch("/posts");
-  const data = await response.json();
-  return data;
-});
 
 export const postsSlice = createSlice({
   name: "posts",

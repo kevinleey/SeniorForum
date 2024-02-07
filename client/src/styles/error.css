@@ -1,0 +1,11 @@
+#error-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#error-icon {
+  max-width: 200px;
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+}
