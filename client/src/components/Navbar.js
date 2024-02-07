@@ -3,6 +3,7 @@ import NavbarItem from "./NavbarItem";
 import { NAV_ITEMS as navItems } from "../constants";
 import { NAV_RESOURCES as navResources } from "../constants";
 import "../styles/navbar.css";
+import "../styles/dropdown.css";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -29,7 +30,7 @@ function Navbar() {
           <nav>
             <ul>
               {navItems.map((item) => (
-                <NavbarItem text={item.text} href={item.href} />
+                <NavbarItem text={item.text} href={item.href} subItems={item.subItems}/>
               ))}
             </ul>
           </nav>
