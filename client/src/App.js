@@ -7,16 +7,30 @@ import Account from "./pages/Account";
 import SinglePostPage from "./pages/SinglePostPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
+import { fetchUsers } from "./features/users/userThunks";
+import { selectAllUsers } from "./features/users/userSlice";
 
 function App() {
   const dispatch = useDispatch();
   const postsStatus = useSelector((state) => state.posts.status);
+  const usersStatus = useSelector((state) => state.users.status);
+  const users = useSelector(selectAllUsers);
 
   useEffect(() => {
     if (postsStatus === "idle") {
       dispatch(fetchPosts());
     }
   }, [postsStatus, dispatch]);
+
+  useEffect(() => {
+    if (usersStatus === "idle") {
+      dispatch(fetchUsers());
+    }
+  }, [usersStatus, dispatch]);
+
+  useEffect(() => {
+    console.log("Users fetched from server : ", users);
+  }, [users]);
 
   return (
     <div>

@@ -27,6 +27,11 @@ app.get("/posts/:postId", async (req, res) => {
   return res.status(200).json(post);
 });
 
+app.get("/users", async (req, res) => {
+    const allUsers = await User.find({});
+    return res.status(200).json(allUsers);
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
