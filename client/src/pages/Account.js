@@ -3,6 +3,9 @@ import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import {imageLinks} from "../constants";
 import "../styles/account.css";
+import { useSelector } from "react-redux";
+import { selectAllPosts } from "../features/posts/postsSlice";
+import PostList from "../components/posts/PostList";
 
 function Account() {
     const posts = useSelector(selectAllPosts);
