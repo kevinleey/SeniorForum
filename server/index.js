@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import express from "express";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
+import Comment from "./models/Comment.js";
 
 dotenv.config();
 
@@ -17,14 +18,20 @@ const users = await User.find({});
 console.log(users);
 
 app.get("/posts", async (req, res) => {
-  const allPosts = await Post.find().populate("postedBy").exec();
+  const allPosts = await Post.find().populate("createdBy").exec();
   return res.status(200).json(allPosts);
 });
 
 app.get("/posts/:postId", async (req, res) => {
   const postId = req.params.postId;
-  const post = await Post.findById(postId).populate("postedBy").exec();
+  const post = await Post.findById(postId).populate("createdBy").exec();
   return res.status(200).json(post);
+});
+
+app.get("/posts/:postId/comments", async (req, res) => {
+  const postId = req.params.postId;
+  const comments = await Comment.find({ postId }).populate("createdBy").exec();
+  return res.status(200).json(comments);
 });
 
 app.get("/users", async (req, res) => {
