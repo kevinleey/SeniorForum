@@ -1,16 +1,16 @@
 #user-image {
-    width: 70px;
-    border-radius: 50%;
-    margin-bottom: 8px;
+  width: 70px;
+  border-radius: 50%;
+  margin-bottom: 8px;
 }
 
 .user-info-small {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .user-name {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }

@@ -1,0 +1,24 @@
+.cont-container {
+  display: flex;
+  border: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+.cont-text-container {
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.cont-text-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.cont-text-username {
+  font-weight: bold;
+  font-size: 20px;
+}

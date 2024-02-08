@@ -6,8 +6,10 @@ function Account() {
   return (
     <div>
       <Navbar />
-      <h1>Account Section</h1>
-      <Footer />
+      <div className="page-container">
+        <h1 className="page-title">Account Section</h1>
+      </div>
+      <Footer/>
     </div>
   );
 }

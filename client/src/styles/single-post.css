@@ -1,0 +1,12 @@
+#single-post-container {
+}
+
+#single-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#single-post-comments-container {
+  margin-left: 30px;
+}

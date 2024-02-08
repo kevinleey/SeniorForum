@@ -6,7 +6,16 @@
   padding: 0;
 }
 
-.container {
+.nav-container {
   max-width: 1100px;
   margin: auto;
+}
+
+.page-container {
+  max-width: 1100px;
+  margin: 50px auto;
+}
+
+.page-title {
+  margin-bottom: 25px;
 }

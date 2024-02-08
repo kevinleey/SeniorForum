@@ -14,7 +14,7 @@ export const NAV_ITEMS = [
     text: "ABOUT",
     subItems: [
       { href: "/about", text: "About Us" },
-      { href: "/about", text: "Contact"} //Contact page not created yet, will send to About Us
+      { href: "/about", text: "Contact" }, //Contact page not created yet, will send to About Us
     ],
   },
   {

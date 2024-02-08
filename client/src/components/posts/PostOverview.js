@@ -17,13 +17,13 @@ function PostOverview({ post }) {
       className="post-overview-container"
       onClick={() => handlePostClick(post._id)}
     >
-      <UserInfoSmall user={post.postedBy} />
+      <UserInfoSmall user={post.createdBy} />
       <div className="post-overview-text-container">
         <div id="post-overview-header">
           <h2 id="post-title">{post.title}</h2>
           <span id="author-date-info">
-            {timeSince(post.dateCreated)} by {post.postedBy.firstName}{" "}
-            {post.postedBy.lastName}
+            {timeSince(post.dateCreated)} by {post.createdBy.firstName}{" "}
+            {post.createdBy.lastName}
           </span>
         </div>
         <span id="post-text">{post.text}</span>
