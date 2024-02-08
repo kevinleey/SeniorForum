@@ -1,0 +1,82 @@
+#page-overview {
+    background-color: lightgrey;
+}
+
+#account-container {
+    display: flex;
+    margin: 12px auto;
+    width: 90%;
+    height: 100%;
+}
+
+#image-area {
+    background-color: white;
+    width: 20%;
+    height: 60%;
+    box-shadow: -5px -5px 7px grey, 5px 5px 7px grey, -5px 5px 7px grey, 5px -5px 7px grey;
+}
+
+#image-area img {
+    border-radius: 50%;
+    margin: 10% auto 10% 15%;
+    width: 70%;
+}
+
+#follow-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 8px;
+}
+
+#follow-numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    margin: 8px;
+}
+
+#main-content {
+    background-color: white;
+    width: 80%;
+    margin-left: 15px;
+    box-shadow: -5px -5px 7px grey, 5px 5px 7px grey, -5px 5px 7px grey, 5px -5px 7px grey;;
+    min-height: 596px;
+}
+
+#main-content .bio {
+    margin-left: 10px;
+}
+
+#account-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#account-header p {
+    font-size: 60px;
+    margin-left: 5px;
+}
+
+#account-bio {
+    background-color: lightgrey;
+    margin: 0 600px 5px 10px;
+    padding-bottom: 50px;
+}
+
+#account-history-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+}
+
+#account-history-list {
+    margin: 10px;
+}
