@@ -5,8 +5,10 @@ import About from "./pages/About";
 import Categories from "./pages/Categories";
 import Account from "./pages/Account";
 import SinglePostPage from "./pages/SinglePostPage";
+import AddPostPage from "./pages/AddPostPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
+import AddPost from "./features/posts/AddPost";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/add-post" element={<AddPostPage />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -18,6 +18,10 @@ export const NAV_ITEMS = [
     ],
   },
   {
+    href: "/add-post",
+    text: "ADD POST",
+  },
+  {
     href: "/account",
     text: "MY ACCOUNT", //sends to user profile
     subItems: [
