@@ -32,6 +32,12 @@ app.get("/users", async (req, res) => {
     return res.status(200).json(allUsers);
 });
 
+app.get("/users/:userId", async (req, res) => {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+    return res.status(200).json(user);
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
