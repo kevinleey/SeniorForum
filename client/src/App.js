@@ -6,6 +6,7 @@ import Categories from "./pages/Categories";
 import Category from "./pages/Category";
 import Account from "./pages/Account";
 import SinglePostPage from "./pages/SinglePostPage";
+import AddPostPage from "./pages/AddPostPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
 import { fetchCurrUser, fetchUsers } from "./features/users/userThunks";
@@ -46,6 +47,7 @@ function App() {
           <Route path="/categories/:categoryTitle" element={<Category />} />
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/add-post" element={<AddPostPage />} />
         </Routes>
       </BrowserRouter>
     </div>
