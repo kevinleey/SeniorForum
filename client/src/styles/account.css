@@ -4,21 +4,14 @@
 
 #account-container {
     display: flex;
-    /*flex-direction: row;*/
-    /*justify-content: space-around;*/
-    /*align-items: center;*/
     margin: 12px auto;
     width: 90%;
     height: 100%;
-    /*background-color: lightgrey;*/
-    /*border: black 3px solid;*/
-    /*min-height: 597px;*/
 }
 
 #image-area {
     background-color: white;
     width: 20%;
-    /*border: black 3px solid;*/
     height: 60%;
     box-shadow: -5px -5px 7px grey, 5px 5px 7px grey, -5px 5px 7px grey, 5px -5px 7px grey;
 }
@@ -37,10 +30,6 @@
     margin: 8px;
 }
 
-#follow-bar p {
-    /*color: white;*/
-}
-
 #follow-numbers {
     display: flex;
     flex-direction: row;
@@ -54,9 +43,7 @@
     background-color: white;
     width: 80%;
     margin-left: 15px;
-    /*border: black 3px solid;*/
     box-shadow: -5px -5px 7px grey, 5px 5px 7px grey, -5px 5px 7px grey, 5px -5px 7px grey;;
-    /*box-shadow: -5px -5px 5px grey, 5px 5px 5px grey;*/
     min-height: 596px;
 }
 
@@ -69,7 +56,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /*background-color: lightgrey;*/
 }
 
 #account-header p {
