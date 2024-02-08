@@ -1,6 +1,6 @@
 #box-holder {
-    display: flex;
-    width: 99%;
-    margin: 1px auto;
-    flex-wrap: wrap;
+  display: flex;
+  width: 99%;
+  margin: 1px auto;
+  flex-wrap: wrap;
 }
