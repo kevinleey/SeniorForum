@@ -15,8 +15,10 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <div className="container">
-        <h2>Welcome John, here are some recent posts.</h2>
+      <div className="page-container">
+        <h1 className="page-title">
+          Welcome John, here are some recent posts.
+        </h1>
         <PostList posts={posts} />
       </div>
 

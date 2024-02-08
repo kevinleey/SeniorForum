@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <header>
-      <div className="container">
+      <div className="nav-container">
         <div id="nav-box">
           <div id="nav-title-box">
             <Link id="nav-title-link" to={"/"}>
@@ -30,7 +30,11 @@ function Navbar() {
           <nav>
             <ul>
               {navItems.map((item) => (
-                <NavbarItem text={item.text} href={item.href} subItems={item.subItems}/>
+                <NavbarItem
+                  text={item.text}
+                  href={item.href}
+                  subItems={item.subItems}
+                />
               ))}
             </ul>
           </nav>

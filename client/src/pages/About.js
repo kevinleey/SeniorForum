@@ -6,8 +6,10 @@ function About() {
   return (
     <div>
       <Navbar />
-      <h1>About Section</h1>
-      <Footer />
+      <div className="page-container">
+        <h1 className="page-title">About Section</h1>
+      </div>
+      <Footer/>
     </div>
   );
 }
