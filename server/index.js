@@ -35,14 +35,14 @@ app.get("/posts/:postId/comments", async (req, res) => {
 });
 
 app.get("/users", async (req, res) => {
-    const allUsers = await User.find({});
-    return res.status(200).json(allUsers);
+  const allUsers = await User.find({});
+  return res.status(200).json(allUsers);
 });
 
 app.get("/users/:userId", async (req, res) => {
-    const userId = req.params.userId;
-    const user = await User.findById(userId);
-    return res.status(200).json(user);
+  const userId = req.params.userId;
+  const user = await User.findById(userId);
+  return res.status(200).json(user);
 });
 
 app.listen(PORT, () => {

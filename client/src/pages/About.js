@@ -9,7 +9,7 @@ function About() {
       <div className="page-container">
         <h1 className="page-title">About Section</h1>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
