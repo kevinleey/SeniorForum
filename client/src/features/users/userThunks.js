@@ -12,4 +12,10 @@ const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   return data;
 });
 
-export { fetchUsers, fetchUser };
+const fetchCurrUser = createAsyncThunk("users/fetchCurrUser", async () => {
+  const response = await fetch(`/users/current`);
+  const data = await response.json();
+  return data;
+});
+
+export { fetchUsers, fetchCurrUser, fetchUser };

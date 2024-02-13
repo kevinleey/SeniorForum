@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 function About() {
   return (
-    <div>
+    <div id="page-overview">
       <Navbar />
       <div className="page-container">
         <h1 className="page-title">About Section</h1>
