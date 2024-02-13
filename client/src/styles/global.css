@@ -11,8 +11,13 @@
   margin: auto;
 }
 
+#page-overview {
+  background-color: lightgrey;
+}
+
 .page-container {
-  max-width: 1100px;
+  min-height: 526px;
+  max-width: 1400px;
   margin: 50px auto;
 }
 

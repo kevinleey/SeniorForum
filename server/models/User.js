@@ -5,6 +5,7 @@ const userSchema = new Schema({
   firstName: String,
   lastName: String,
   email: String,
+  assocPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
 });
 
 const User = model("User", userSchema);
