@@ -4,9 +4,11 @@ import { timeSince } from "../../utility/timeSince";
 import "../../styles/single-post.css";
 import { useSelector } from "react-redux";
 import Spinner from "../Spinner";
+import CommentForm from "../forms/CommentForm";
 
 function SinglePost({ post, comments }) {
   const commentsStatus = useSelector((state) => state.comments.status);
+  const numComments = comments.length;
 
   return (
     <div id="single-post-container">
@@ -19,12 +21,13 @@ function SinglePost({ post, comments }) {
       </div>
       <Contribution contribution={post} />
       <div id="single-post-comments-container">
-        <h2>Comments</h2>
+        <h2 id="comments-title">Comments ({numComments})</h2>
         {commentsStatus === "succeeded" ? (
           comments.map((comment) => <Contribution contribution={comment} />)
         ) : (
           <Spinner />
         )}
+        <CommentForm />
       </div>
     </div>
   );

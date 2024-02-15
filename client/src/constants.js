@@ -1,4 +1,4 @@
-// Navbar
+// NAVBAR
 
 export const NAV_ITEMS = [
   {
@@ -35,7 +35,7 @@ export const NAV_RESOURCES = {
   NAVBAR_ALT_TEXT: "alabama logo",
 };
 
-// Temporary image links before adding functionality for saving images to MongoDB
+// TEMPORARY IMAGE LINKS
 
 export const imageLinks = {
   USER: {
@@ -53,6 +53,8 @@ export const imageLinks = {
 export const ERROR_MESSAGES = {
   INVALID_POSTID: "Invalid post ID",
 };
+
+// CATEGORIES
 
 export const POST_CATEGORIES = {
   CATEGORY_1: {
@@ -97,4 +99,20 @@ export const POST_CATEGORIES = {
     CATEGORY_DESCRIPTION:
       "This category is for those who are looking for support and advice but do not fit into any of the other categories.",
   },
+};
+
+// COMMENT FORM
+
+export const COMMENTS_RESOURCES = {
+  COMMENTS_TITLE: "Join the discussion!",
+  COMMENTS_ADD: "Add Comment",
+  COMMENTS_AUTHOR_PREFIX: "Comment as ",
+};
+
+// INPUT VALIDATION
+
+export const COMMENTS_VALIDATION = {
+  COMMENTS_MAXCHAR: 300,
+  COMMENTS_BLANK_TEXT: "Comment can not be blank",
+  COMMENTS_EXCEED_TEXT: `Comment can not exceed 300 characters`,
 };

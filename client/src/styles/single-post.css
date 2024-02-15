@@ -9,4 +9,9 @@
 
 #single-post-comments-container {
   margin-left: 30px;
+  margin-top: 20px;
+}
+
+#comments-title {
+  margin-bottom: 10px;
 }
