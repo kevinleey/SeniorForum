@@ -3,14 +3,20 @@ import mongoose from "mongoose";
 import express from "express";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
+import bodyParser from "body-parser";
+import apiRoutes from "./api.js";
 import Comment from "./models/Comment.js";
 
 
 dotenv.config();
-
-const PORT = process.env.PORT || 3001;
+//const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
+
+app.use(bodyParser.json());
+app.use("/api", apiRoutes);
+
+ const PORT = process.env.PORT || 3001;
 
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.9bfewjc.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(uri);
