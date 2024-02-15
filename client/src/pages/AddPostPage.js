@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import {selectCurrentUser} from "../features/users/userSlice";
 import {POST_CATEGORIES} from "../constants";
 import "../styles/navbar.css";
-import "../styles/newPostPage.css";
+import "../styles/new-post-page.css";
 
 function AddPostForm() {
     const dispatch = useDispatch();
