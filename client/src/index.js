@@ -11,7 +11,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-        <App />
+        <Auth0Provider
+            domain={process.env.AUTH0_DOMAIN}
+            clientId={process.env.CLIENT_ID}
+            redirectUri={window.location.origin}>
+
+            <App />
+        </Auth0Provider>
+
     </Provider>
   </React.StrictMode>,
 );
@@ -21,3 +28,6 @@ root.render(
             clientId={process.env.CLIENT_ID}
             redirectUri={window.location.origin}>
         </Auth0Provider>    */
+
+//Auth0Provider is a component that provides Auth0 authentication services to your application.
+//It wraps your application and provides an authentication context to any component that requires it.

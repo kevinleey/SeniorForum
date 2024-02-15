@@ -13,7 +13,13 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+// Use the body-parser middleware to parse incoming request bodies
+// This will convert the body of the request into a JavaScript object
+// and assign it to req.body
 app.use(bodyParser.json());
+
+// Use the apiRoutes router for any requests that start with "/api"
+// This router is defined in the ./api.js file
 app.use("/api", apiRoutes);
 
  const PORT = process.env.PORT || 3001;

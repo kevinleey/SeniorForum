@@ -25,4 +25,4 @@ const ProtectedComponent = () => {
             <p>{message}</p>
         </div>
     );
-};*/
+}; */
