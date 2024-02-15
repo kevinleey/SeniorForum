@@ -2,10 +2,15 @@ import React, { useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+//import {useDispatch} from 'react-redux';
 import { addNewPost } from '../features/posts/postsThunks';
 // Import useHistory
 import { useNavigate } from 'react-router-dom';
+import {selectCurrentUser} from "../features/users/userSlice";
+import {POST_CATEGORIES} from "../constants";
+import "../styles/navbar.css";
+import "../styles/newPostPage.css";
 
 function AddPostForm() {
     const dispatch = useDispatch();
@@ -15,8 +20,10 @@ function AddPostForm() {
     //const [categories, setCategories] = useState('');
     //Have to edit once we get the list of categories
     const [selectedCategories, setSelectedCategories] = useState([]);
-    const allCategories = ["Housing", "Traveling", "Events", "Other"];
+    //const allCategories = ["Housing", "Traveling", "Events", "Other"];
+    const allCategories = [POST_CATEGORIES.CATEGORY_1.CATEGORY_TITLE, POST_CATEGORIES.CATEGORY_2.CATEGORY_TITLE, POST_CATEGORIES.CATEGORY_3.CATEGORY_TITLE, POST_CATEGORIES.CATEGORY_5.CATEGORY_TITLE, POST_CATEGORIES.CATEGORY_6.CATEGORY_TITLE, POST_CATEGORIES.CATEGORY_LAST.CATEGORY_TITLE];
     const navigate = useNavigate();
+    const user = useSelector(selectCurrentUser);
 
     //Needed to make check boxes instead of highlighting categories
     const handleCheckboxChange = (category) => {
@@ -35,9 +42,10 @@ function AddPostForm() {
                 text,
                 // Assuming people type in the categories
                 //categories: categories.split(',').map((category) => category.trim()),
-                //Want to switch this to click categories
+                //Switch to click categories
                 categories: selectedCategories,
-                // Assuming postedBy and dateCreated are set on the server side
+                createdBy: user._id,
+                dateCreated: new Date()
             };
 
             await dispatch(addNewPost(newPost));
@@ -56,11 +64,11 @@ function AddPostForm() {
     return (
         <div>
             <Navbar/>
-            <h2>Add a new post</h2>
-            <label>Title:</label>
+            <newPostTitle>Add a new post</newPostTitle>
+            <h2>Title:</h2>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
             <br/>
-            <label>Text:</label>
+            <h2>Text:</h2>
             <textarea value={text} onChange={(e) => setText(e.target.value)}/>
             <br/>
             {/*This is for highlighting categories*/}
@@ -74,7 +82,7 @@ function AddPostForm() {
             {/*        <option key={category} value={category}>{category}</option>*/}
             {/*    ))}*/}
             {/*</select>*/}
-            <label>Select Categories:</label>
+            <h2>Select Categories:</h2>
             <div>
                 {allCategories.map((category) => (
                     <label key={category}>
@@ -89,7 +97,9 @@ function AddPostForm() {
                 ))}
             </div>
             <br/>
-            <button onClick={handleAddPost}>Add Post</button>
+            {/*<button onClick={handleAddPost}>Add Post</button>*/}
+            <button onClick={() => handleAddPost()}>Add Post</button>
+
             <Footer/>
         </div>
     );

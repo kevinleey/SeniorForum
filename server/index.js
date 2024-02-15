@@ -5,10 +5,12 @@ import User from "./models/User.js";
 import Post from "./models/Post.js";
 import Comment from "./models/Comment.js";
 
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.9bfewjc.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(uri);
@@ -26,6 +28,24 @@ app.get("/posts/:postId", async (req, res) => {
   const postId = req.params.postId;
   const post = await Post.findById(postId).populate("createdBy").exec();
   return res.status(200).json(post);
+});
+// app.post("/add-post", async (req, res) => {
+//   const postId = req.params.postId;
+//   const post = await Post.findById(postId).populate("createdBy").exec();
+//   return res.status(200).json(post);
+// });
+app.post("/add-post", async (req, res) => {
+    const {title, text, categories, createdBy, dateCreated} = req.body;
+    const newPost = new Post({
+      title,
+      text,
+      categories,
+        //createdBy: req.params.postId,
+        createdBy,
+        dateCreated
+    });
+    const savedPost = await newPost.save();
+    return res.status(201).json(savedPost);
 });
 
 app.get("/posts/:postId/comments", async (req, res) => {
