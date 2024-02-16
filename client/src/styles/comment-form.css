@@ -1,0 +1,56 @@
+.comment-form-container {
+  margin-top: 20px;
+}
+
+.comment-form {
+  display: flex;
+  align-items: flex-start;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#comment-form-header {
+  margin-bottom: 10px;
+}
+
+.input-form {
+  margin-left: 20px;
+  width: 100%;
+}
+
+.input-text-field {
+  padding: 8px 8px 50px 8px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.invalid-input {
+  border: 1px solid red;
+}
+
+.input-form-footer {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.char-remaining {
+  margin-right: 8px;
+}
+
+.error-message {
+  color: red;
+}
+
+.submit-button {
+  color: white;
+  background-color: #900f0f;
+  padding: 5px 10px;
+  border-radius: 5px;
+}

@@ -8,7 +8,7 @@ import Account from "./pages/Account";
 import SinglePostPage from "./pages/SinglePostPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
-import {fetchCurrUser, fetchUsers} from "./features/users/userThunks";
+import { fetchCurrUser, fetchUsers } from "./features/users/userThunks";
 import { selectAllUsers } from "./features/users/userSlice";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
   }, [usersStatus, dispatch]);
 
   useEffect(() => {
-    dispatch(fetchCurrUser())
+    dispatch(fetchCurrUser());
   }, [usersStatus, dispatch]);
 
   useEffect(() => {
