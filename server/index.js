@@ -4,7 +4,7 @@ import express from "express";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import bodyParser from "body-parser";
-import apiRoutes from "./api.js";
+//import apiRoutes from "./api.js";
 import Comment from "./models/Comment.js";
 
 
@@ -16,11 +16,11 @@ app.use(express.json());
 // Use the body-parser middleware to parse incoming request bodies
 // This will convert the body of the request into a JavaScript object
 // and assign it to req.body
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 // Use the apiRoutes router for any requests that start with "/api"
 // This router is defined in the ./api.js file
-app.use("/api", apiRoutes);
+//app.use("/api", apiRoutes);
 
  const PORT = process.env.PORT || 3001;
 

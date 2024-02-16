@@ -1,4 +1,4 @@
-import express from "express";
+/*import express from "express";
 //import routerModule from "router";
 import auth from "./auth.js";
 
@@ -17,4 +17,4 @@ router.get('/protected-endpoint', auth, (req, res) => {
 
 // Export the router object
 // This allows other modules to use the routes defined in this module
-export default router;
+export default router;*/
