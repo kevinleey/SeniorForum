@@ -22,6 +22,7 @@ Techstack: MERN (MongoDB, Express, ReactJS, NodeJS)
 
 - Install NodeJS
 - Clone the repo
+- Get/Set up MongoDB credentials (contact a member of the team for this, or else the server will not work!)
 - Run `npm install` in the root directory as well as the `./client` folder
 
 Server and client must be running simultaneously, for this you need two terminals running.
