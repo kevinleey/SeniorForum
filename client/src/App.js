@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
 import { fetchCurrUser, fetchUsers } from "./features/users/userThunks";
 import { selectAllUsers } from "./features/users/userSlice";
+import Profile from "./pages/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,10 +28,7 @@ function App() {
     if (usersStatus === "idle") {
       dispatch(fetchUsers());
     }
-  }, [usersStatus, dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchCurrUser());
+    dispatch(fetchCurrUser())
   }, [usersStatus, dispatch]);
 
   useEffect(() => {
@@ -46,6 +44,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/:categoryTitle" element={<Category />} />
+          <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/account" element={<Account />} />
         </Routes>
       </BrowserRouter>
