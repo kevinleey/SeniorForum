@@ -17,6 +17,7 @@ function Account() {
     <div id="page-background">
       <Navbar />
       <div className="page-container">
+        <h1 className="page-title">My Account</h1>
         <div id="account-container">
           <div id="image-area">
             <img
@@ -50,13 +51,13 @@ function Account() {
                 <h2>Post History</h2>
               </div>
               <div id="account-history-list">
-                <PostList posts={currPosts} />
+                <PostList posts={currPosts}/>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 }

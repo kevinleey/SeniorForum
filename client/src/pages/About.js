@@ -7,7 +7,7 @@ function About() {
     <div id="page-background">
       <Navbar />
       <div className="page-container">
-        <h1 className="page-title">About Section</h1>
+        <h1 className="page-title">About</h1>
       </div>
       <Footer />
     </div>
