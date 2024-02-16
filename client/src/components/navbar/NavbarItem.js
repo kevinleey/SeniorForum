@@ -15,10 +15,10 @@ function NavbarItem({ href, text, subItems }) {
       )}
       {subItems && (
         <div className="dropdown">
-          {subItems.map((subItem, index) => (
-            <div className="dropdown-item" key={index} onClick={subItem.onClick} /*to={item.href}*/>
-              {subItem.text}
-            </div>
+          {subItems.map((item) => (
+              <Link className="dropdown-item" to={item.href}>
+                {item.text}
+              </Link>
           ))}
         </div>
       )}

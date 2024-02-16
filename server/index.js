@@ -3,24 +3,26 @@ import mongoose from "mongoose";
 import express from "express";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
-import bodyParser from "body-parser";
-//import apiRoutes from "./api.js";
 import Comment from "./models/Comment.js";
+import pkg from 'express-openid-connect';
+const { auth, requiresAuth } = pkg;
 
 
 dotenv.config();
-//const PORT = process.env.PORT || 3001;
+
 const app = express();
 app.use(express.json());
 
-// Use the body-parser middleware to parse incoming request bodies
-// This will convert the body of the request into a JavaScript object
-// and assign it to req.body
-//app.use(bodyParser.json());
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    baseURL: 'http://localhost:3000',
+    clientID: '7CEAotFZme2gstjkZWCwTzoKfM9f1OrV',
+    issuerBaseURL: 'https://dev-xva3bwyqfub0c5sf.us.auth0.com',
+    secret: 'LONG_RANDOM_STRING'
+}
 
-// Use the apiRoutes router for any requests that start with "/api"
-// This router is defined in the ./api.js file
-//app.use("/api", apiRoutes);
+app.use(auth(config));
 
  const PORT = process.env.PORT || 3001;
 
@@ -30,6 +32,20 @@ mongoose.connect(uri);
 // find users and print to console
 const users = await User.find({});
 console.log(users);
+
+app.get('/', (req, res) => {
+    res.send(
+        req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out'
+    )
+});
+
+app.get('/profile', requiresAuth(), (req, res) => {
+    res.send(JSON.stringify(req.oidc.user, null, 2));
+});
+
+app.get('/account', requiresAuth(), (req, res) =>
+    res.send(`Hello ${req.oidc.user.sub}, this is the account page.`)
+);
 
 app.get("/posts", async (req, res) => {
   const allPosts = await Post.find().populate("createdBy").exec();

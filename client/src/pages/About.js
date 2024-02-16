@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
-import Auth0Component from "../components/auth0";
 
 function About() {
   return (

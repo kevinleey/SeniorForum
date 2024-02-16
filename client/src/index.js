@@ -14,7 +14,9 @@ root.render(
         <Auth0Provider
             domain={'dev-xva3bwyqfub0c5sf.us.auth0.com'}
             clientId={'7CEAotFZme2gstjkZWCwTzoKfM9f1OrV'}
-            redirectUri={window.location.origin}>
+            redirectUri={window.location.origin}
+            audience={'https://dev-xva3bwyqfub0c5sf.us.auth0.com/api/v2/'}
+            scope={'read:current_user update:current_user_metadata'}>
 
             <App />
         </Auth0Provider>

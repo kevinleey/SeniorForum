@@ -15,45 +15,6 @@ function Navbar() {
     NAVBAR_ALT_TEXT: altText,
   } = navResources;
 
-  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
-  //const [authItems, setAuthItems] = useState(NAV_ITEMS);
-
-  useEffect(() => {
-    // Assuming you have some state to manage the navbar items
-    // const [authItems, setAuthItems] = useState(NAV_ITEMS);
-
-    const accountItem = navItems.find(item => item.text === "MY ACCOUNT");
-    const authSubItem = accountItem?.subItems.find(subItem => subItem.text === "Login" || subItem.text === "Logout");
-
-    if (authSubItem) {
-      const isUser = isAuthenticated && user;
-      authSubItem.text = isUser ? "Logout" : "Login";
-      authSubItem.onClick = isUser ? () => logout({ logoutParams: { returnTo: window.location.origin } }) : () => loginWithRedirect();
-
-    }
-  }, [isAuthenticated, user, logout, loginWithRedirect]);
-
-  /*useEffect(() => {
-    const accountItem = NAV_ITEMS.find(item => item.text === "MY ACCOUNT");
-    const authSubItem = accountItem.subItems.find(subItem => subItem.text === "Login" || subItem.text === "Logout");
-
-    if(authSubItem) {
-      const isUser = isAuthenticated && user;
-      authSubItem.text = isUser ? "Logout" : "Login";
-      authSubItem.onClick = isUser ? () => logout({ logoutParams: { returnTo: window.location.origin } }) : () => loginWithRedirect();
-    }
-  }, [isAuthenticated, user, logout, loginWithRedirect]);*/
-
-  //const accountItem= NAV_ITEMS.find(item => item.text === "MY ACCOUNT");
-  //const authSubItem = accountItem?.subItems.find(item => ["Login", "Logout"].includes(accountItem.subItems.text));
-  //const authSubItem = accountItem.subItems.find(item => accountItem.subItems.text === "Login" || accountItem.subItems.text === "Logout");
-
-  /*if (authSubItem) {
-    const isUser = isAuthenticated && user;
-    authSubItem.text = isUser ? "Logout" : "Login";
-    authSubItem.onClick = isUser ? () => logout({ logoutParams: { returnTo: window.location.origin } }) : () => loginWithRedirect();
-  }*/
-
   return (
     <header>
       <div className="nav-container">
