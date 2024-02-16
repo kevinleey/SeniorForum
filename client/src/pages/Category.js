@@ -17,7 +17,7 @@ function Category() {
   console.log("Category Posts: ", categoryPosts);
 
   return (
-    <div id="page-overview">
+    <div id="page-background">
       <Navbar />
       <div className="page-container">
         <div id="posts-box">

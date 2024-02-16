@@ -7,7 +7,7 @@ import CategoryBox from "../components/categories/CategoryBox";
 
 function Categories() {
   return (
-    <div id="page-overview">
+    <div id="page-background">
       <Navbar />
       <div className="page-container">
         <div id="box-holder">

@@ -14,7 +14,7 @@ function Account() {
   const currPosts = posts.filter((post) => post.createdBy._id === currUser._id);
 
   return (
-    <div id="page-overview">
+    <div id="page-background">
       <Navbar />
       <div className="page-container">
         <div id="account-container">
