@@ -8,6 +8,11 @@
   border-radius: 3px;
 }
 
+.category-tag:hover {
+  background-color: #4d4d4d;
+  cursor: pointer
+}
+
 #no-category-text {
   font-size: 14px;
   font-style: italic;
