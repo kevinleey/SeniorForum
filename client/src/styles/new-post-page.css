@@ -1,26 +1,18 @@
-newPostTitle {
-    margin-top: 30px;
-    margin-bottom: 10px;
-    margin-left: 400px;
-    font-size: 30px;
-    line-height: 3;
-    font-weight: 700;
-}
-h2 {
+.add-post-subtitle {
     margin-bottom: 10px;
     margin-left: 450px;
 }
 
-input, textarea {
+.add-post-input {
     margin-bottom: 10px;
     margin-left: 500px;
 }
 
-label {
+.add-post-category-label {
     display: block;
     line-height: 2;
 }
-button {
+.add-post-submit-button {
     width: 100px;
     height: 70px;
     font-size: 20px;

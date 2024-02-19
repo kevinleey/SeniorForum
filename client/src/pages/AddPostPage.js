@@ -39,41 +39,43 @@ function AddPostForm() {
 
             await dispatch(addNewPost(newPost));
 
-            navigate('/Account');
+            navigate('/account');
         } catch (error) {
             console.error('Error adding post:', error);
         }
     };
 
     return (
-        <div>
-            <Navbar/>
-            <newPostTitle>Add a new post</newPostTitle>
-            <h2>Title:</h2>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
-            <br/>
-            <h2>Text:</h2>
-            <textarea value={text} onChange={(e) => setText(e.target.value)}/>
-            <br/>
-            <h2>Select Categories:</h2>
-            <div>
-                {allCategories.map((category) => (
-                    <label key={category}>
-                        <input
-                            type="checkbox"
-                            value={category}
-                            checked={selectedCategories.includes(category)}
-                            onChange={() => handleCheckboxChange(category)}
-                        />
-                        {category}
-                    </label>
-                ))}
-            </div>
-            <br/>
-            <button onClick={() => handleAddPost()}>Add Post</button>
-
-            <Footer/>
+      <div id="page-background">
+        <Navbar/>
+        <div className="page-container">
+          <h1 className="page-title">Add a new post</h1>
+          <h2 className="add-post-subtitle">Title:</h2>
+          <input className="add-post-input" type="text" value={title} onChange={(e) => setTitle(e.target.value)}/>
+          <br/>
+          <h2 className="add-post-subtitle">Text:</h2>
+          <textarea className="add-post-input" value={text} onChange={(e) => setText(e.target.value)}/>
+          <br/>
+          <h2 className="add-post-subtitle">Select Categories:</h2>
+          <div>
+            {allCategories.map((category) => (
+              <label className="add-post-category-label" key={category}>
+                <input
+                  className="add-post-input"
+                  type="checkbox"
+                  value={category}
+                  checked={selectedCategories.includes(category)}
+                  onChange={() => handleCheckboxChange(category)}
+                />
+                {category}
+              </label>
+            ))}
+          </div>
+          <br/>
+          <button className="add-post-submit-button" onClick={() => handleAddPost()}>Add Post</button>
         </div>
+        <Footer/>
+      </div>
     );
 };
 
