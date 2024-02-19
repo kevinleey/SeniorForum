@@ -15,7 +15,7 @@ function Contribution({ contribution }) {
 
   return (
     <div className="cont-container">
-      <UserImage user={contribution.createdBy}/>
+      <UserImage user={createdBy}/>
       <div className="cont-text-container">
         <div className="cont-text-header">
           <span className="cont-text-username" onClick={handleClick}>
