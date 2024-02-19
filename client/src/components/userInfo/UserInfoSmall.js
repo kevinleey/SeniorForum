@@ -6,7 +6,7 @@ import "../../styles/user-info-small.css";
 function UserInfoSmall({ user }) {
   const userProfileURI = `/profile/${user._id}`;
   const handleProfileClick = (event) => {
-      event.stopPropagation(); // Prevents the click event from propagating to the parent div
+      event.stopPropagation();
   };
 
   return (

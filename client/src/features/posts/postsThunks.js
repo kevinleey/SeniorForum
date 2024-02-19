@@ -25,6 +25,5 @@ const addNewPost = createAsyncThunk('posts/addNewPost', async (newPost, { dispat
   return data;
 });
 
-// Export all thunks for use in the slice or components
 export { fetchPosts, fetchPost, addNewPost };
 

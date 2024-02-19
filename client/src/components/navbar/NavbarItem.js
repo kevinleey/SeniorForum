@@ -6,7 +6,7 @@ import {selectCurrentUser, setCurrentUser} from "../../features/users/userSlice"
 import {fetchCurrUser} from "../../features/users/userThunks";
 
 function NavbarItem({ href, text, subItems, auth }) {
-  const isLinkDisabled = text === "ABOUT"; //Disable the ABOUT link
+  const isLinkDisabled = text === "ABOUT";
 
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
@@ -24,8 +24,7 @@ function NavbarItem({ href, text, subItems, auth }) {
 
   return (
     <li className="nav-item">
-      {isLinkDisabled ? ( //If the link is disabled, don't make it a link, change class to disabled
-
+      {isLinkDisabled ? (
         <div className="nav-link-disabled">{text}</div>
       ) : (
         <Link className="nav-link" to={href}>

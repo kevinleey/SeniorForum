@@ -4,32 +4,35 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts } from "../features/posts/postsSlice";
 import PostList from "../components/posts/PostList";
 import Footer from "../components/Footer";
-import {selectAllUsers, selectCurrentUser, setCurrentUser} from "../features/users/userSlice";
+import {
+  selectCurrentUser,
+  setCurrentUser,
+} from "../features/users/userSlice";
 import { fetchCurrUser } from "../features/users/userThunks";
-import { HOME_RESOURCES } from "../constants";
 import "../styles/home.css";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Home() {
   const posts = useSelector(selectAllPosts);
-  const users = useSelector(selectAllUsers);
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
   const { user: auth0User, isLoading } = useAuth0();
 
   useEffect(() => {
-      if(!isLoading && auth0User) {
-          dispatch(fetchCurrUser(auth0User));
-          dispatch(setCurrentUser(auth0User));
-      }
+    if (!isLoading && auth0User) {
+      dispatch(fetchCurrUser(auth0User));
+      dispatch(setCurrentUser(auth0User));
+    }
   }, [dispatch, isLoading, auth0User]);
 
   return (
     <div id="page-background">
       <Navbar />
-      <div className="page-container">
+      <div id="page-container">
         <h1 className="page-title">
-          {currentUser ? `Welcome ${currentUser.firstName}, here are some recent posts.` : "Welcome, here are some recent posts. Login to join the community!"}
+          {currentUser
+            ? `Welcome ${currentUser.firstName}, here are some recent posts.`
+            : "Welcome, here are some recent posts. Login to join the community!"}
         </h1>
         <PostList posts={posts} />
       </div>

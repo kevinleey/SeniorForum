@@ -13,12 +13,7 @@ import {selectUserById} from "../features/users/userSlice";
 function Profile() {
     const posts = useSelector(selectAllPosts);
     const {userId} = useParams();
-    console.log("Before new Use Selector");
     const user = useSelector((state) => selectUserById(state, userId));
-    console.log("After New Selector");
-    // console.log("User Array");
-    // console.log(user.firstName);
-    // console.log("User Id: ", userId);
     const userPosts = posts.filter(post => post.createdBy._id === userId);
 
     return (

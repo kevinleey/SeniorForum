@@ -7,7 +7,7 @@ import Comment from "./models/Comment.js";
 import pkg from 'express-openid-connect';
 const { auth, requiresAuth } = pkg;
 
-
+const PORT = process.env.PORT || 3001;
 dotenv.config();
 
 const app = express();
@@ -24,14 +24,8 @@ const config = {
 
 app.use(auth(config));
 
- const PORT = process.env.PORT || 3001;
-
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.9bfewjc.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(uri);
-
-// find users and print to console
-const users = await User.find({});
-console.log(users);
 
 app.get('/', (req, res) => {
     res.send(
@@ -63,18 +57,13 @@ app.get("/posts/:postId", async (req, res) => {
   const post = await Post.findById(postId).populate("createdBy").exec();
   return res.status(200).json(post);
 });
-// app.post("/add-post", async (req, res) => {
-//   const postId = req.params.postId;
-//   const post = await Post.findById(postId).populate("createdBy").exec();
-//   return res.status(200).json(post);
-// });
+
 app.post("/add-post", async (req, res) => {
     const {title, text, categories, createdBy, dateCreated} = req.body;
     const newPost = new Post({
       title,
       text,
       categories,
-        //createdBy: req.params.postId,
         createdBy,
         dateCreated
     });
