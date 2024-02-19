@@ -4,10 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts } from "../features/posts/postsSlice";
 import PostList from "../components/posts/PostList";
 import Footer from "../components/Footer";
-import {
-  selectCurrentUser,
-  setCurrentUser,
-} from "../features/users/userSlice";
+import { selectCurrentUser, setCurrentUser } from "../features/users/userSlice";
 import { fetchCurrUser } from "../features/users/userThunks";
 import "../styles/home.css";
 import { useAuth0 } from "@auth0/auth0-react";

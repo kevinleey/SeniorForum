@@ -11,11 +11,11 @@ function Contribution({ contribution }) {
 
   const handleClick = (event) => {
     navigate(userProfileURI);
-  }
+  };
 
   return (
     <div className="cont-container">
-      <UserImage user={createdBy}/>
+      <UserImage user={createdBy} />
       <div className="cont-text-container">
         <div className="cont-text-header">
           <span className="cont-text-username" onClick={handleClick}>

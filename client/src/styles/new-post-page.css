@@ -1,25 +1,25 @@
 .add-post-subtitle {
-    margin-bottom: 10px;
-    margin-left: 450px;
+  margin-bottom: 10px;
+  margin-left: 450px;
 }
 
 .add-post-input {
-    margin-bottom: 10px;
-    margin-left: 500px;
+  margin-bottom: 10px;
+  margin-left: 500px;
 }
 
 .add-post-category-label {
-    display: block;
-    line-height: 2;
+  display: block;
+  line-height: 2;
 }
 .add-post-submit-button {
-    width: 100px;
-    height: 70px;
-    font-size: 20px;
-    margin-bottom: 40px;
-    margin-left: 450px;
-    background-color: #a4150b;
-    color: white;
-    border: black;
-    border-radius: 10px;
+  width: 100px;
+  height: 70px;
+  font-size: 20px;
+  margin-bottom: 40px;
+  margin-left: 450px;
+  background-color: #a4150b;
+  color: white;
+  border: black;
+  border-radius: 10px;
 }

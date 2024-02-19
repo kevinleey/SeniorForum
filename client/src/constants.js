@@ -57,8 +57,8 @@ export const imageLinks = {
 // HOME
 
 export const HOME_RESOURCES = {
-  HOME_TITLE: "Welcome , here are some recent posts."
-}
+  HOME_TITLE: "Welcome , here are some recent posts.",
+};
 
 export const ERROR_MESSAGES = {
   INVALID_POSTID: "Invalid post ID",

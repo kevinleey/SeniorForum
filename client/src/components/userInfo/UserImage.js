@@ -9,14 +9,14 @@ function UserImage({ user }) {
   const handleClick = (event) => {
     event.stopPropagation();
     navigate(userProfileURI);
-  }
+  };
 
   return (
     <img
-        onClick={handleClick}
-        id="user-image"
-        src={imageLinks.USER.USER_PICTURE_LINK}
-        alt={imageLinks.USER.USER_PICTURE_TEXT}
+      onClick={handleClick}
+      id="user-image"
+      src={imageLinks.USER.USER_PICTURE_LINK}
+      alt={imageLinks.USER.USER_PICTURE_TEXT}
     />
   );
 }
