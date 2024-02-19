@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts } from "./postsThunks";
+import { fetchPosts } from "./postsThunks.js";
 
 const initialState = {
   posts: [],
@@ -16,6 +16,9 @@ export const postsSlice = createSlice({
     },
     removePost: (state, action) => {
       state.posts = state.posts.filter((post) => post.id !== action.payload);
+    },
+    postAdded: (state, action) => {
+      state.posts.push(action.payload);
     },
   },
   extraReducers(builder) {
@@ -34,7 +37,7 @@ export const postsSlice = createSlice({
   },
 });
 
-export const { addPost, removePost } = postsSlice.actions;
+export const { addPost, removePost, postAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;
 
