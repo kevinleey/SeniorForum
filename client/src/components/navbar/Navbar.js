@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import NavbarItem from "./NavbarItem";
-import { NAV_ITEMS as navItems } from "../../constants";
+import {NAV_ITEMS, NAV_ITEMS as navItems} from "../../constants";
 import { NAV_RESOURCES as navResources } from "../../constants";
 import "../../styles/navbar.css";
 import "../../styles/dropdown.css";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {selectAllUsers, selectCurrentUser, setCurrentUser} from "../../features/users/userSlice";
+import { fetchCurrUser } from "../../features/users/userThunks";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
   const {
@@ -34,6 +38,7 @@ function Navbar() {
                   text={item.text}
                   href={item.href}
                   subItems={item.subItems}
+                  //auth={isAuthenticated}
                 />
               ))}
             </ul>

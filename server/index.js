@@ -4,13 +4,27 @@ import express from "express";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import Comment from "./models/Comment.js";
+import pkg from 'express-openid-connect';
+const { auth, requiresAuth } = pkg;
 
 
 dotenv.config();
 
-const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(express.json());
+
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    baseURL: 'http://localhost:3000',
+    clientID: process.env.AUTH_CLIENT_ID, //'7CEAotFZme2gstjkZWCwTzoKfM9f1OrV',
+    issuerBaseURL: process.env.AUTH_ISSUER_BASE_URL, //'https://dev-xva3bwyqfub0c5sf.us.auth0.com'
+    secret: 'LONG_RANDOM_STRING'
+}
+
+app.use(auth(config));
+
+ const PORT = process.env.PORT || 3001;
 
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.9bfewjc.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(uri);
@@ -18,6 +32,20 @@ mongoose.connect(uri);
 // find users and print to console
 const users = await User.find({});
 console.log(users);
+
+app.get('/', (req, res) => {
+    res.send(
+        req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out'
+    )
+});
+
+app.get('/profile', requiresAuth(), (req, res) => {
+    res.send(JSON.stringify(req.oidc.user, null, 2));
+});
+
+app.get('/account', requiresAuth(), (req, res) =>
+    res.send(`Hello ${req.oidc.user.sub}, this is the account page.`)
+);
 
 app.get("/posts", async (req, res) => {
   const allPosts = await Post.find().populate("createdBy").exec();
