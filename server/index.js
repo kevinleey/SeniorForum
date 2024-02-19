@@ -17,8 +17,8 @@ const config = {
     authRequired: false,
     auth0Logout: true,
     baseURL: 'http://localhost:3000',
-    clientID: '7CEAotFZme2gstjkZWCwTzoKfM9f1OrV',
-    issuerBaseURL: 'https://dev-xva3bwyqfub0c5sf.us.auth0.com',
+    clientID: process.env.AUTH_CLIENT_ID, //'7CEAotFZme2gstjkZWCwTzoKfM9f1OrV',
+    issuerBaseURL: process.env.AUTH_ISSUER_BASE_URL, //'https://dev-xva3bwyqfub0c5sf.us.auth0.com'
     secret: 'LONG_RANDOM_STRING'
 }
 

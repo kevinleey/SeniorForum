@@ -26,7 +26,7 @@ export const NAV_ITEMS = [
     text: "MY ACCOUNT", //sends to user profile
     subItems: [
       { href: "", text: "Account Settings" }, //will send to account settings page (unmade)
-      { href: "/login", text: "Login" }, //Not sure what ref to put for the logout. For now, it will redirect to the home page.
+      { href: "http://localhost:3001/login", text: "Login" }, //redirects user to Auth0 login page, will change to logout if user is logged in
     ],
   },
 ];

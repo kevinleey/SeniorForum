@@ -18,10 +18,13 @@ function Home() {
   const { user: auth0User, isLoading } = useAuth0();
 
   useEffect(() => {
+      // Check if the Auth0 user data is loaded and if the user is authenticated
       if(!isLoading && auth0User) {
+          // If the user is authenticated, dispatch an action to fetch the current user's data
           dispatch(fetchCurrUser(auth0User));
+          // Also, dispatch an action to set the current user's data in the Redux store
           dispatch(setCurrentUser(auth0User));
-      }
+      }//the effect will run again if any of these values change
   }, [dispatch, isLoading, auth0User]);
 
   return (

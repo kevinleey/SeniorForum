@@ -23,8 +23,7 @@ const fetchCurrUser = createAsyncThunk(
     'users/fetchCurrUser',
     async (user, thunkAPI) => {
       try {
-        // Replace this URL with the URL of your server or Auth0's endpoint
-        const response = await axios.get(`/profile`);
+        const response = await axios.get(`/profile`); // /profile is the route that returns the current user's data.
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue({ error: error.message });
