@@ -39,8 +39,14 @@ app.get('/', (req, res) => {
     )
 });
 
-app.get('/profile', requiresAuth(), (req, res) => {
-    res.send(JSON.stringify(req.oidc.user, null, 2));
+app.get('/profile', requiresAuth(), async (req, res) => {
+    let auth0Id = req.oidc.user.sub;
+    auth0Id = auth0Id.replace('auth0|', '');
+    const user = await User.findById(auth0Id);
+    if(!user){
+        return res.status(404).send("User not found");
+    }
+    res.send(user);
 });
 
 app.get('/account', requiresAuth(), (req, res) =>
