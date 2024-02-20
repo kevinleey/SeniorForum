@@ -27,8 +27,14 @@ app.use(auth(config));
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.9bfewjc.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(uri);
 
-app.get("/", (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+// find users and print to console
+const users = await User.find({});
+console.log(users);
+
+app.get('/', (req, res) => {
+    res.send(
+        req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out'
+    )
 });
 
 app.get("/profile", requiresAuth(), async (req, res) => {
@@ -41,8 +47,19 @@ app.get("/profile", requiresAuth(), async (req, res) => {
   res.send(user);
 });
 
-app.get("/account", requiresAuth(), (req, res) =>
-  res.send(`Hello ${req.oidc.user.sub}, this is the account page.`),
+app.put('/profile', requiresAuth(), async (req, res) => { ///MIGHT NEED TO CHANGE REQUIRESAUTH
+    let auth0UserId = req.oidc.user.sub;
+    auth0UserId = auth0UserId.replace('auth0|', '');
+    const user = await User.findById(auth0UserId);
+    if(!user){
+        return res.status(404).send("User not found");
+    }
+    const updatedUser = await User.findByIdAndUpdate(auth0UserId, req.body, {new: true});
+    res.send(updatedUser);
+});
+
+app.get('/account', requiresAuth(), (req, res) =>
+    res.send(`Hello ${req.oidc.user.sub}, this is the account page.`)
 );
 
 app.get("/posts", async (req, res) => {

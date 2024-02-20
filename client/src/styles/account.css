@@ -84,3 +84,24 @@
 #account-history-list {
   margin: 10px;
 }
+
+#edit-profile-button {
+  margin: 10px;
+  color: white;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 15px;
+  text-align: center;
+}
+
+#edit-profile-button:hover {
+  cursor: pointer;
+}
+
+#edit-profile-button:active {
+  transform: scale(0.95); /* Reduces the size of the button to 95% of its original size */
+  background-color: #7a0d0d; /* Changes the background color when the button is clicked */
+}
+
+
+
