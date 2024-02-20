@@ -24,6 +24,8 @@ function EditProfile() {
     const [bio, setBio] = useState('');
     //add more as needed
 
+    const [showMessage, setShowMessage] = useState(false);
+
     useEffect(() => {
         // Check if the Auth0 user data is loaded and if the user is authenticated
         if(!isLoading && auth0User) {
@@ -39,12 +41,6 @@ function EditProfile() {
 
         }
     }, [dispatch, isLoading, auth0User]);
-
-    /*const handleSubmit = (event) => {
-        event.preventDefault();
-        // Send a request to the server to update the user's data
-        // You'll need to implement this
-    }*/
 
     const handleSubmit = async ( event) => {
         event.preventDefault();
@@ -67,6 +63,9 @@ function EditProfile() {
 
             if (response.ok){
                 dispatch(setCurrentUser(updatedUser));
+                setShowMessage(true);
+                setTimeout(() => setShowMessage(false), 2000);
+                //alert("Your changes have been saved :)")'
             } else {
                 console.error('HTTP error! status: ${response.status}');
             }
@@ -108,7 +107,10 @@ function EditProfile() {
                             </label>
                         </div>
                         {/* Add more fields as needed */}
-                        <input type="submit" value="Save"/>
+                        <div id="save-changes">
+                            {showMessage && <p>Your changes have been saved :)</p>}
+                            <input id="button" type="submit" value="Save"/>
+                        </div>
                     </form>
                 </div>
             </div>
