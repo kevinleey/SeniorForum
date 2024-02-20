@@ -87,7 +87,10 @@
 
 #edit-profile-button {
   margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
   color: white;
+  background-color: #900f0f;
   height: 40px;
   padding: 0 10px;
   font-size: 15px;
