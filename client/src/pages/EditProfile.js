@@ -80,7 +80,7 @@ function EditProfile() {
             <div id='page-overview'>
                 <Navbar />
                 <div id="page-container">
-                    <h1 id="not-logged">Hmmm, you are not logged in. You don't belong here...</h1>
+                    <h1 id="not-logged">You are not logged in. You don't belong here...</h1>
                 </div>
             </div>
         )
