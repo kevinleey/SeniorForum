@@ -33,7 +33,7 @@ function Home() {
           <div className="page-container">
               <div id="posts-box">
                   <h1 className="page-title">
-                      {currentUser ? `Welcome ${currentUser.nickname}, here are some recent posts.` : "Welcome, here are some recent posts. Login to join the community!"}
+                      {currentUser ? `Welcome ${currentUser.firstName}, here are some recent posts.` : "Welcome, here are some recent posts. Login to join the community!"}
                   </h1>
                   <PostList posts={posts}/>
               </div>
