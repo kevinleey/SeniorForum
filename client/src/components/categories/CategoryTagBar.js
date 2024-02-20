@@ -15,7 +15,9 @@ function CategoryTagBar({ categories }) {
     <div>
       {categories.length ? (
         categories.map((category) => (
-          <div className="category-tag" onClick={handleClick}>{category}</div>
+          <div className="category-tag" onClick={handleClick}>
+            {category}
+          </div>
         ))
       ) : (
         <span id="no-category-text">No category specified</span>

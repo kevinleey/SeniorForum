@@ -29,7 +29,7 @@ function App() {
     if (usersStatus === "idle") {
       dispatch(fetchUsers());
     }
-    dispatch(fetchCurrUser())
+    dispatch(fetchCurrUser());
   }, [usersStatus, dispatch]);
 
   useEffect(() => {

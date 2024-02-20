@@ -4,53 +4,45 @@ import express from "express";
 import User from "./models/User.js";
 import Post from "./models/Post.js";
 import Comment from "./models/Comment.js";
-import pkg from 'express-openid-connect';
+import pkg from "express-openid-connect";
 const { auth, requiresAuth } = pkg;
 
-
+const PORT = process.env.PORT || 3001;
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 
 const config = {
-    authRequired: false,
-    auth0Logout: true,
-    baseURL: 'http://localhost:3000',
-    clientID: process.env.AUTH_CLIENT_ID, //'7CEAotFZme2gstjkZWCwTzoKfM9f1OrV',
-    issuerBaseURL: process.env.AUTH_ISSUER_BASE_URL, //'https://dev-xva3bwyqfub0c5sf.us.auth0.com'
-    secret: 'LONG_RANDOM_STRING'
-}
+  authRequired: false,
+  auth0Logout: true,
+  baseURL: "http://localhost:3000",
+  clientID: process.env.AUTH_CLIENT_ID, //'7CEAotFZme2gstjkZWCwTzoKfM9f1OrV',
+  issuerBaseURL: process.env.AUTH_ISSUER_BASE_URL, //'https://dev-xva3bwyqfub0c5sf.us.auth0.com'
+  secret: "LONG_RANDOM_STRING",
+};
 
 app.use(auth(config));
-
- const PORT = process.env.PORT || 3001;
 
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.9bfewjc.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(uri);
 
-// find users and print to console
-const users = await User.find({});
-console.log(users);
-
-app.get('/', (req, res) => {
-    res.send(
-        req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out'
-    )
+app.get("/", (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
 
-app.get('/profile', requiresAuth(), async (req, res) => {
-    let auth0Id = req.oidc.user.sub;
-    auth0Id = auth0Id.replace('auth0|', '');
-    const user = await User.findById(auth0Id);
-    if(!user){
-        return res.status(404).send("User not found");
-    }
-    res.send(user);
+app.get("/profile", requiresAuth(), async (req, res) => {
+  let auth0Id = req.oidc.user.sub;
+  auth0Id = auth0Id.replace("auth0|", "");
+  const user = await User.findById(auth0Id);
+  if (!user) {
+    return res.status(404).send("User not found");
+  }
+  res.send(user);
 });
 
-app.get('/account', requiresAuth(), (req, res) =>
-    res.send(`Hello ${req.oidc.user.sub}, this is the account page.`)
+app.get("/account", requiresAuth(), (req, res) =>
+  res.send(`Hello ${req.oidc.user.sub}, this is the account page.`),
 );
 
 app.get("/posts", async (req, res) => {
@@ -63,23 +55,18 @@ app.get("/posts/:postId", async (req, res) => {
   const post = await Post.findById(postId).populate("createdBy").exec();
   return res.status(200).json(post);
 });
-// app.post("/add-post", async (req, res) => {
-//   const postId = req.params.postId;
-//   const post = await Post.findById(postId).populate("createdBy").exec();
-//   return res.status(200).json(post);
-// });
+
 app.post("/add-post", async (req, res) => {
-    const {title, text, categories, createdBy, dateCreated} = req.body;
-    const newPost = new Post({
-      title,
-      text,
-      categories,
-        //createdBy: req.params.postId,
-        createdBy,
-        dateCreated
-    });
-    const savedPost = await newPost.save();
-    return res.status(201).json(savedPost);
+  const { title, text, categories, createdBy, dateCreated } = req.body;
+  const newPost = new Post({
+    title,
+    text,
+    categories,
+    createdBy,
+    dateCreated,
+  });
+  const savedPost = await newPost.save();
+  return res.status(201).json(savedPost);
 });
 
 app.get("/posts/:postId/comments", async (req, res) => {

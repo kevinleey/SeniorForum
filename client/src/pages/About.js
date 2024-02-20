@@ -4,10 +4,10 @@ import Footer from "../components/Footer";
 
 function About() {
   return (
-    <div id="page-overview">
+    <div id="page-background">
       <Navbar />
-      <div className="page-container">
-        <h1 className="page-title">About Section</h1>
+      <div id="page-container">
+        <h1 className="page-title">About</h1>
       </div>
       <Footer />
     </div>

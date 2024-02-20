@@ -56,7 +56,7 @@ function CommentForm() {
     <div className="comment-form-container">
       <h2 id="comment-form-header">{title}</h2>
       <div className="comment-form">
-        <UserImage />
+        <UserImage user={user} />
         <form className="input-form" onSubmit={handleSubmit}>
           <textarea
             className={`input-text-field ${error ? "invalid-input" : ""}`}

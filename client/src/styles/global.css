@@ -11,19 +11,20 @@
   margin: auto;
 }
 
-#page-overview {
-  background-color: lightgrey;
+#page-background {
+  background-color: #e6e6e6;
 }
 
-.page-container {
+#page-container {
   min-height: 526px;
   max-width: 1400px;
   margin: 50px auto;
+  padding: 50px 30px;
+  background-color: white;
 }
 
 .page-title {
   margin-bottom: 25px;
   font-family: "Gothic A1", sans-serif;
-  text-align: center;
   margin-top: 25px;
 }

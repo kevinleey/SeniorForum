@@ -20,15 +20,15 @@ const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
 });*/
 
 const fetchCurrUser = createAsyncThunk(
-    'users/fetchCurrUser',
-    async (user, thunkAPI) => {
-      try {
-        const response = await axios.get(`/profile`); // /profile is the route that returns the current user's data.
-        return response.data;
-      } catch (error) {
-        return thunkAPI.rejectWithValue({ error: error.message });
-      }
+  "users/fetchCurrUser",
+  async (user, thunkAPI) => {
+    try {
+      const response = await axios.get(`/profile`); // /profile is the route that returns the current user's data.
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue({ error: error.message });
     }
+  },
 );
 
 export { fetchUsers, fetchCurrUser, fetchUser };

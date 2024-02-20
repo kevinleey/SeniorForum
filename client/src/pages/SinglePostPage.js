@@ -8,6 +8,7 @@ import { selectCommentsByPostId } from "../features/comments/commentsSlice";
 import Error from "../components/Error";
 import { ERROR_MESSAGES as error } from "../constants";
 import fetchCommentsForPost from "../features/comments/commentsThunks";
+import Footer from "../components/Footer";
 
 function SinglePostPage() {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function SinglePostPage() {
   const post = posts.filter((post) => post._id === postId);
 
   return (
-    <div>
+    <div id="page-background">
       <Navbar />
       <div className="page-container">
         {post.length ? (
@@ -31,6 +32,7 @@ function SinglePostPage() {
           <Error message={error.INVALID_POSTID} />
         )}
       </div>
+      <Footer />
     </div>
   );
 }
