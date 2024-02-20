@@ -18,7 +18,7 @@ function Profile() {
   return (
     <div id="page-overview">
       <Navbar />
-      <div className="page-container">
+      <div id="page-container">
         <div id="account-container">
           <div id="image-area">
             <img

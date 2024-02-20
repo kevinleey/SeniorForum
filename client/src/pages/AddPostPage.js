@@ -55,7 +55,7 @@ function AddPostForm() {
   return (
     <div id="page-background">
       <Navbar />
-      <div className="page-container">
+      <div id="page-container">
         <h1 className="page-title">Add a new post</h1>
         <h2 className="add-post-subtitle">Title:</h2>
         <input

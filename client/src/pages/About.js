@@ -6,7 +6,7 @@ function About() {
   return (
     <div id="page-background">
       <Navbar />
-      <div className="page-container">
+      <div id="page-container">
         <h1 className="page-title">About</h1>
       </div>
       <Footer />

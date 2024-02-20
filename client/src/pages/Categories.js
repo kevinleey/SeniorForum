@@ -9,7 +9,7 @@ function Categories() {
   return (
     <div id="page-background">
       <Navbar />
-      <div className="page-container">
+      <div id="page-container">
         <h1 className="page-title">Categories</h1>
         <div id="box-holder">
           <CategoryBox category={POST_CATEGORIES.CATEGORY_1} />

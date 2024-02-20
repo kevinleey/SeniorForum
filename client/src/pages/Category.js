@@ -19,7 +19,7 @@ function Category() {
   return (
     <div id="page-background">
       <Navbar />
-      <div className="page-container">
+      <div id="page-container">
         <div id="posts-box">
           <h1 className="page-title">{categoryTitle}</h1>
           <PostList posts={categoryPosts} />

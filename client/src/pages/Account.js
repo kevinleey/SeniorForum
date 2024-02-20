@@ -16,7 +16,7 @@ function Account() {
   return (
     <div id="page-background">
       <Navbar />
-      <div className="page-container">
+      <div id="page-container">
         <h1 className="page-title">My Account</h1>
         <div id="account-container">
           <div id="image-area">
