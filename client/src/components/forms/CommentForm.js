@@ -23,7 +23,7 @@ function CommentForm() {
   const [numChar, setNumChar] = useState(0);
   const [error, setError] = useState("");
 
-  const placeholderString = `${authorPrefixText} ${user.firstName} ${user.lastName}`;
+  const placeholderString = `${authorPrefixText}${user.firstName} ${user.lastName}`;
   const numCharString = `${numChar}/${maxChar}`;
 
   const handleInputChange = (e) => {
