@@ -25,7 +25,7 @@ function SinglePostPage() {
   return (
     <div id="page-background">
       <Navbar />
-      <div className="page-container">
+      <div id="page-container">
         {post.length ? (
           <SinglePost post={post[0]} comments={comments} />
         ) : (
