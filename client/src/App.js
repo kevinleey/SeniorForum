@@ -12,6 +12,7 @@ import { fetchPosts } from "./features/posts/postsThunks";
 import { fetchCurrUser, fetchUsers } from "./features/users/userThunks";
 import { selectAllUsers } from "./features/users/userSlice";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/account" element={<Account />} />
           <Route path="/add-post" element={<AddPostPage />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
         </Routes>
       </BrowserRouter>
     </div>

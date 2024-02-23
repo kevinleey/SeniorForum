@@ -1,0 +1,63 @@
+#edit-profile-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background: white;
+}
+
+#form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#form-container label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+#form-container input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+#button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    background-color: #900f0f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#button:active {
+    transform: scale(0.95); /* Reduces the size of the button to 95% of its original size */
+    background-color: #7a0d0d; /* Changes the background color when the button is clicked */
+}
+
+@media (max-width: 600px) {
+    #button {
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    #form-container input {
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    #form-container label {
+        font-size: 20px;
+    }
+}

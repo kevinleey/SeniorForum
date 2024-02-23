@@ -7,11 +7,17 @@ import { useSelector } from "react-redux";
 import { selectAllPosts } from "../features/posts/postsSlice";
 import PostList from "../components/posts/PostList";
 import { selectCurrentUser } from "../features/users/userSlice";
+import { useNavigate } from "react-router-dom";
 
 function Account() {
   const posts = useSelector(selectAllPosts);
   const currUser = useSelector(selectCurrentUser);
   const currPosts = posts.filter((post) => post.createdBy._id === currUser._id);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/edit-profile");
+  };
 
   return (
     <div id="page-background">
@@ -38,6 +44,8 @@ function Account() {
               <p>
                 {currUser.firstName} {currUser.lastName}
               </p>
+
+              <button id="edit-profile-button" onClick={handleClick}>Edit Profile</button>
             </div>
             <h2 className="bio">Bio:</h2>
             <div id="account-bio">
