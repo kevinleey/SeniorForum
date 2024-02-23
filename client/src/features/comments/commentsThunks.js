@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {commentAdded} from "./commentsSlice";
-import {selectUserById} from "../users/userSlice";
+import { commentAdded } from "./commentsSlice";
+import { selectUserById } from "../users/userSlice";
 
 const fetchCommentsForPost = createAsyncThunk(
   "comments/fetchCommentsForPosts",
@@ -29,15 +29,15 @@ const addNewComment = createAsyncThunk(
       ...newComment,
       createdBy: {
         firstName: user.firstName,
-        lastName: user.lastName
-      }
+        lastName: user.lastName,
+      },
     };
 
     dispatch(commentAdded(commentWithUsername));
 
     const data = await response.json();
     return data;
-  }
-)
+  },
+);
 
 export { fetchCommentsForPost, addNewComment };

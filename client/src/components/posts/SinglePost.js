@@ -29,7 +29,7 @@ function SinglePost({ post, comments }) {
         ) : (
           <Spinner />
         )}
-        <CommentForm/>
+        <CommentForm />
       </div>
     </div>
   );

@@ -21,11 +21,13 @@ Techstack: MERN (MongoDB, Express, ReactJS, NodeJS)
 ### Prerequisites
 
 #### Installation
+
 - Install NodeJS.
 - Clone the repo.
 - Run `npm install` in the root directory as well as the `./client` folder.
 
 #### Credentials
+
 - You need to obtain a number (8) of credentials from the team (MongoDB, Auth0).
 - Create a `.env` file in the root directory to store your credentials.
 - After obtaining the credentials and relevant values, enter them in the `.env` in the following format separated by newlines:

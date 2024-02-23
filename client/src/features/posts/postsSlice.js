@@ -38,9 +38,9 @@ export const postsSlice = createSlice({
       .addCase(addNewComment.fulfilled, (state, action) => {
         const postId = action.payload.postId;
         const commentId = action.payload._id;
-        const postToUpdate = state.posts.find(post => post._id === postId);
+        const postToUpdate = state.posts.find((post) => post._id === postId);
         postToUpdate.comments.push(commentId);
-      })
+      });
   },
 });
 

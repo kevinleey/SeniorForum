@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../../styles/comment-form.css";
 import UserImage from "../userInfo/UserImage";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/users/userSlice";
 import { COMMENTS_RESOURCES as CR } from "../../constants";
 import { COMMENTS_VALIDATION as CV } from "../../constants";
 import { selectCurrentPostId } from "../../features/comments/commentsSlice";
-import {addNewComment} from "../../features/comments/commentsThunks";
+import { addNewComment } from "../../features/comments/commentsThunks";
 
 const {
   COMMENTS_TITLE: title,
@@ -60,7 +60,7 @@ function CommentForm() {
         text: commentData,
         createdBy: user._id,
         dateCreated: new Date().toISOString(),
-        postId
+        postId,
       };
 
       await dispatch(addNewComment(newComment));

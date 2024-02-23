@@ -4,7 +4,10 @@ import SinglePost from "../components/posts/SinglePost";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAllPosts } from "../features/posts/postsSlice";
-import {selectCommentsByPostId, setCurrentPostId} from "../features/comments/commentsSlice";
+import {
+  selectCommentsByPostId,
+  setCurrentPostId,
+} from "../features/comments/commentsSlice";
 import Error from "../components/Error";
 import { ERROR_MESSAGES as error } from "../constants";
 import { fetchCommentsForPost } from "../features/comments/commentsThunks";
