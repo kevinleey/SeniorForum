@@ -20,10 +20,19 @@ Techstack: MERN (MongoDB, Express, ReactJS, NodeJS)
 
 ### Prerequisites
 
-- Install NodeJS
-- Clone the repo
-- Get/Set up MongoDB credentials (contact a member of the team for this, or else the server will not work!)
-- Run `npm install` in the root directory as well as the `./client` folder
+#### Installation
+- Install NodeJS.
+- Clone the repo.
+- Run `npm install` in the root directory as well as the `./client` folder.
+
+#### Credentials
+- You need to obtain a number (8) of credentials from the team (MongoDB, Auth0).
+- Create a `.env` file in the root directory to store your credentials.
+- After obtaining the credentials and relevant values, enter them in the `.env` in the following format separated by newlines:
+
+  `<FIELD_NAME>: "<VALUE>"`, for example, `MONGODB_USERNAME: "myusername"`
+
+#### Running the app
 
 Server and client must be running simultaneously, for this you need two terminals running.
 
