@@ -14,7 +14,7 @@ function SinglePost({ post, comments }) {
     <div id="single-post-container">
       <div id="single-post-header">
         <h1 className="page-title">{post.title}</h1>
-        <h3>
+        <h3 id="time-since">
           {timeSince(post.dateCreated)} by {post.createdBy.firstName}{" "}
           {post.createdBy.lastName}
         </h3>
