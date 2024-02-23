@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import fetchCommentsForPost from "./commentsThunks";
+import { fetchCommentsForPost } from "./commentsThunks";
 
 const initialState = {
   currentPostId: "",

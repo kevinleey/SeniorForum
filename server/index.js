@@ -87,9 +87,28 @@ app.post("/add-post", async (req, res) => {
 });
 
 app.get("/posts/:postId/comments", async (req, res) => {
-  const postId = req.params.postId;
+  const postId = new mongoose.Types.ObjectId(req.params.postId);
   const comments = await Comment.find({ postId }).populate("createdBy").exec();
   return res.status(200).json(comments);
+});
+
+app.post("/add-comment", async (req, res) => {
+  const { text, createdBy, dateCreated, postId } = req.body;
+  const newComment = new Comment({
+    text,
+    createdBy,
+    dateCreated,
+    postId: new mongoose.Types.ObjectId(postId)
+  });
+
+  const savedComment = await newComment.save();
+
+  await Post.updateOne(
+    { _id: postId },
+    { $push: { comments: savedComment._id } }
+  );
+
+  return res.status(201).json(savedComment);
 });
 
 app.get("/users", async (req, res) => {

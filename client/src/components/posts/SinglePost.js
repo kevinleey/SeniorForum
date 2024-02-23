@@ -21,13 +21,15 @@ function SinglePost({ post, comments }) {
       </div>
       <Contribution contribution={post} />
       <div id="single-post-comments-container">
-        <h2 id="comments-title">Comments ({numComments})</h2>
+        {commentsStatus === "succeeded" && (
+          <h2 id="comments-title">Comments ({numComments})</h2>
+        )}
         {commentsStatus === "succeeded" ? (
           comments.map((comment) => <Contribution contribution={comment} />)
         ) : (
           <Spinner />
         )}
-        <CommentForm />
+        <CommentForm/>
       </div>
     </div>
   );
