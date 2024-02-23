@@ -26,3 +26,9 @@
 .cont-text-username:hover {
   cursor: pointer;
 }
+
+.cont-text-edit {
+  margin-left: 80%;
+  wrap-option: nowrap;
+  white-space: nowrap;
+}
