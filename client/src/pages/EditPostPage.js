@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { POST_CATEGORIES } from "../constants";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import {selectAllPosts} from "../features/posts/postsSlice";
 import { editPost } from "../features/posts/postsThunks";
 import { selectUserById } from "../features/users/userSlice";
