@@ -8,6 +8,12 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  pointer-events: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.user-info-small:hover {
+    transform: scale(1.1);
 }
 
 .user-name {
