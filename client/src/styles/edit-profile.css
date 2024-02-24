@@ -5,8 +5,23 @@
   border-radius: 5px;
   padding: 10px 20px;
   margin-bottom: 10px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
   background: white;
+}
+
+#edit-profile-container #bi-arrow-left {
+    position: absolute;
+    padding-top: 10px;
+    padding-left: 10px;
+    top: 0;
+    left: 0;
+    color: #900f0f;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#edit-profile-container #bi-arrow-left:hover {
+    transform: scale(1.1);
 }
 
 #form-container {
