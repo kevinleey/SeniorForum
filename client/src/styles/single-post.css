@@ -7,6 +7,10 @@
   align-items: baseline;
 }
 
+#time-since {
+  white-space: nowrap;
+}
+
 #single-post-comments-container {
   margin-left: 30px;
   margin-top: 20px;

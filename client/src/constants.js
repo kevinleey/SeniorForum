@@ -122,7 +122,7 @@ export const COMMENTS_RESOURCES = {
 // INPUT VALIDATION
 
 export const COMMENTS_VALIDATION = {
-  COMMENTS_MAXCHAR: 300,
+  COMMENTS_MAXCHAR: 1000,
   COMMENTS_BLANK_TEXT: "Comment can not be blank",
   COMMENTS_EXCEED_TEXT: `Comment can not exceed 300 characters`,
 };

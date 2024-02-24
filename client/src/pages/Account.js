@@ -45,7 +45,9 @@ function Account() {
                 {currUser.firstName} {currUser.lastName}
               </p>
 
-              <button id="edit-profile-button" onClick={handleClick}>Edit Profile</button>
+              <button id="edit-profile-button" onClick={handleClick}>
+                Edit Profile
+              </button>
             </div>
             <h2 className="bio">Bio:</h2>
             <div id="account-bio">

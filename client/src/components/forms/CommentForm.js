@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../../styles/comment-form.css";
 import UserImage from "../userInfo/UserImage";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/users/userSlice";
 import { COMMENTS_RESOURCES as CR } from "../../constants";
 import { COMMENTS_VALIDATION as CV } from "../../constants";
+import { selectCurrentPostId } from "../../features/comments/commentsSlice";
+import { addNewComment } from "../../features/comments/commentsThunks";
 
 const {
   COMMENTS_TITLE: title,
@@ -18,12 +20,14 @@ const {
 } = CV;
 
 function CommentForm() {
+  const dispatch = useDispatch();
   const user = useSelector(selectCurrentUser);
+  const postId = useSelector(selectCurrentPostId);
   const [commentData, setCommentData] = useState("");
   const [numChar, setNumChar] = useState(0);
   const [error, setError] = useState("");
 
-  const placeholderString = `${authorPrefixText} ${user.firstName} ${user.lastName}`;
+  const placeholderString = `${authorPrefixText}${user.firstName} ${user.lastName}`;
   const numCharString = `${numChar}/${maxChar}`;
 
   const handleInputChange = (e) => {
@@ -38,7 +42,7 @@ function CommentForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (commentData.trim() === "") {
@@ -46,9 +50,24 @@ function CommentForm() {
       return;
     }
 
-    if (commentData.length > 300) {
+    if (commentData.length > maxChar) {
       setError(exceedText);
       return;
+    }
+
+    try {
+      const newComment = {
+        text: commentData,
+        createdBy: user._id,
+        dateCreated: new Date().toISOString(),
+        postId,
+      };
+
+      await dispatch(addNewComment(newComment));
+      setCommentData("");
+      setNumChar(0);
+    } catch (error) {
+      console.error("Error adding comment:", error);
     }
   };
 
