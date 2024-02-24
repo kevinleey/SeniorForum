@@ -4,11 +4,25 @@ import { timeSince } from "../../utility/timeSince";
 import UserImage from "../userInfo/UserImage";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../features/users/userSlice";
 
 function Contribution({ contribution }) {
   const { createdBy } = contribution;
   const userProfileURI = `/profile/${createdBy._id}`;
   const navigate = useNavigate();
+  const currUser = useSelector(selectCurrentUser);
+  const editPostLink = document.getElementById("edit-post-link");
+
+
+  if (editPostLink) {
+
+    if (currUser._id !== createdBy._id) {
+      editPostLink.style.display = "none";
+    } else {
+      editPostLink.style.display = "block";
+    }
+  }
 
   const handleClick = (event) => {
     navigate(userProfileURI);

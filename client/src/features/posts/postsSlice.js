@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchPosts } from "./postsThunks.js";
 import { addNewComment } from "../comments/commentsThunks";
+import { editPost, fetchPosts } from "./postsThunks.js";
 
 const initialState = {
   posts: [],
@@ -23,15 +24,34 @@ export const postsSlice = createSlice({
     },
     postUpdated: (state, action) => {
       const { id, title, text, dateCreated, comments, categories, createdBy } = action.payload;
-      const existingPost = state.posts.find((post) => post.id === id);
-      if (existingPost) {
-        existingPost.title = title;
-        existingPost.text = text;
-        existingPost.dateCreated = dateCreated;
-        existingPost.comments = comments;
-        existingPost.categories = categories;
-        existingPost.createdBy = createdBy;
+      // Find the index of the existing post in the array
+      const existingPostIndex = state.posts.findIndex((post) => post.id === id);
+
+      if (existingPostIndex !== -1) {
+        // Create a new copy of the existing post object with updated values
+        const updatedPost = {
+          ...state.posts[existingPostIndex],
+          title,
+          text,
+          dateCreated,
+          comments,
+          categories,
+          createdBy
+        };
+
+        // Create a new array with the updated post object at the correct index
+        const updatedPosts = [...state.posts];
+        updatedPosts[existingPostIndex] = updatedPost;
+
+        // Return a new state object with the updated array of posts
+        return {
+          ...state,
+          posts: updatedPosts
+        };
       }
+
+      // If the post is not found, return the existing state without any changes
+      return state;
     },
   },
   extraReducers(builder) {
@@ -52,6 +72,9 @@ export const postsSlice = createSlice({
         const commentId = action.payload._id;
         const postToUpdate = state.posts.find((post) => post._id === postId);
         postToUpdate.comments.push(commentId);
+      })
+      .addCase(editPost.fulfilled, (state, action) => {
+        state.status = "idle";
       });
   },
 });

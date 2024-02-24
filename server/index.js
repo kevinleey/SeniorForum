@@ -83,6 +83,17 @@ app.post("/add-post", async (req, res) => {
   return res.status(201).json(savedPost);
 });
 
+app.put("/edit-post/:postId", async (req, res) => {
+  const postId = req.params.postId;
+  const { title, text, categories, createdBy, dateCreated } = req.body;
+  const updatedPost = await Post.findByIdAndUpdate(
+    postId,
+    { title, text, categories, createdBy, dateCreated },
+    { new: true },
+  );
+  return res.status(200).json(updatedPost);
+});
+
 app.get("/posts/:postId/comments", async (req, res) => {
   const postId = new mongoose.Types.ObjectId(req.params.postId);
   const comments = await Comment.find({ postId }).populate("createdBy").exec();

@@ -1,30 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-// import { addNewPost } from "../features/posts/postsThunks";
 import {useNavigate, useParams} from "react-router-dom";
-// import { selectCurrentUser } from "../features/users/userSlice";
 import { POST_CATEGORIES } from "../constants";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import React, {useEffect, useState} from "react";
 import {selectAllPosts} from "../features/posts/postsSlice";
 import { editPost } from "../features/posts/postsThunks";
-import {selectUserById} from "../features/users/userSlice";
+import { selectUserById } from "../features/users/userSlice";
 import "../styles/new-post-page.css";
 
 function EditPostForm() {
   const dispatch = useDispatch();
   const { postId } = useParams();
-  // console.log("Post ID", postId);
   const posts = useSelector(selectAllPosts);
   const navigate = useNavigate();
 
   const post = posts.find((post) => post._id === postId);
   const userId = post.createdBy._id;
   const user = useSelector((state) => selectUserById(state, userId));
-
-  // console.log(post.title);
-  // console.log(post.text);
-  // console.log(post.categories);
 
   const [title, setTitle] = useState(post.title);
   const [text, setText] = useState(post.text);
@@ -60,15 +53,11 @@ function EditPostForm() {
       // await dispatch(editPost(updatePost));
       await dispatch(editPost({postId, updatePost}));
 
-      navigate("/account");
+      navigate(`/posts/${postId}`);
     } catch (error) {
       console.error("Error adding post:", error);
     }
   };
-
-  // console.log(title);
-  // console.log(text);
-  // console.log(selectedCategories);
 
   return (
     <div id="page-background">
