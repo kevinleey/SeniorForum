@@ -117,7 +117,7 @@ export const POST_CATEGORIES = {
   },
   CATEGORY_LAST: {
     CATEGORY_TITLE: "Other",
-    CATEGORY_IMAGE: "https://images.unsplash.com/photo-1623503664086-475867ec20b3?q=80&w=3773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    CATEGORY_IMAGE: "https://images.unsplash.com/photo-1617541224485-ca362e048814?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     CATEGORY_DESCRIPTION:
       "This category is for those who are looking for support and advice but do not fit into any of the other categories.",
   },
