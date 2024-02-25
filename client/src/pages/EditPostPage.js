@@ -38,7 +38,7 @@ function EditPostForm() {
     });
   };
 
-  const handleEditPost = async () => {
+  const handleEditPost = async (e) => {
     try {
       const updatePost = {
         _id: postId,
@@ -66,7 +66,7 @@ function EditPostForm() {
         <h1 className="page-title">Edit Post</h1>
         <h2 className="add-post-subtitle">Title:</h2>
         <input
-          className="add-post-input"
+          className={`add-post-input`}
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}

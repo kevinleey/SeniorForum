@@ -124,12 +124,6 @@ app.get("/users", async (req, res) => {
   return res.status(200).json(allUsers);
 });
 
-/*app.get("/users/current", async (req, res) => {
-  const userId = req.params.userId;
-  const user = await User.findById("65c1a7acdf0c8cf66fe8023b");
-  return res.status(200).json(user);
-});*/
-
 app.get("/users/:userId", async (req, res) => {
   const userId = req.params.userId;
   const user = await User.findById(userId);

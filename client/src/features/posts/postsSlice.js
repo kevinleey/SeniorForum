@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts } from "./postsThunks.js";
-import { addNewComment } from "../comments/commentsThunks";
 import { editPost, fetchPosts } from "./postsThunks.js";
+import { addNewComment } from "../comments/commentsThunks";
 
 const initialState = {
   posts: [],
@@ -24,7 +23,6 @@ export const postsSlice = createSlice({
     },
     postUpdated: (state, action) => {
       const { id, title, text, dateCreated, comments, categories, createdBy } = action.payload;
-      // Find the index of the existing post in the array
       const existingPostIndex = state.posts.findIndex((post) => post.id === id);
 
       if (existingPostIndex !== -1) {
@@ -43,14 +41,12 @@ export const postsSlice = createSlice({
         const updatedPosts = [...state.posts];
         updatedPosts[existingPostIndex] = updatedPost;
 
-        // Return a new state object with the updated array of posts
         return {
           ...state,
           posts: updatedPosts
         };
       }
 
-      // If the post is not found, return the existing state without any changes
       return state;
     },
   },
