@@ -18,6 +18,8 @@ function Categories() {
           <CategoryBox category={POST_CATEGORIES.CATEGORY_4} />
           <CategoryBox category={POST_CATEGORIES.CATEGORY_5} />
           <CategoryBox category={POST_CATEGORIES.CATEGORY_6} />
+          <CategoryBox category={POST_CATEGORIES.CATEGORY_7} />
+          <CategoryBox category={POST_CATEGORIES.CATEGORY_8} />
           <CategoryBox category={POST_CATEGORIES.CATEGORY_LAST} />
         </div>
       </div>

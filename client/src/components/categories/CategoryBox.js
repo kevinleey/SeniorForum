@@ -21,7 +21,7 @@ function CategoryBox(props) {
       onClick={() => handleCategoryClick(props.category.CATEGORY_TITLE)}
     >
       <div id="content-container">
-        <img src={require("../../images/couple.jpg")} alt="Announcements" />
+        <img src={props.category.CATEGORY_IMAGE} alt={props.category.CATEGORY_TITLE} />
         <div id="category-title">
           <h3>{props.category.CATEGORY_TITLE}</h3>
         </div>

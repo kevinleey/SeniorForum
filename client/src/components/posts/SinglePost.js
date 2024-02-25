@@ -1,13 +1,15 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Contribution from "./Contribution";
 import { timeSince } from "../../utility/timeSince";
 import "../../styles/single-post.css";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../Spinner";
 import CommentForm from "../forms/CommentForm";
 import {useAuth0} from "@auth0/auth0-react";
-import {fetchCurrUser} from "../../features/users/userThunks";
-import {setCurrentUser, selectCurrentUser} from "../../features/users/userSlice";
+import { fetchCurrUser } from "../../features/users/userThunks";
+import { setCurrentUser, selectCurrentUser } from "../../features/users/userSlice";
+import { Link } from "react-router-dom";
+
 
 function SinglePost({ post, comments }) {
   const commentsStatus = useSelector((state) => state.comments.status);
@@ -34,6 +36,11 @@ function SinglePost({ post, comments }) {
     <div id="single-post-container">
       <div id="single-post-header">
         <h1 className="page-title">{post.title}</h1>
+        {currentUser._id === post.createdBy._id && (
+          <Link to={`/edit-post/${post._id}`} id="edit-post-link">
+            Edit Post
+          </Link>
+        )}
         <h3 id="time-since">
           {timeSince(post.dateCreated)} by {post.createdBy.firstName}{" "}
           {post.createdBy.lastName}

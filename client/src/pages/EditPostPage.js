@@ -1,25 +1,32 @@
-import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { POST_CATEGORIES } from "../constants";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
-import { useDispatch, useSelector } from "react-redux";
-import { addNewPost } from "../features/posts/postsThunks";
-import { useNavigate } from "react-router-dom";
-import { selectCurrentUser } from "../features/users/userSlice";
-import { POST_CATEGORIES } from "../constants";
-import "../styles/navbar.css";
+import React, { useState } from "react";
+import {selectAllPosts} from "../features/posts/postsSlice";
+import { editPost } from "../features/posts/postsThunks";
+import { selectUserById } from "../features/users/userSlice";
 import "../styles/new-post-page.css";
 
-function AddPostForm() {
+function EditPostForm() {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const { postId } = useParams();
+  const posts = useSelector(selectAllPosts);
+  const navigate = useNavigate();
+
+  const post = posts.find((post) => post._id === postId);
+  const userId = post.createdBy._id;
+  const user = useSelector((state) => selectUserById(state, userId));
+
+  const [title, setTitle] = useState(post.title);
+  const [text, setText] = useState(post.text);
+  const [selectedCategories, setSelectedCategories] = useState(post.categories);
+
   const allCategories = [];
   for (let category in POST_CATEGORIES) {
     allCategories.push(POST_CATEGORIES[category].CATEGORY_TITLE);
   }
-  const navigate = useNavigate();
-  const user = useSelector(selectCurrentUser);
 
   const handleCheckboxChange = (category) => {
     setSelectedCategories((prevSelected) => {
@@ -30,19 +37,23 @@ function AddPostForm() {
       }
     });
   };
-  const handleAddPost = async () => {
+
+  const handleEditPost = async (e) => {
     try {
-      const newPost = {
+      const updatePost = {
+        _id: postId,
         title,
         text,
         categories: selectedCategories,
         createdBy: user._id,
-        dateCreated: new Date(),
+        dateCreated: post.dateCreated,
+        comments: post.comments,
       };
 
-      await dispatch(addNewPost(newPost));
+      // await dispatch(editPost(updatePost));
+      await dispatch(editPost({postId, updatePost}));
 
-      navigate("/account");
+      navigate(`/posts/${postId}`);
     } catch (error) {
       console.error("Error adding post:", error);
     }
@@ -52,22 +63,22 @@ function AddPostForm() {
     <div id="page-background">
       <Navbar />
       <div id="page-container">
-        <h1 className="page-title">Add a new post</h1>
+        <h1 className="page-title">Edit Post</h1>
         <h2 className="add-post-subtitle">Title:</h2>
         <input
-          className="add-post-input"
+          className={`add-post-input`}
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <br />
+        <br/>
         <h2 className="add-post-subtitle">Text:</h2>
         <textarea
           className="add-post-input"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <br />
+        <br/>
         <h2 className="add-post-subtitle">Select Categories:</h2>
         <div>
           {allCategories.map((category) => (
@@ -83,17 +94,17 @@ function AddPostForm() {
             </label>
           ))}
         </div>
-        <br />
+        <br/>
         <button
           className="add-post-submit-button"
-          onClick={() => handleAddPost()}
+          onClick={() => handleEditPost()}
         >
-          Add Post
+          Edit Post
         </button>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 }
 
-export default AddPostForm;
+export default EditPostForm;
