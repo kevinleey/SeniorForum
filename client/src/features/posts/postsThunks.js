@@ -16,7 +16,7 @@ const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
 const addPost = createAsyncThunk(
   "posts/addNewPost",
   async (newPost, { dispatch }) => {
-    const response = await fetch("/add-post", {
+    const response = await fetch("/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const editPost = createAsyncThunk(
   "posts/editPost",
   async (post, { dispatch }) => {
     const { postId, updatePost } = post;
-    const response = await fetch(`/edit-post/${postId}`, {
+    const response = await fetch(`/posts/${postId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

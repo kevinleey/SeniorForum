@@ -48,7 +48,7 @@ function EditProfile() {
     };
 
         try {
-            const response = await fetch('/profile', {
+            const response = await fetch('/users/me', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
