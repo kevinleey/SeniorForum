@@ -4,7 +4,7 @@ import { POST_CATEGORIES } from "../constants";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import React, { useState } from "react";
-import {selectAllPosts} from "../features/posts/postsSlice";
+import { selectAllPosts } from "../features/posts/postsSlice";
 import { editPost } from "../features/posts/postsThunks";
 import { selectUserById } from "../features/users/userSlice";
 import "../styles/new-post-page.css";
@@ -51,7 +51,7 @@ function EditPostForm() {
       };
 
       // await dispatch(editPost(updatePost));
-      await dispatch(editPost({postId, updatePost}));
+      await dispatch(editPost({ postId, updatePost }));
 
       navigate(`/posts/${postId}`);
     } catch (error) {
@@ -71,14 +71,14 @@ function EditPostForm() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <br/>
+        <br />
         <h2 className="add-post-subtitle">Text:</h2>
         <textarea
           className="add-post-input"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <br/>
+        <br />
         <h2 className="add-post-subtitle">Select Categories:</h2>
         <div>
           {allCategories.map((category) => (
@@ -94,7 +94,7 @@ function EditPostForm() {
             </label>
           ))}
         </div>
-        <br/>
+        <br />
         <button
           className="add-post-submit-button"
           onClick={() => handleEditPost()}
@@ -102,7 +102,7 @@ function EditPostForm() {
           Edit Post
         </button>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -68,5 +68,5 @@ export const postsController = {
   addPost,
   editPost,
   getCommentsByPostId,
-  addComment
+  addComment,
 };

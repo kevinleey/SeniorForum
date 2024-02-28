@@ -38,5 +38,5 @@ export const usersController = {
   getAllUsers,
   getUserById,
   getProfile,
-  editProfile
+  editProfile,
 };

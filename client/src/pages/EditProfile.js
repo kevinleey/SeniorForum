@@ -57,6 +57,7 @@ function EditProfile() {
         dispatch(setCurrentUser(updatedUserData));
         setShowMessage(true);
         setTimeout(() => setShowMessage(false), 2000);
+        //alert("Your changes have been saved :)")'
       } else {
         console.error(`HTTP error! status: ${response.status}`);
       }

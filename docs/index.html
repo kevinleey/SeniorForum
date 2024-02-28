@@ -39,20 +39,64 @@
     </p>
 
     <p class="headerLeft">Project Goals:</p>
-    <p class="indented"><b>Sign-in/up:</b> Users should be able to sign in with email/password.</p>
-    <p class="indented"><b>Profile:</b> Users should use this page to display their public information, including name, biography and their post history.</p>
-    <p class="indented"><b>Update Profile:</b> Users should be able to update their public information.</p>
-    <p class="indented"><b>Community:</b> Users should be able to see other users’ posts and comments and interact with them, and also visit other users’ profiles.Users should be able to follow/unfollow other users.</p>
-    <p class="indented"><b>Activity Feed:</b> Users should have a home screen which displays posts from all users, this list is also sortable depending on various criteria such as date posted and trending.</p>
-    <p class="indented"><b>Select Category:</b> Users should be able to track posts based on what category the post is associated with, which users can see the thread count for each category.</p>
-    <p class="indented"><b>Add Post:</b> Users should be able to add a new post, including a title, text, and select categories.</p>
-    <p class="indented"><b>Edit Post:</b> Users should be able to edit features of posts they have created</p>
-    <p class="indented"><b>Comment on Post:</b> Users should be able to add comments on posts.</p>
-    <p class="indented"><b>Upvote Post:</b> Users should be able to upvote posts they like.</p>
-    <p class="indented"><b>Caregiver Connect Information:</b> Users should be able to see information about Caregiver Connect of Alabama, including contact information for them.</p>
-    <p class="indented"><b>Tutorial:</b> Users should be able to see a tutorial for how to use Senior Forum.</p>
-    <p class="indented"><b>Notification:</b> Users should be notified via email when someone comments on their post or when someone follows their account.</p>
-    <p class="indented"><b>Admin Dashboard:</b> Dashboard for non-technical users within the Caregiver Connect of Alabama organization to be able to moderate problematic users.</p>
+    <p class="indented">
+      <b>Sign-in/up:</b> Users should be able to sign in with email/password.
+    </p>
+    <p class="indented">
+      <b>Profile:</b> Users should use this page to display their public
+      information, including name, biography and their post history.
+    </p>
+    <p class="indented">
+      <b>Update Profile:</b> Users should be able to update their public
+      information.
+    </p>
+    <p class="indented">
+      <b>Community:</b> Users should be able to see other users’ posts and
+      comments and interact with them, and also visit other users’
+      profiles.Users should be able to follow/unfollow other users.
+    </p>
+    <p class="indented">
+      <b>Activity Feed:</b> Users should have a home screen which displays posts
+      from all users, this list is also sortable depending on various criteria
+      such as date posted and trending.
+    </p>
+    <p class="indented">
+      <b>Select Category:</b> Users should be able to track posts based on what
+      category the post is associated with, which users can see the thread count
+      for each category.
+    </p>
+    <p class="indented">
+      <b>Add Post:</b> Users should be able to add a new post, including a
+      title, text, and select categories.
+    </p>
+    <p class="indented">
+      <b>Edit Post:</b> Users should be able to edit features of posts they have
+      created
+    </p>
+    <p class="indented">
+      <b>Comment on Post:</b> Users should be able to add comments on posts.
+    </p>
+    <p class="indented">
+      <b>Upvote Post:</b> Users should be able to upvote posts they like.
+    </p>
+    <p class="indented">
+      <b>Caregiver Connect Information:</b> Users should be able to see
+      information about Caregiver Connect of Alabama, including contact
+      information for them.
+    </p>
+    <p class="indented">
+      <b>Tutorial:</b> Users should be able to see a tutorial for how to use
+      Senior Forum.
+    </p>
+    <p class="indented">
+      <b>Notification:</b> Users should be notified via email when someone
+      comments on their post or when someone follows their account.
+    </p>
+    <p class="indented">
+      <b>Admin Dashboard:</b> Dashboard for non-technical users within the
+      Caregiver Connect of Alabama organization to be able to moderate
+      problematic users.
+    </p>
 
     <button id="button1" onclick="upcomingTasks('red')">
       Click for Upcoming Tasks
@@ -66,17 +110,18 @@
     <script>
       function upcomingTasks(color) {
         var outputNTask = document.getElementById("output");
-        outputNTask.textContent = "Upcoming Tasks: \n" +
-                "Task 1:  Create tutorial for users\n" +
-                "Task 2:  Implement a sorting function for posts\n" +
-                "Task 3:  Add a reusable Spinner component\n" +
-                "Task 4:  Create Help component to guide users\n" +
-                "Task 5:  Implement following a user\n" +
-                "Task 6:  Implement unfollowing a user\n" +
-                "Task 7:  Implement upvoting posts users like\n" +
-                "Task 8:  Add an Admin Dashboard to see user accounts\n" +
-                "Task 9:  Implement deleting a post of any user (admin)\n" +
-                "Task 10: Implement deleting any user (admin)";
+        outputNTask.textContent =
+          "Upcoming Tasks: \n" +
+          "Task 1:  Create tutorial for users\n" +
+          "Task 2:  Implement a sorting function for posts\n" +
+          "Task 3:  Add a reusable Spinner component\n" +
+          "Task 4:  Create Help component to guide users\n" +
+          "Task 5:  Implement following a user\n" +
+          "Task 6:  Implement unfollowing a user\n" +
+          "Task 7:  Implement upvoting posts users like\n" +
+          "Task 8:  Add an Admin Dashboard to see user accounts\n" +
+          "Task 9:  Implement deleting a post of any user (admin)\n" +
+          "Task 10: Implement deleting any user (admin)";
         outputNTask.style.color = color;
       }
 
@@ -84,32 +129,32 @@
         var outputOTask = document.getElementById("output");
         outputOTask.textContent =
           "Completed Tasks: \n" +
-                "Task 1:  Set up general project structure (client, server) using NodeJS and Express\n" +
-                "Task 2:  Create Profile page and navigate to page\n" +
-                "Task 3:  Edit profile page\n" +
-                "Task 4:  Add clicking categories on post which lead to Category page\n" +
-                "Task 5:  Create Navbar components\n" +
-                "Task 6:  Create Add Post feature and front end page\n" +
-                "Task 7:  Configure MongoDB on the server\n" +
-                "Task 8:  Add initial support for Auth0\n" +
-                "Task 9:  Integrate Redux for east state management\n" +
-                "Task 10:  Create Footer component\n" +
-                "Task 11: Create Category component" +
-                "Task 12: Create Post Overview component\n" +
-                "Task 13: Implement a hover-dropdown menu for Navbar items\n" +
-                "Task 14: Frontend and Backend for displaying a specific post\n" +
-                "Task 15: Create UI mockups for each page (in Figma)\n" +
-                "Task 16: Create User Authentication Page\n" +
-                "Task 17: Create Edit Post Form component";
+          "Task 1:  Set up general project structure (client, server) using NodeJS and Express\n" +
+          "Task 2:  Create Profile page and navigate to page\n" +
+          "Task 3:  Edit profile page\n" +
+          "Task 4:  Add clicking categories on post which lead to Category page\n" +
+          "Task 5:  Create Navbar components\n" +
+          "Task 6:  Create Add Post feature and front end page\n" +
+          "Task 7:  Configure MongoDB on the server\n" +
+          "Task 8:  Add initial support for Auth0\n" +
+          "Task 9:  Integrate Redux for east state management\n" +
+          "Task 10:  Create Footer component\n" +
+          "Task 11: Create Category component" +
+          "Task 12: Create Post Overview component\n" +
+          "Task 13: Implement a hover-dropdown menu for Navbar items\n" +
+          "Task 14: Frontend and Backend for displaying a specific post\n" +
+          "Task 15: Create UI mockups for each page (in Figma)\n" +
+          "Task 16: Create User Authentication Page\n" +
+          "Task 17: Create Edit Post Form component";
         outputOTask.style.color = colorText;
       }
     </script>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <p class="indented">Last Updated: 2/25/2024</p>
   </body>
 </html>
