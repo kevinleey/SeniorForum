@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { postAdded } from "./postsSlice.js";
 import { postUpdated } from "./postsSlice.js";
 
-const fetchPost = createAsyncThunk("posts/fetchPost", async (postId) => {
+const fetchPostById = createAsyncThunk("posts/fetchPost", async (postId) => {
   const response = await fetch(`/posts/${postId}`);
   const data = await response.json();
   return data;
@@ -13,10 +13,10 @@ const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const data = await response.json();
   return data;
 });
-const addNewPost = createAsyncThunk(
+const addPost = createAsyncThunk(
   "posts/addNewPost",
   async (newPost, { dispatch }) => {
-    const response = await fetch("/add-post", {
+    const response = await fetch("/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const editPost = createAsyncThunk(
   "posts/editPost",
   async (post, { dispatch }) => {
     const { postId, updatePost } = post;
-    const response = await fetch(`/edit-post/${postId}`, {
+    const response = await fetch(`/posts/${postId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -46,4 +46,4 @@ const editPost = createAsyncThunk(
   },
 );
 
-export { fetchPosts, fetchPost, addNewPost, editPost };
+export { fetchPosts, fetchPostById, addPost, editPost };

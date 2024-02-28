@@ -22,7 +22,8 @@ export const postsSlice = createSlice({
       state.posts.push(action.payload);
     },
     postUpdated: (state, action) => {
-      const { id, title, text, dateCreated, comments, categories, createdBy } = action.payload;
+      const { id, title, text, dateCreated, comments, categories, createdBy } =
+        action.payload;
       const existingPostIndex = state.posts.findIndex((post) => post.id === id);
 
       if (existingPostIndex !== -1) {
@@ -34,7 +35,7 @@ export const postsSlice = createSlice({
           dateCreated,
           comments,
           categories,
-          createdBy
+          createdBy,
         };
 
         // Create a new array with the updated post object at the correct index
@@ -43,7 +44,7 @@ export const postsSlice = createSlice({
 
         return {
           ...state,
-          posts: updatedPosts
+          posts: updatedPosts,
         };
       }
 
@@ -75,7 +76,8 @@ export const postsSlice = createSlice({
   },
 });
 
-export const { addPost, removePost, postAdded, postUpdated } = postsSlice.actions;
+export const { addPost, removePost, postAdded, postUpdated } =
+  postsSlice.actions;
 
 export default postsSlice.reducer;
 

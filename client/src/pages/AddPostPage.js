@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewPost } from "../features/posts/postsThunks";
+import { addPost } from "../features/posts/postsThunks";
 import { useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "../features/users/userSlice";
 import { POST_CATEGORIES } from "../constants";
@@ -40,7 +40,7 @@ function AddPostForm() {
         dateCreated: new Date(),
       };
 
-      await dispatch(addNewPost(newPost));
+      await dispatch(addPost(newPost));
 
       navigate("/account");
     } catch (error) {

@@ -10,18 +10,18 @@
 }
 
 #edit-profile-container #bi-arrow-left {
-    position: absolute;
-    padding-top: 10px;
-    padding-left: 10px;
-    top: 0;
-    left: 0;
-    color: #900f0f;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+  position: absolute;
+  padding-top: 10px;
+  padding-left: 10px;
+  top: 0;
+  left: 0;
+  color: #900f0f;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
 #edit-profile-container #bi-arrow-left:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #form-container {
@@ -57,10 +57,8 @@
 }
 
 #button:active {
-  transform: scale(
-    0.95
-  ); /* Reduces the size of the button to 95% of its original size */
-  background-color: #7a0d0d; /* Changes the background color when the button is clicked */
+  transform: scale(0.95);
+  background-color: #7a0d0d;
 }
 
 @media (max-width: 600px) {

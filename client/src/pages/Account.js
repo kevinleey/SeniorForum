@@ -1,45 +1,46 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import { imageLinks } from "../constants";
 import "../styles/account.css";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectAllPosts } from "../features/posts/postsSlice";
 import PostList from "../components/posts/PostList";
-import {selectCurrentUser, setCurrentUser} from "../features/users/userSlice";
+import { selectCurrentUser, setCurrentUser } from "../features/users/userSlice";
 import { useNavigate } from "react-router-dom";
-import {fetchCurrUser} from "../features/users/userThunks";
-import {useAuth0} from "@auth0/auth0-react";
-import {fetchPosts} from "../features/posts/postsThunks";
+import { fetchCurrUser } from "../features/users/userThunks";
+import { useAuth0 } from "@auth0/auth0-react";
+import { fetchPosts } from "../features/posts/postsThunks";
 
 function Account() {
   const posts = useSelector(selectAllPosts);
   const currentUser = useSelector(selectCurrentUser);
-  const {user: auth0User, isLoading} = useAuth0();
+  const { user: auth0User, isLoading } = useAuth0();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(!isLoading && auth0User){
+    if (!isLoading && auth0User) {
       dispatch(fetchCurrUser(auth0User));
       dispatch(setCurrentUser(auth0User));
     }
   }, [dispatch, isLoading, auth0User]);
 
   useEffect(() => {
-    if(currentUser){
+    if (currentUser) {
       // Fetch the posts again
       dispatch(fetchPosts());
     }
   }, [currentUser, dispatch]);
 
-  if(!currentUser){
-    window.location.href = 'http://localhost:3001/login';
+  if (!currentUser) {
+    window.location.href = "http://localhost:3001/login";
     return null;
-
   }
 
-  const currPosts = posts.filter((post) => post.createdBy._id === currentUser._id);
+  const currPosts = posts.filter(
+    (post) => post.createdBy._id === currentUser._id,
+  );
 
   const handleClick = () => {
     navigate("/edit-profile");
@@ -77,9 +78,7 @@ function Account() {
             </div>
             <h2 className="bio">Bio:</h2>
             <div id="account-bio">
-              <p>
-                {currentUser.bio}
-              </p>
+              <p>{currentUser.bio}</p>
             </div>
             <div id="account-history">
               <div id="account-history-heading">

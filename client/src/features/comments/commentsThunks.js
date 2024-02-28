@@ -17,7 +17,7 @@ const addNewComment = createAsyncThunk(
     const state = getState();
     const user = selectUserById(state, newComment.createdBy);
 
-    const response = await fetch("/add-comment", {
+    const response = await fetch(`/posts/${newComment.postId}/comments`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
