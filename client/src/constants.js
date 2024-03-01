@@ -140,10 +140,26 @@ export const COMMENTS_RESOURCES = {
   COMMENTS_AUTHOR_PREFIX: "Comment as ",
 };
 
+// POST FORM
+
+export const POST_RESOURCES = {
+  POST_TITLE: "Join the discussion!",
+  POST_ADD: "Add a Post",
+  POST_AUTHOR_PREFIX: "Post as ",
+};
+
 // INPUT VALIDATION
 
 export const COMMENTS_VALIDATION = {
   COMMENTS_MAXCHAR: 1000,
   COMMENTS_BLANK_TEXT: "Comment can not be blank",
   COMMENTS_EXCEED_TEXT: `Comment can not exceed 300 characters`,
+};
+export const POST_VALIDATION = {
+  POST_TEXT_MAXCHAR: 100000,
+  POST_TITLE_MAXCHAR: 100,
+  POST_BLANK_TITLE: "Post titles can not be blank",
+  POST_BLANK_TEXT: "Posts can not be blank",
+  POST_EXCEED_TITLE: `Post title can not exceed 100 characters`,
+  POST_EXCEED_TEXT: `Posts can not exceed 100000 characters`,
 };
