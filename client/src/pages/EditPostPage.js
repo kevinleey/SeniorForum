@@ -50,7 +50,6 @@ function EditPostForm() {
         comments: post.comments,
       };
 
-      // await dispatch(editPost(updatePost));
       await dispatch(editPost({ postId, updatePost }));
 
       navigate(`/posts/${postId}`);

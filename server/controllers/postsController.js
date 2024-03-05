@@ -37,6 +37,22 @@ const editPost = async (req, res) => {
   return res.status(200).json(updatedPost);
 };
 
+const deletePost = async (req, res) => {
+  const postId = req.params.id;
+  console.log("postId", postId);
+  try {
+    const post = Post.findById(postId);
+
+    if (!post) return res.status(404).send("Post not found");
+    else {
+      await post.deleteOne();
+      return res.status(204).send();
+    }
+  } catch (error) {
+    console.error("Error deleting post:", error);
+  }
+};
+
 const getCommentsByPostId = async (req, res) => {
   const postId = new mongoose.Types.ObjectId(req.params.id);
   const comments = await Comment.find({ postId }).populate("createdBy").exec();
@@ -67,6 +83,7 @@ export const postsController = {
   getPostById,
   addPost,
   editPost,
+  deletePost,
   getCommentsByPostId,
   addComment,
 };

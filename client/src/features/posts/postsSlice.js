@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { editPost, fetchPosts } from "./postsThunks.js";
+import { editPost, fetchPosts, deletePost } from "./postsThunks.js";
 import { addNewComment } from "../comments/commentsThunks";
 
 const initialState = {
@@ -50,6 +50,10 @@ export const postsSlice = createSlice({
 
       return state;
     },
+    postDeleted: (state, action) => {
+      const postId = action.payload;
+      state.posts = state.posts.filter((post) => post.id !== postId);
+    },
   },
   extraReducers(builder) {
     builder
@@ -72,11 +76,14 @@ export const postsSlice = createSlice({
       })
       .addCase(editPost.fulfilled, (state, action) => {
         state.status = "idle";
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.status = "idle";
       });
   },
 });
 
-export const { addPost, removePost, postAdded, postUpdated } =
+export const { addPost, removePost, postAdded, postUpdated, postDeleted } =
   postsSlice.actions;
 
 export default postsSlice.reducer;
