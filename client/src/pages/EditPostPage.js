@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { POST_CATEGORIES } from "../constants";
+import {imageLinks, POST_CATEGORIES} from "../constants";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import React, { useState } from "react";
@@ -9,24 +9,29 @@ import { editPost } from "../features/posts/postsThunks";
 import { selectUserById } from "../features/users/userSlice";
 import "../styles/new-post-page.css";
 
+
 function EditPostForm() {
   const dispatch = useDispatch();
   const { postId } = useParams();
   const posts = useSelector(selectAllPosts);
   const navigate = useNavigate();
 
+
   const post = posts.find((post) => post._id === postId);
   const userId = post.createdBy._id;
   const user = useSelector((state) => selectUserById(state, userId));
+
 
   const [title, setTitle] = useState(post.title);
   const [text, setText] = useState(post.text);
   const [selectedCategories, setSelectedCategories] = useState(post.categories);
 
+
   const allCategories = [];
   for (let category in POST_CATEGORIES) {
     allCategories.push(POST_CATEGORIES[category].CATEGORY_TITLE);
   }
+
 
   const handleCheckboxChange = (category) => {
     setSelectedCategories((prevSelected) => {
@@ -37,6 +42,7 @@ function EditPostForm() {
       }
     });
   };
+
 
   const handleEditPost = async (e) => {
     try {
@@ -50,7 +56,10 @@ function EditPostForm() {
         comments: post.comments,
       };
 
+
+      // await dispatch(editPost(updatePost));
       await dispatch(editPost({ postId, updatePost }));
+
 
       navigate(`/posts/${postId}`);
     } catch (error) {
@@ -58,52 +67,75 @@ function EditPostForm() {
     }
   };
 
+
   return (
-    <div id="page-background">
-      <Navbar />
-      <div id="page-container">
-        <h1 className="page-title">Edit Post</h1>
-        <h2 className="add-post-subtitle">Title:</h2>
-        <input
-          className={`add-post-input`}
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <h2 className="add-post-subtitle">Text:</h2>
-        <textarea
-          className="add-post-input"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <br />
-        <h2 className="add-post-subtitle">Select Categories:</h2>
-        <div>
-          {allCategories.map((category) => (
-            <label className="add-post-category-label" key={category}>
-              <input
-                className="add-post-input"
-                type="checkbox"
-                value={category}
-                checked={selectedCategories.includes(category)}
-                onChange={() => handleCheckboxChange(category)}
+      <div id="page-background">
+        <Navbar />
+        <div id="page-container">
+          <h1 className="page-title">Edit post</h1>
+          <div id="add-post-container">
+            <div id="image-area">
+              <img
+                  src={imageLinks.USER.USER_PICTURE_LINK}
+                  alt={imageLinks.USER.USER_PICTURE_TEXT}
               />
-              {category}
-            </label>
-          ))}
+            </div>
+            <div id="main-content">
+              <br/>
+              <h2 className="title">Post Title</h2>
+              <div id="post-title-heading">
+                <input
+                    className={`add-post-input-title`}
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <br/>
+              <br/>
+              <div id="post-title-heading">
+                <h2>Post Text</h2>
+              </div>
+              <div id="post-title-heading">
+       <textarea
+           className="add-post-input-text"
+           value={text}
+           onChange={(e) => setText(e.target.value)}
+       />
+              </div>
+              <br/>
+              <br/>
+              <div id="post-title-heading">
+                <h2>Select Categories</h2>
+              </div>
+              <div>
+                {allCategories.map((category) => (
+                    <label className="add-post-category-label" key={category}>
+                      <input
+                          className="add-post-category"
+                          type="checkbox"
+                          value={category}
+                          checked={selectedCategories.includes(category)}
+                          onChange={() => handleCheckboxChange(category)}
+                      />
+                      {category}
+                    </label>
+                ))}
+              </div>
+              <br/>
+              <button
+                  className="add-post-submit-button"
+                  onClick={() => handleEditPost()}
+              >
+                Edit Post
+              </button>
+            </div>
+          </div>
         </div>
-        <br />
-        <button
-          className="add-post-submit-button"
-          onClick={() => handleEditPost()}
-        >
-          Edit Post
-        </button>
+        <Footer/>
       </div>
-      <Footer />
-    </div>
   );
 }
+
 
 export default EditPostForm;

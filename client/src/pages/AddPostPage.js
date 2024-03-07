@@ -5,9 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../features/posts/postsThunks";
 import { useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "../features/users/userSlice";
-import { POST_CATEGORIES } from "../constants";
+import {imageLinks, POST_CATEGORIES} from "../constants";
 import "../styles/navbar.css";
 import "../styles/new-post-page.css";
+//import PostList from "../components/posts/PostList";
+
 
 function AddPostForm() {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ function AddPostForm() {
   }
   const navigate = useNavigate();
   const user = useSelector(selectCurrentUser);
+
 
   const handleCheckboxChange = (category) => {
     setSelectedCategories((prevSelected) => {
@@ -40,7 +43,9 @@ function AddPostForm() {
         dateCreated: new Date(),
       };
 
+
       await dispatch(addPost(newPost));
+
 
       navigate("/account");
     } catch (error) {
@@ -48,52 +53,82 @@ function AddPostForm() {
     }
   };
 
+
   return (
-    <div id="page-background">
-      <Navbar />
-      <div id="page-container">
-        <h1 className="page-title">Add a new post</h1>
-        <h2 className="add-post-subtitle">Title:</h2>
-        <input
-          className="add-post-input"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <h2 className="add-post-subtitle">Text:</h2>
-        <textarea
-          className="add-post-input"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <br />
-        <h2 className="add-post-subtitle">Select Categories:</h2>
-        <div>
-          {allCategories.map((category) => (
-            <label className="add-post-category-label" key={category}>
-              <input
-                className="add-post-input"
-                type="checkbox"
-                value={category}
-                checked={selectedCategories.includes(category)}
-                onChange={() => handleCheckboxChange(category)}
+      <div id="page-background">
+        <Navbar/>
+        <div id="page-container">
+          <h1 className="page-title">Add a new post</h1>
+          <div id="add-post-container">
+            <div id="image-area">
+              <img
+                  src={imageLinks.USER.USER_PICTURE_LINK}
+                  alt={imageLinks.USER.USER_PICTURE_TEXT}
               />
-              {category}
-            </label>
-          ))}
+            </div>
+
+
+            <div id="main-content">
+              <br/>
+              <h2 className="title">Post Title</h2>
+              <div id="post-title-heading">
+                <input
+                    className="add-post-input-title"
+                    type="text"
+                    value={title}
+                    placeholder="Input your post title"
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+              </div>
+              <br/>
+              <br/>
+              <div id="post-title-heading">
+                <h2>Post Text</h2>
+              </div>
+              <div id="post-title-heading">
+                 <textarea
+                     className="add-post-input-text"
+                     placeholder="Input your post text"
+                     value={text}
+                     onChange={(e) => setText(e.target.value)}
+                 />
+              </div>
+              <br/>
+              <br/>
+              <div id="post-title-heading">
+                <h2>Select Categories</h2>
+              </div>
+              <div>
+                {allCategories.map((category) => (
+                    <label className="add-post-category-label" key={category}>
+                      <input
+                          className="add-post-category"
+                          type="checkbox"
+                          value={category}
+                          checked={selectedCategories.includes(category)}
+                          onChange={() => handleCheckboxChange(category)}
+                      />
+                      {category}
+                    </label>
+                ))}
+              </div>
+              <br/>
+              <button
+                  className="add-post-submit-button"
+                  onClick={() => handleAddPost()}
+              >
+                Add Post
+              </button>
+            </div>
+          </div>
         </div>
-        <br />
-        <button
-          className="add-post-submit-button"
-          onClick={() => handleAddPost()}
-        >
-          Add Post
-        </button>
+
+
+        <Footer/>
       </div>
-      <Footer />
-    </div>
-  );
+  )
+      ;
 }
+
 
 export default AddPostForm;
