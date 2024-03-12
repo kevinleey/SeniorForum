@@ -128,6 +128,21 @@ function EditProfile() {
                   onChange={(e) => setBio(e.target.value)}
                 />
               </label>
+
+              <label>
+                Comments Email Notification
+              </label>
+              <div className="toggle-switch-cover">
+                <div className="switch-cover">
+                  <div className="switch r" id="switch">
+                    <input type="checkbox" className="checkbox"/>
+                    <div className="knobs"></div>
+                    <div className="layer"></div>
+                  </div>
+                </div>
+              </div>
+
+
             </div>
             {/* Add more fields as needed */}
             <div id="save-changes">
