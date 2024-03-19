@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Popup from "reactjs-popup";
 import Contribution from "./Contribution";
 import { timeSince } from "../../utility/timeSince";
 import "../../styles/single-post.css";
@@ -39,28 +40,6 @@ function SinglePost({ post, comments }) {
     navigate(`/edit-post/${post._id}`);
   }
 
-  const handleDropDown = () => {
-    const dropdown = document.getElementById("dropdown");
-    if (dropdown.style.visibility === "hidden") {
-      dropdown.style.visibility = "visible";
-      dropdown.style.transform = "translateY(0)";
-    }
-    else {
-      dropdown.style.visibility = "hidden";
-    }
-  }
-
-  const handleDelClick = (event) => {
-    event.stopPropagation();
-    const popup = document.getElementById("popup-window");
-    if (popup.style.display === "none") {
-      popup.style.display = "block";
-    }
-    else {
-      popup.style.display = "none";
-    }
-  }
-
   const handleYesClick = async () => {
     try {
       await dispatch(deletePost(post._id));
@@ -70,11 +49,6 @@ function SinglePost({ post, comments }) {
     }
   }
 
-  const handleNoClick = () => {
-    const popup = document.getElementById("popup-window");
-    popup.style.display = "none";
-  }
-
   return (
     <div id="single-post-container">
       <div id="single-post-header">
@@ -82,25 +56,31 @@ function SinglePost({ post, comments }) {
           <h1 className="page-title">{post.title}</h1>
         </div>
         <div id="header-right">
-          <div id="edit-button">
+          <div id="edit-button-main">
             {currentUser._id === post.createdBy._id && (
-              <div onClick={handleDropDown} id="button-overview">
+              <div id="button-overview">
                 <h2>Edit Post</h2>
                 <div id="dropdown">
                   <div onClick={handleEditPage} id="edit-button">
                     <p id="edit-link">Edit Post</p>
                   </div>
                   <div id="edit-button">
-                    <p onClick={handleDelClick} id="delete-post-button">Delete Post</p>
-                  </div>
-                  <div id="popup-window">
-                    <div id="main-popup-content">
-                      <h2>Are you sure you want to delete this post?</h2>
-                      <div id="del-buttons">
-                        <button onClick={handleYesClick} id="yes-button">Yes, delete this post</button>
-                        <button onClick={handleNoClick} id="no-button">No, don't delete this post</button>
-                      </div>
-                    </div>
+                    <Popup
+                      trigger={<p className="delete-post-button"> Delete Post </p>}
+                      modal
+                    >
+                      {close => (
+                        <div id="popup-window">
+                          <div id="main-popup-content">
+                            <h2>Are you sure you want to delete this post?</h2>
+                            <div id="del-buttons">
+                              <button onClick={handleYesClick} id="yes-button">Yes, delete this post</button>
+                              <button onClick={() => {close();}} id="no-button">No, don't delete this post</button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </Popup>
                   </div>
                 </div>
               </div>

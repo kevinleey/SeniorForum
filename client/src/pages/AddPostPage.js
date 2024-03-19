@@ -5,17 +5,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../features/posts/postsThunks";
 import { useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "../features/users/userSlice";
-import {imageLinks, POST_CATEGORIES} from "../constants";
+import {imageLinks, POST_CATEGORIES, POST_VALIDATION as PV} from "../constants";
 import "../styles/navbar.css";
 import "../styles/new-post-page.css";
 //import PostList from "../components/posts/PostList";
 
+const {
+  POST_TITLE_MAXCHAR: titleMaxChar,
+  POST_TITLE_BLANK_TEXT: titleBlankText,
+  POST_TITLE_EXCEED_TEXT: titleExceedText,
+  POST_BODY_MAXCHAR: bodyMaxChar,
+  POST_BODY_BLANK_TEXT: bodyBlankText,
+  POST_BODY_EXCEED_TEXT: bodyExceedText,
+} = PV;
 
 function AddPostForm() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [titleErr, setTitleErr] = useState("");
+  const [bodyErr, setBodyErr] = useState("");
+  const [numTitleChar, setNumTitleChar] = useState(title.length);
+  const [numBodyChar, setNumBodyChar] = useState(text.length);
+
+  const numTitleCharString = `${numTitleChar}/${titleMaxChar}`;
+  const numBodyCharString = `${numBodyChar}/${bodyMaxChar}`;
+
   const allCategories = [];
   for (let category in POST_CATEGORIES) {
     allCategories.push(POST_CATEGORIES[category].CATEGORY_TITLE);
@@ -33,7 +49,46 @@ function AddPostForm() {
       }
     });
   };
+
+  const handleTitleChange = (e) => {
+    const { value } = e.target;
+    setNumTitleChar(value.length);
+    setTitle(value);
+    if (value.length > titleMaxChar) {
+      setTitleErr(titleExceedText);
+    } else {
+      setTitleErr("");
+    }
+  };
+
+  const handleBodyChange = (e) => {
+    const { value } = e.target;
+    setNumBodyChar(value.length);
+    setText(value);
+    if (value.length > bodyMaxChar) {
+      setBodyErr(bodyExceedText);
+    } else {
+      setBodyErr("");
+    }
+  };
+
   const handleAddPost = async () => {
+    let err = false;
+
+    if (title.length > titleMaxChar || title.trim() === "") {
+      setTitleErr(title.length > titleMaxChar ? titleExceedText : titleBlankText);
+      err = true;
+    }
+
+    if (text.length > bodyMaxChar || text.trim() === "") {
+      setBodyErr(text.length > bodyMaxChar ? bodyExceedText : bodyBlankText);
+      err = true;
+    }
+
+    if (err) {
+      return;
+    }
+
     try {
       const newPost = {
         title,
@@ -73,12 +128,16 @@ function AddPostForm() {
               <h2 className="title">Post Title</h2>
               <div id="post-title-heading">
                 <input
-                    className="add-post-input-title"
+                    className={`add-post-input-title ${titleErr ? "invalid-input" : ""}`}
                     type="text"
                     value={title}
                     placeholder="Input your post title"
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) => handleTitleChange(e)}
                 />
+                <span className={`char-remaining ${titleErr && "error-message"}`}>
+                  {numTitleCharString}
+                </span>
+                {titleErr && <span className="title-error-message">{titleErr}</span>}
               </div>
               <br/>
               <br/>
@@ -87,11 +146,15 @@ function AddPostForm() {
               </div>
               <div id="post-title-heading">
                  <textarea
-                     className="add-post-input-text"
+                   className={`add-post-input-text ${bodyErr ? "invalid-input" : ""}`}
                      placeholder="Input your post text"
                      value={text}
-                     onChange={(e) => setText(e.target.value)}
+                   onChange={(e) => handleBodyChange(e)}
                  />
+                <span className={`char-remaining ${bodyErr && "error-message"}`}>
+                  {numBodyCharString}
+                </span>
+                {bodyErr && <span className="body-error-message">{bodyErr}</span>}
               </div>
               <br/>
               <br/>
