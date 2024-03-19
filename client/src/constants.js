@@ -147,3 +147,12 @@ export const COMMENTS_VALIDATION = {
   COMMENTS_BLANK_TEXT: "Comment can not be blank",
   COMMENTS_EXCEED_TEXT: `Comment can not exceed 300 characters`,
 };
+
+export const POST_VALIDATION = {
+  POST_TITLE_MAXCHAR: 100,
+  POST_TITLE_BLANK_TEXT: "Title can not be blank",
+  POST_TITLE_EXCEED_TEXT: `Title can not exceed 100 characters`,
+  POST_BODY_MAXCHAR: 1000,
+  POST_BODY_BLANK_TEXT: "Post can not be blank",
+  POST_BODY_EXCEED_TEXT: `Post can not exceed 1000 characters`,
+};

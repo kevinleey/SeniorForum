@@ -18,6 +18,7 @@
   resize: vertical;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
 .add-post-input-title {
   margin-bottom: 10px;
   margin-left: 20px;
@@ -31,6 +32,22 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
+.invalid-input {
+  border: 1px solid red;
+}
+
+.char-remaining {
+  margin-left: 20px;
+  margin-right: 8px;
+}
+
+.title-error-message {
+  color: red;
+}
+
+.body-error-message {
+  color: red;
+}
 
 .add-post-category {
   margin-bottom: 10px;
@@ -46,11 +63,11 @@
   cursor: pointer;
 }
 
-
 .add-post-category-label {
   display: block;
   line-height: 2;
 }
+
 .add-post-submit-button {
   width: 100px;
   height: 70px;
@@ -62,13 +79,13 @@
   border: black;
   border-radius: 10px;
 }
+
 #image-area {
   background-color: white;
   width: 20%;
   height: 60%;
   box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
-
 
 #image-area img {
   border-radius: 50%;
@@ -85,11 +102,9 @@
   min-height: 596px;
 }
 
-
 #main-content .title {
   margin-left: 10px;
 }
-
 
 #post-title-heading {
   margin: 10px;
