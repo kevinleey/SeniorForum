@@ -39,7 +39,6 @@ function AddPostForm() {
   const navigate = useNavigate();
   const user = useSelector(selectCurrentUser);
 
-
   const handleCheckboxChange = (category) => {
     setSelectedCategories((prevSelected) => {
       if (prevSelected.includes(category)) {
@@ -98,9 +97,7 @@ function AddPostForm() {
         dateCreated: new Date(),
       };
 
-
       await dispatch(addPost(newPost));
-
 
       navigate("/account");
     } catch (error) {
@@ -108,19 +105,18 @@ function AddPostForm() {
     }
   };
 
-
   return (
-      <div id="page-background">
-        <Navbar/>
-        <div id="page-container">
-          <h1 className="page-title">Add a new post</h1>
-          <div id="add-post-container">
-            <div id="image-area">
-              <img
-                  src={imageLinks.USER.USER_PICTURE_LINK}
-                  alt={imageLinks.USER.USER_PICTURE_TEXT}
-              />
-            </div>
+    <div id="page-background">
+      <Navbar />
+      <div id="page-container">
+        <h1 className="page-title">Add a new post</h1>
+        <div id="add-post-container">
+          <div id="image-area">
+            <img
+              src={imageLinks.USER.USER_PICTURE_LINK}
+              alt={imageLinks.USER.USER_PICTURE_TEXT}
+            />
+          </div>
 
 
             <div id="main-content">
@@ -186,12 +182,9 @@ function AddPostForm() {
           </div>
         </div>
 
-
-        <Footer/>
-      </div>
-  )
-      ;
+      <Footer />
+    </div>
+  );
 }
-
 
 export default AddPostForm;

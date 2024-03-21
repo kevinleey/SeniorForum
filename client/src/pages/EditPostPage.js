@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {imageLinks, POST_CATEGORIES} from "../constants";
+import { imageLinks, POST_CATEGORIES } from "../constants";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import React, { useState } from "react";
@@ -26,11 +26,9 @@ function EditPostForm() {
   const posts = useSelector(selectAllPosts);
   const navigate = useNavigate();
 
-
   const post = posts.find((post) => post._id === postId);
   const userId = post.createdBy._id;
   const user = useSelector((state) => selectUserById(state, userId));
-
 
   const [title, setTitle] = useState(post.title);
   const [text, setText] = useState(post.text);
@@ -47,7 +45,6 @@ function EditPostForm() {
   for (let category in POST_CATEGORIES) {
     allCategories.push(POST_CATEGORIES[category].CATEGORY_TITLE);
   }
-
 
   const handleCheckboxChange = (category) => {
     setSelectedCategories((prevSelected) => {
@@ -109,17 +106,14 @@ function EditPostForm() {
         comments: post.comments,
       };
 
-
       // await dispatch(editPost(updatePost));
       await dispatch(editPost({ postId, updatePost }));
-
 
       navigate(`/posts/${postId}`);
     } catch (error) {
       console.error("Error adding post:", error);
     }
   };
-
 
   return (
       <div id="page-background">
@@ -197,6 +191,5 @@ function EditPostForm() {
       </div>
   );
 }
-
 
 export default EditPostForm;
