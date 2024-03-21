@@ -89,3 +89,8 @@ export const { addPost, removePost, postAdded, postUpdated, postDeleted } =
 export default postsSlice.reducer;
 
 export const selectAllPosts = (state) => state.posts.posts;
+
+export const selectPostByID = (state, postId) => {
+  const postInfo = state.posts.posts.find((post) => post._id === postId);
+  return postInfo;
+};
