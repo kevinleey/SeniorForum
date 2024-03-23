@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -10,11 +10,14 @@ import AddPostPage from "./pages/AddPostPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
 import { fetchCurrUser, fetchUsers } from "./features/users/userThunks";
-import { selectAllUsers } from "./features/users/userSlice";
+import {selectAllUsers, setCurrentUser} from "./features/users/userSlice";
 import { selectAllPosts } from "./features/posts/postsSlice";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import EditPostPage from "./pages/EditPostPage";
+import Admin from "./pages/Admin";
+import {useAuth0} from "@auth0/auth0-react";
+import axios from "axios";
 
 function App() {
   const dispatch = useDispatch();
@@ -73,6 +76,7 @@ function App() {
           <Route path="/add-post" element={<AddPostPage />} />
           <Route path="/edit-post/:postId" element={<EditPostPage />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/admin-page" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </div>

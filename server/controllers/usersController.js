@@ -12,13 +12,17 @@ const getUserById = async (req, res) => {
 };
 
 const getProfile = async (req, res) => {
-  let auth0Id = req.oidc.user.sub;
-  auth0Id = auth0Id.replace("auth0|", "");
-  const user = await User.findById(auth0Id);
-  if (!user) {
-    return res.status(404).send("User not found");
+  try {
+    let auth0Id = req.oidc.user.sub;
+    auth0Id = auth0Id.replace("auth0|", "");
+    const user = await User.findById(auth0Id);
+    if (!user) {
+      return res.status(404).json({error: "User not found"});
+    }
+    res.send(user);
+  } catch (error) {
+    res.status(500).json({error: error.message});
   }
-  res.send(user);
 };
 
 const editProfile = async (req, res) => {

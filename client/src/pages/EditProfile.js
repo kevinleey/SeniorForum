@@ -28,7 +28,7 @@ function EditProfile() {
   const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const { user: auth0User, isLoading } = useAuth0();
+  const { user: auth0User, isLoading, isAuthenticated } = useAuth0();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -44,10 +44,10 @@ function EditProfile() {
   const [bioError, setBioError] = useState("");
 
   useEffect(() => {
-    if (!isLoading && auth0User) {
+    /*if (!isLoading && auth0User) {
       dispatch(fetchCurrUser(auth0User));
       dispatch(setCurrentUser(auth0User));
-    }
+    }*/
     if (currentUser) {
       setFirstName(currentUser.firstName);
       setLastName(currentUser.lastName);
