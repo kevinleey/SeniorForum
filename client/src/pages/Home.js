@@ -19,7 +19,7 @@ function Home() {
   const { user, isLoading, isAuthenticated, loginWithRedirect, logout, getAccessTokenSilently } = useAuth0();
   const error = useSelector((state) => state.users.error);
 
-    /*useEffect(() => {
+    useEffect(() => {
       const getData = async () => {
         if (!isLoading && isAuthenticated) {
           await dispatch(fetchCurrUser());
@@ -28,7 +28,7 @@ function Home() {
       }
       getData();
       console.log('Current user:', currentUser)
-    }, isLoading, isAuthenticated, user);*/
+    }, isLoading, isAuthenticated, user);
 
   useEffect(() => {
     if(!isLoading) {
@@ -38,7 +38,14 @@ function Home() {
 
   const handleLogin = async () => {
     console.log('Logging in...');
-    await loginWithRedirect();
+    try {
+      const token = await getAccessTokenSilently();
+      console.log('Access token:', token);
+      await loginWithRedirect();
+    } catch (error) {
+      console.log('Error getting access token:', error);
+      await loginWithRedirect();
+    }
   }
 
   const handleLogout = async () => {

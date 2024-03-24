@@ -18,6 +18,8 @@ root.render(
         }}
         audience= "https://dev-xva3bwyqfub0c5sf.us.auth0.com/api/v2/" //{process.env.AUTH_AUDIENCE}
         scope={"read:current_user update:current_user_metadata"}
+        useRefreshTokens={true}
+        cacheLocation="localstorage"
       >
         <App />
       </Auth0Provider>

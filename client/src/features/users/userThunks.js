@@ -30,15 +30,12 @@ const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
 
 const fetchCurrUser = createAsyncThunk(
     "users/fetchCurrUser",
-    async (accessToken, thunkAPI) => {
+    async (user, thunkAPI) => {
         //const getAccessTokenSilently = thunkAPI.getState().auth.getAccessTokenSilently;
         try {
-            const response = await axios.get(`/users/me`, {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            });
-            return response.data;
+            const response = await fetch(`http://localhost:3001/users/me`);
+            const data = await response.json();
+            return data;
         } catch (error) {
             console.log('Error in fetchUser:', error);
             return thunkAPI.rejectWithValue({ error: error.message });
