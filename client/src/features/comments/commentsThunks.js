@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { commentAdded } from "./commentsSlice";
 import { selectUserById } from "../users/userSlice";
+import emailjs from "emailjs-com";
+import { selectPostByID } from "../posts/postsSlice";
 
 const fetchCommentsForPost = createAsyncThunk(
   "comments/fetchCommentsForPosts",
@@ -11,11 +13,27 @@ const fetchCommentsForPost = createAsyncThunk(
   },
 );
 
+function emailPostOwner(emailParameters) {
+  emailjs
+    .send(
+      "service_3xoay2e",
+      "template_u60rcfn",
+      emailParameters,
+      "44bqoB6IrCJS_FDWY",
+    )
+    .then(function (res) {
+      console.log("success", res.status);
+    })
+    .catch(function (error) {
+      console.error("Failed", error);
+    });
+}
 const addNewComment = createAsyncThunk(
   "comments/addNewComment",
   async (newComment, { dispatch, getState }) => {
     const state = getState();
     const user = selectUserById(state, newComment.createdBy);
+    const postInfo = selectPostByID(state, newComment.postId);
 
     const response = await fetch(`/posts/${newComment.postId}/comments`, {
       method: "POST",
@@ -34,6 +52,15 @@ const addNewComment = createAsyncThunk(
     };
 
     dispatch(commentAdded(commentWithUsername));
+    const postTitle = postInfo.title;
+    const authorName = postInfo.createdBy.firstName;
+    const authorEmail = postInfo.createdBy.email;
+
+    emailPostOwner({
+      reply_to: authorEmail,
+      to_name: authorName,
+      message: postTitle,
+    });
 
     const data = await response.json();
     return data;
