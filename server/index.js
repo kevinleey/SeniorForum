@@ -5,7 +5,6 @@ import pkg from "express-openid-connect";
 const { auth, requiresAuth } = pkg;
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
-import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import axios from 'axios';
 import User from "./models/User.js";
@@ -35,9 +34,37 @@ mongoose.connect(uri);
 
 
 app.use(auth(config));
-app.use(cookieParser());
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
+
+app.post("/auth0-proxy", async (req, res) => {
+  try {
+    // Make a request to Auth0 server
+    const response = await fetch("https://dev-xva3bwyqfub0c5sf.us.auth0.com/authorize", {
+      method: req.method,
+      headers: {
+        // Forward request headers
+        ...req.headers,
+        // Add any additional headers needed by Auth0
+        // Example: Authorization header with Auth0 access token
+      },
+    });
+
+    // Parse response body as JSON
+    const data = await response.json();
+
+    // Add CORS headers to allow requests from frontend origin
+    res.set("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.set("Access-Control-Allow-Headers", "Content-Type");
+
+    // Send the response back to the frontend
+    res.status(response.status).json(data);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: "Internal Server Error: " });
+  }
+});
 
 app.get("/admin-page", (req, res) => {
   if(req.user && req.user.role === 'Admin') {
