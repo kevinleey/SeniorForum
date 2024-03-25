@@ -13,7 +13,7 @@ const getUserById = async (req, res) => {
 
 const getProfile = async (req, res) => {
   try {
-    let auth0Id = req.oidc.user.sub;
+    let auth0Id = req.params.userId;
     auth0Id = auth0Id.replace("auth0|", "");
     const user = await User.findById(auth0Id);
     if (!user) {

@@ -4,7 +4,7 @@ import pkg from "express-openid-connect";
 const { requiresAuth } = pkg;
 const router = express.Router();
 
-router.get("/me", requiresAuth(), usersController.getProfile);
+router.get("/me/:userID", usersController.getProfile);
 router.put("/me", requiresAuth(), usersController.editProfile);
 router.get("/", usersController.getAllUsers);
 router.get("/:id", usersController.getUserById);

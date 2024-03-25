@@ -30,10 +30,12 @@ const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
 
 const fetchCurrUser = createAsyncThunk(
     "users/fetchCurrUser",
-    async (user, thunkAPI) => {
+    async (_, thunkAPI) => {
         //const getAccessTokenSilently = thunkAPI.getState().auth.getAccessTokenSilently;
+        const { user: auth0User } = useAuth0();
+        const userID = auth0User.sub
         try {
-            const response = await fetch(`http://localhost:3001/users/me`);
+            const response = await fetch(`http://localhost:3001/users/me/${userID}`);
             const data = await response.json();
             return data;
         } catch (error) {
