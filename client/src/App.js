@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
 import { fetchCurrUser, fetchUsers } from "./features/users/userThunks";
 import { selectAllUsers } from "./features/users/userSlice";
+import { selectAllPosts } from "./features/posts/postsSlice";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import EditPostPage from "./pages/EditPostPage";
@@ -18,8 +19,12 @@ import EditPostPage from "./pages/EditPostPage";
 function App() {
   const dispatch = useDispatch();
   const postsStatus = useSelector((state) => state.posts.status);
+  const currentPosts = useSelector(selectAllPosts);
   const usersStatus = useSelector((state) => state.users.status);
   const users = useSelector(selectAllUsers);
+  const timerRef = useRef(null);
+
+  let previousPosts = useRef(currentPosts);
 
   useEffect(() => {
     if (postsStatus === "idle") {
@@ -37,6 +42,22 @@ function App() {
   useEffect(() => {
     console.log("Users fetched from server : ", users);
   }, [users]);
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      const postsChanged = previousPosts.current.length !== currentPosts.length;
+
+      if (postsChanged) {
+        dispatch(fetchPosts());
+      }
+
+      previousPosts.current = currentPosts;
+    }, 60000);
+
+    return () => {
+      clearInterval(timerRef.current);
+    };
+  }, [dispatch, currentPosts]);
 
   return (
     <div>
