@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { commentAdded } from "./commentsSlice";
+import {commentAdded, commentUpdated} from "./commentsSlice";
 import { selectUserById } from "../users/userSlice";
 import emailjs from "emailjs-com";
 import { selectPostByID } from "../posts/postsSlice";
@@ -28,8 +28,8 @@ function emailPostOwner(emailParameters) {
       console.error("Failed", error);
     });
 }
-const addNewComment = createAsyncThunk(
-  "comments/addNewComment",
+const addComment = createAsyncThunk(
+  "comments/addComment",
   async (newComment, { dispatch, getState }) => {
     const state = getState();
     const user = selectUserById(state, newComment.createdBy);
@@ -48,6 +48,7 @@ const addNewComment = createAsyncThunk(
       createdBy: {
         firstName: user.firstName,
         lastName: user.lastName,
+        _id: user._id,
       },
     };
 
@@ -67,4 +68,21 @@ const addNewComment = createAsyncThunk(
   },
 );
 
-export { fetchCommentsForPost, addNewComment };
+const editComment = createAsyncThunk(
+  "comments/editComment",
+  async (comment, { dispatch }) => {
+    const { postId, commentId } = comment;
+    const response = await fetch(`/posts/${postId}/comments/${commentId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(comment),
+    });
+    const data = await response.json();
+    console.log("I HATE TOMATOES");
+    dispatch(commentUpdated(data));
+  },
+);
+
+export { fetchCommentsForPost, addComment, editComment };

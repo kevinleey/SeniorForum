@@ -26,3 +26,9 @@
 .cont-text-username:hover {
   cursor: pointer;
 }
+
+.cont-text-edit {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 10px;
+}

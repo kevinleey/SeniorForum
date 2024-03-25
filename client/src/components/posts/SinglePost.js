@@ -14,6 +14,8 @@ import {
 } from "../../features/users/userSlice";
 import { useNavigate } from "react-router-dom";
 import { deletePost } from "../../features/posts/postsThunks";
+import UserImage from "../userInfo/UserImage";
+import {COMMENTS_RESOURCES} from "../../constants";
 
 function SinglePost({ post, comments }) {
   const commentsStatus = useSelector((state) => state.comments.status);
@@ -92,17 +94,25 @@ function SinglePost({ post, comments }) {
           </h3>
         </div>
       </div>
-      <Contribution contribution={post} />
+      <Contribution contribution={post} isComment={false} />
       <div id="single-post-comments-container">
         {commentsStatus === "succeeded" && (
           <h2 id="comments-title">Comments ({numComments})</h2>
         )}
         {commentsStatus === "succeeded" ? (
-          comments.map((comment) => <Contribution contribution={comment} />)
+          comments.map((comment) => <Contribution contribution={comment} isComment={true} />)
         ) : (
           <Spinner />
         )}
-        <CommentForm />
+        <div className="comment-form-container">
+          <h2 id="comment-form-header">{COMMENTS_RESOURCES.COMMENTS_TITLE}</h2>
+          <div className="comment-form">
+            <UserImage user={currentUser}/>
+            <div className="input-form-container">
+              <CommentForm/>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -156,3 +156,8 @@
 #comments-title {
   margin-bottom: 10px;
 }
+
+.input-form-container {
+  margin-left: 20px;
+  width: 100%;
+}

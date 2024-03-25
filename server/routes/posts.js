@@ -7,6 +7,7 @@ router.get("/:id", postsController.getPostById);
 router.get("/:id/comments", postsController.getCommentsByPostId);
 router.post("/", postsController.addPost);
 router.post("/:id/comments", postsController.addComment);
+router.put("/:id/comments/:id", postsController.editComment);
 router.put("/:id", postsController.editPost);
 router.delete("/delete/:id", postsController.deletePost);
 
