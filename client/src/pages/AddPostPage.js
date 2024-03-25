@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "../features/posts/postsThunks";
 import { useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "../features/users/userSlice";
-import {imageLinks, POST_CATEGORIES, POST_VALIDATION as PV} from "../constants";
+import {
+  imageLinks,
+  POST_CATEGORIES,
+  POST_VALIDATION as PV,
+} from "../constants";
 import "../styles/navbar.css";
 import "../styles/new-post-page.css";
 //import PostList from "../components/posts/PostList";
@@ -75,7 +79,9 @@ function AddPostForm() {
     let err = false;
 
     if (title.length > titleMaxChar || title.trim() === "") {
-      setTitleErr(title.length > titleMaxChar ? titleExceedText : titleBlankText);
+      setTitleErr(
+        title.length > titleMaxChar ? titleExceedText : titleBlankText,
+      );
       err = true;
     }
 
@@ -118,69 +124,70 @@ function AddPostForm() {
             />
           </div>
 
-
-            <div id="main-content">
-              <br/>
-              <h2 className="title">Post Title</h2>
-              <div id="post-title-heading">
-                <input
-                    className={`add-post-input-title ${titleErr ? "invalid-input" : ""}`}
-                    type="text"
-                    value={title}
-                    placeholder="Input your post title"
-                    onChange={(e) => handleTitleChange(e)}
-                />
-                <span className={`char-remaining ${titleErr && "error-message"}`}>
-                  {numTitleCharString}
-                </span>
-                {titleErr && <span className="title-error-message">{titleErr}</span>}
-              </div>
-              <br/>
-              <br/>
-              <div id="post-title-heading">
-                <h2>Post Text</h2>
-              </div>
-              <div id="post-title-heading">
-                 <textarea
-                   className={`add-post-input-text ${bodyErr ? "invalid-input" : ""}`}
-                     placeholder="Input your post text"
-                     value={text}
-                   onChange={(e) => handleBodyChange(e)}
-                 />
-                <span className={`char-remaining ${bodyErr && "error-message"}`}>
-                  {numBodyCharString}
-                </span>
-                {bodyErr && <span className="body-error-message">{bodyErr}</span>}
-              </div>
-              <br/>
-              <br/>
-              <div id="post-title-heading">
-                <h2>Select Categories</h2>
-              </div>
-              <div>
-                {allCategories.map((category) => (
-                    <label className="add-post-category-label" key={category}>
-                      <input
-                          className="add-post-category"
-                          type="checkbox"
-                          value={category}
-                          checked={selectedCategories.includes(category)}
-                          onChange={() => handleCheckboxChange(category)}
-                      />
-                      {category}
-                    </label>
-                ))}
-              </div>
-              <br/>
-              <button
-                  className="add-post-submit-button"
-                  onClick={() => handleAddPost()}
-              >
-                Add Post
-              </button>
+          <div id="main-content">
+            <br />
+            <h2 className="title">Post Title</h2>
+            <div id="post-title-heading">
+              <input
+                className={`add-post-input-title ${titleErr ? "invalid-input" : ""}`}
+                type="text"
+                value={title}
+                placeholder="Input your post title"
+                onChange={(e) => handleTitleChange(e)}
+              />
+              <span className={`char-remaining ${titleErr && "error-message"}`}>
+                {numTitleCharString}
+              </span>
+              {titleErr && (
+                <span className="title-error-message">{titleErr}</span>
+              )}
             </div>
+            <br />
+            <br />
+            <div id="post-title-heading">
+              <h2>Post Text</h2>
+            </div>
+            <div id="post-title-heading">
+              <textarea
+                className={`add-post-input-text ${bodyErr ? "invalid-input" : ""}`}
+                placeholder="Input your post text"
+                value={text}
+                onChange={(e) => handleBodyChange(e)}
+              />
+              <span className={`char-remaining ${bodyErr && "error-message"}`}>
+                {numBodyCharString}
+              </span>
+              {bodyErr && <span className="body-error-message">{bodyErr}</span>}
+            </div>
+            <br />
+            <br />
+            <div id="post-title-heading">
+              <h2>Select Categories</h2>
+            </div>
+            <div>
+              {allCategories.map((category) => (
+                <label className="add-post-category-label" key={category}>
+                  <input
+                    className="add-post-category"
+                    type="checkbox"
+                    value={category}
+                    checked={selectedCategories.includes(category)}
+                    onChange={() => handleCheckboxChange(category)}
+                  />
+                  {category}
+                </label>
+              ))}
+            </div>
+            <br />
+            <button
+              className="add-post-submit-button"
+              onClick={() => handleAddPost()}
+            >
+              Add Post
+            </button>
           </div>
         </div>
+      </div>
 
       <Footer />
     </div>

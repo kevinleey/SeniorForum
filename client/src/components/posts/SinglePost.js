@@ -15,7 +15,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { deletePost } from "../../features/posts/postsThunks";
 import UserImage from "../userInfo/UserImage";
-import {COMMENTS_RESOURCES} from "../../constants";
+import { COMMENTS_RESOURCES } from "../../constants";
 
 function SinglePost({ post, comments }) {
   const commentsStatus = useSelector((state) => state.comments.status);
@@ -40,7 +40,7 @@ function SinglePost({ post, comments }) {
 
   const handleEditPage = () => {
     navigate(`/edit-post/${post._id}`);
-  }
+  };
 
   const handleYesClick = async () => {
     try {
@@ -49,7 +49,7 @@ function SinglePost({ post, comments }) {
     } catch (error) {
       console.error("Error deleting post:", error);
     }
-  }
+  };
 
   return (
     <div id="single-post-container">
@@ -68,16 +68,27 @@ function SinglePost({ post, comments }) {
                   </div>
                   <div id="edit-button">
                     <Popup
-                      trigger={<p className="delete-post-button"> Delete Post </p>}
+                      trigger={
+                        <p className="delete-post-button"> Delete Post </p>
+                      }
                       modal
                     >
-                      {close => (
+                      {(close) => (
                         <div id="popup-window">
                           <div id="main-popup-content">
                             <h2>Are you sure you want to delete this post?</h2>
                             <div id="del-buttons">
-                              <button onClick={handleYesClick} id="yes-button">Yes, delete this post</button>
-                              <button onClick={() => {close();}} id="no-button">No, don't delete this post</button>
+                              <button onClick={handleYesClick} id="yes-button">
+                                Yes, delete this post
+                              </button>
+                              <button
+                                onClick={() => {
+                                  close();
+                                }}
+                                id="no-button"
+                              >
+                                No, don't delete this post
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -100,16 +111,18 @@ function SinglePost({ post, comments }) {
           <h2 id="comments-title">Comments ({numComments})</h2>
         )}
         {commentsStatus === "succeeded" ? (
-          comments.map((comment) => <Contribution contribution={comment} isComment={true} />)
+          comments.map((comment) => (
+            <Contribution contribution={comment} isComment={true} />
+          ))
         ) : (
           <Spinner />
         )}
         <div className="comment-form-container">
           <h2 id="comment-form-header">{COMMENTS_RESOURCES.COMMENTS_TITLE}</h2>
           <div className="comment-form">
-            <UserImage user={currentUser}/>
+            <UserImage user={currentUser} />
             <div className="input-form-container">
-              <CommentForm/>
+              <CommentForm />
             </div>
           </div>
         </div>

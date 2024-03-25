@@ -5,7 +5,10 @@ import { selectCurrentUser } from "../../features/users/userSlice";
 import { COMMENTS_RESOURCES as CR } from "../../constants";
 import { COMMENTS_VALIDATION as CV } from "../../constants";
 import { selectCurrentPostId } from "../../features/comments/commentsSlice";
-import {addComment, editComment} from "../../features/comments/commentsThunks";
+import {
+  addComment,
+  editComment,
+} from "../../features/comments/commentsThunks";
 
 const {
   COMMENTS_ADD: addText,
@@ -83,25 +86,25 @@ function CommentForm({ existingComment, onSubmitSuccess }) {
 
   return (
     <form className="input-form" onSubmit={handleSubmit}>
-          <textarea
-            className={`input-text-field ${error ? "invalid-input" : ""}`}
-            value={commentData}
-            onChange={handleInputChange}
-            name="comment"
-            placeholder={placeholderString}
-          />
-        <div className="input-form-footer">
-          <div>
-              <span className={`char-remaining ${error && "error-message"}`}>
-                {numCharString}
-              </span>
-            {error && <span className="error-message">{error}</span>}
-          </div>
-          <button type="submit" className="submit-button">
-            {existingComment ? editText : addText}
-          </button>
+      <textarea
+        className={`input-text-field ${error ? "invalid-input" : ""}`}
+        value={commentData}
+        onChange={handleInputChange}
+        name="comment"
+        placeholder={placeholderString}
+      />
+      <div className="input-form-footer">
+        <div>
+          <span className={`char-remaining ${error && "error-message"}`}>
+            {numCharString}
+          </span>
+          {error && <span className="error-message">{error}</span>}
         </div>
-      </form>
+        <button type="submit" className="submit-button">
+          {existingComment ? editText : addText}
+        </button>
+      </div>
+    </form>
   );
 }
 

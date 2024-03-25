@@ -90,7 +90,7 @@ const editComment = async (req, res) => {
   } catch (error) {
     console.error("Error editing comment:", error);
   }
-}
+};
 
 const deleteComment = async (req, res) => {
   const commentId = req.params.id;
@@ -105,7 +105,7 @@ const deleteComment = async (req, res) => {
   } catch (error) {
     console.error("Error deleting comment:", error);
   }
-}
+};
 
 export const postsController = {
   getAllPosts,
@@ -115,5 +115,5 @@ export const postsController = {
   deletePost,
   getCommentsByPostId,
   addComment,
-  editComment
+  editComment,
 };
