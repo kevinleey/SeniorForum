@@ -12,8 +12,9 @@ const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const data = await response.json();
   return data;
 });
+
 const addPost = createAsyncThunk(
-  "posts/addNewPost",
+  "posts/addPost",
   async (newPost, { dispatch }) => {
     const response = await fetch("/posts", {
       method: "POST",

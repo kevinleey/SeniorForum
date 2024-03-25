@@ -39,7 +39,6 @@ const editPost = async (req, res) => {
 
 const deletePost = async (req, res) => {
   const postId = req.params.id;
-  console.log("postId", postId);
   try {
     const post = Post.findById(postId);
 
@@ -78,6 +77,36 @@ const addComment = async (req, res) => {
   return res.status(201).json(savedComment);
 };
 
+const editComment = async (req, res) => {
+  const commentId = req.params.id;
+  const { text } = req.body;
+  try {
+    const updatedComment = await Comment.findByIdAndUpdate(
+      commentId,
+      { text },
+      { new: true },
+    );
+    return res.status(200).json(updatedComment);
+  } catch (error) {
+    console.error("Error editing comment:", error);
+  }
+};
+
+const deleteComment = async (req, res) => {
+  const commentId = req.params.id;
+  try {
+    const comment = Comment.findById(commentId);
+
+    if (!comment) return res.status(404).send("Comment not found");
+    else {
+      await comment.deleteOne();
+      return res.status(204).send();
+    }
+  } catch (error) {
+    console.error("Error deleting comment:", error);
+  }
+};
+
 export const postsController = {
   getAllPosts,
   getPostById,
@@ -86,4 +115,5 @@ export const postsController = {
   deletePost,
   getCommentsByPostId,
   addComment,
+  editComment,
 };

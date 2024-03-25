@@ -7,7 +7,6 @@
 
 .add-post-input-text {
   margin-bottom: 10px;
-  margin-left: 20px;
   width: 80%;
   height: 300px;
   display: flex;
@@ -21,7 +20,6 @@
 
 .add-post-input-title {
   margin-bottom: 10px;
-  margin-left: 20px;
   width: 80%;
   display: flex;
   align-items: flex-start;
@@ -37,7 +35,6 @@
 }
 
 .char-remaining {
-  margin-left: 20px;
   margin-right: 8px;
 }
 
@@ -106,5 +103,6 @@
 }
 
 #post-title-heading {
+  padding-left: 20px;
   margin: 10px;
 }

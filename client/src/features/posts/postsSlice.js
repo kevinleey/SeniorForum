@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { editPost, fetchPosts, deletePost } from "./postsThunks.js";
-import { addNewComment } from "../comments/commentsThunks";
+import { addComment } from "../comments/commentsThunks";
 
 const initialState = {
   posts: [],
@@ -68,7 +68,7 @@ export const postsSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      .addCase(addNewComment.fulfilled, (state, action) => {
+      .addCase(addComment.fulfilled, (state, action) => {
         const postId = action.payload.postId;
         const commentId = action.payload._id;
         const postToUpdate = state.posts.find((post) => post._id === postId);

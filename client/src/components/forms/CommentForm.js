@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import "../../styles/comment-form.css";
-import UserImage from "../userInfo/UserImage";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/users/userSlice";
 import { COMMENTS_RESOURCES as CR } from "../../constants";
 import { COMMENTS_VALIDATION as CV } from "../../constants";
 import { selectCurrentPostId } from "../../features/comments/commentsSlice";
-import { addNewComment } from "../../features/comments/commentsThunks";
+import {
+  addComment,
+  editComment,
+} from "../../features/comments/commentsThunks";
 
 const {
-  COMMENTS_TITLE: title,
   COMMENTS_ADD: addText,
+  COMMENTS_EDIT: editText,
   COMMENTS_AUTHOR_PREFIX: authorPrefixText,
 } = CR;
 const {
@@ -19,12 +21,12 @@ const {
   COMMENTS_EXCEED_TEXT: exceedText,
 } = CV;
 
-function CommentForm() {
+function CommentForm({ existingComment, onSubmitSuccess }) {
   const dispatch = useDispatch();
   const user = useSelector(selectCurrentUser);
   const postId = useSelector(selectCurrentPostId);
-  const [commentData, setCommentData] = useState("");
-  const [numChar, setNumChar] = useState(0);
+  const [commentData, setCommentData] = useState(existingComment?.text || "");
+  const [numChar, setNumChar] = useState(existingComment?.text.length || 0);
   const [error, setError] = useState("");
 
   const placeholderString = `${authorPrefixText}${user.firstName} ${user.lastName}`;
@@ -56,48 +58,53 @@ function CommentForm() {
     }
 
     try {
-      const newComment = {
-        text: commentData,
-        createdBy: user._id,
-        dateCreated: new Date().toISOString(),
-        postId,
-      };
+      if (existingComment) {
+        const updatedComment = {
+          text: commentData,
+          commentId: existingComment._id,
+          postId,
+        };
 
-      await dispatch(addNewComment(newComment));
-      setCommentData("");
-      setNumChar(0);
+        await dispatch(editComment(updatedComment));
+        onSubmitSuccess();
+      } else {
+        const newComment = {
+          text: commentData,
+          createdBy: user._id,
+          dateCreated: new Date().toISOString(),
+          postId,
+        };
+
+        await dispatch(addComment(newComment));
+        setCommentData("");
+        setNumChar(0);
+      }
     } catch (error) {
       console.error("Error adding comment:", error);
     }
   };
 
   return (
-    <div className="comment-form-container">
-      <h2 id="comment-form-header">{title}</h2>
-      <div className="comment-form">
-        <UserImage user={user} />
-        <form className="input-form" onSubmit={handleSubmit}>
-          <textarea
-            className={`input-text-field ${error ? "invalid-input" : ""}`}
-            value={commentData}
-            onChange={handleInputChange}
-            name="comment"
-            placeholder={placeholderString}
-          />
-          <div className="input-form-footer">
-            <div>
-              <span className={`char-remaining ${error && "error-message"}`}>
-                {numCharString}
-              </span>
-              {error && <span className="error-message">{error}</span>}
-            </div>
-            <button type="submit" className="submit-button">
-              {addText}
-            </button>
-          </div>
-        </form>
+    <form className="input-form" onSubmit={handleSubmit}>
+      <textarea
+        className={`input-text-field ${error ? "invalid-input" : ""}`}
+        value={commentData}
+        onChange={handleInputChange}
+        name="comment"
+        placeholder={placeholderString}
+      />
+      <div className="input-form-footer">
+        <div>
+          <span className={`char-remaining ${error && "error-message"}`}>
+            {numCharString}
+          </span>
+          {error && <span className="error-message">{error}</span>}
+        </div>
+        <button type="submit" className="submit-button">
+          {existingComment ? editText : addText}
+        </button>
       </div>
-    </div>
+    </form>
   );
 }
 

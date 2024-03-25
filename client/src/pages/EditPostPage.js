@@ -19,7 +19,6 @@ const {
   POST_BODY_EXCEED_TEXT: bodyExceedText,
 } = PV;
 
-
 function EditPostForm() {
   const dispatch = useDispatch();
   const { postId } = useParams();
@@ -82,7 +81,9 @@ function EditPostForm() {
     let err = false;
 
     if (title.length > titleMaxChar || title.trim() === "") {
-      setTitleErr(title.length > titleMaxChar ? titleExceedText : titleBlankText);
+      setTitleErr(
+        title.length > titleMaxChar ? titleExceedText : titleBlankText,
+      );
       err = true;
     }
 
@@ -116,79 +117,81 @@ function EditPostForm() {
   };
 
   return (
-      <div id="page-background">
-        <Navbar />
-        <div id="page-container">
-          <h1 className="page-title">Edit post</h1>
-          <div id="add-post-container">
-            <div id="image-area">
-              <img
-                  src={imageLinks.USER.USER_PICTURE_LINK}
-                  alt={imageLinks.USER.USER_PICTURE_TEXT}
+    <div id="page-background">
+      <Navbar />
+      <div id="page-container">
+        <h1 className="page-title">Edit post</h1>
+        <div id="add-post-container">
+          <div id="image-area">
+            <img
+              src={imageLinks.USER.USER_PICTURE_LINK}
+              alt={imageLinks.USER.USER_PICTURE_TEXT}
+            />
+          </div>
+          <div id="main-content">
+            <br />
+            <h2 className="title">Post Title</h2>
+            <div id="post-title-heading">
+              <input
+                className={`add-post-input-title ${titleErr ? "invalid-input" : ""}`}
+                type="text"
+                value={title}
+                onChange={(e) => handleTitleChange(e)}
               />
+              <span className={`char-remaining ${titleErr && "error-message"}`}>
+                {numTitleCharString}
+              </span>
+              {titleErr && (
+                <span className="title-error-message">{titleErr}</span>
+              )}
             </div>
-            <div id="main-content">
-              <br/>
-              <h2 className="title">Post Title</h2>
-              <div id="post-title-heading">
-                <input
-                  className={`add-post-input-title ${titleErr ? "invalid-input" : ""}`}
-                  type="text"
-                  value={title}
-                  onChange={(e) => handleTitleChange(e)}
-                />
-                <span className={`char-remaining ${titleErr && "error-message"}`}>
-                  {numTitleCharString}
-                </span>
-                {titleErr && <span className="title-error-message">{titleErr}</span>}
-              </div>
-              <br/>
-              <br/>
-              <div id="post-title-heading">
-                <h2>Post Text</h2>
-              </div>
-              <div id="post-title-heading">
-               <textarea
-                 className={`add-post-input-text ${bodyErr ? "invalid-input" : ""}`}
-                 value={text}
-                 onChange={(e) => handleBodyChange(e)}
-               />
-                <span className={`char-remaining ${bodyErr && "error-message"}`}>
-                  {numBodyCharString}
-                </span>
-                {bodyErr && <span className="body-error-message">{bodyErr}</span>}
-              </div>
-              <br/>
-              <br/>
-              <div id="post-title-heading">
-                <h2>Select Categories</h2>
-              </div>
-              <div>
-                {allCategories.map((category) => (
-                    <label className="add-post-category-label" key={category}>
-                      <input
-                          className="add-post-category"
-                          type="checkbox"
-                          value={category}
-                          checked={selectedCategories.includes(category)}
-                          onChange={() => handleCheckboxChange(category)}
-                      />
-                      {category}
-                    </label>
-                ))}
-              </div>
-              <br/>
-              <button
-                  className="add-post-submit-button"
-                  onClick={() => handleEditPost()}
-              >
-                Edit Post
-              </button>
+            <br />
+            <br />
+            <div id="post-title-heading">
+              <h2>Post Text</h2>
             </div>
+            <div id="post-title-heading">
+              <textarea
+                className={`add-post-input-text ${bodyErr ? "invalid-input" : ""}`}
+                value={text}
+                onChange={(e) => handleBodyChange(e)}
+              />
+              <span className={`char-remaining ${bodyErr && "error-message"}`}>
+                {numBodyCharString}
+              </span>
+              {bodyErr && <span className="body-error-message">{bodyErr}</span>}
+            </div>
+            <br />
+            <br />
+            <div id="post-title-heading">
+              <h2>Select Categories</h2>
+            </div>
+            <div>
+              {allCategories.map((category) => (
+                <label className="add-post-category-label" key={category}>
+                  <input
+                    className="add-post-category"
+                    type="checkbox"
+                    value={category}
+                    checked={selectedCategories.includes(category)}
+                    onChange={() => handleCheckboxChange(category)}
+                  />
+                  {category}
+                </label>
+              ))}
+            </div>
+            <br />
+            <button
+              className="add-post-submit-button"
+              onClick={() => handleEditPost()}
+            >
+              Edit Post
+            </button>
           </div>
         </div>
-        <Footer/>
       </div>
+      <Footer />
+    </div>
   );
 }
 

@@ -54,12 +54,6 @@ export const imageLinks = {
   },
 };
 
-// HOME
-
-export const HOME_RESOURCES = {
-  HOME_TITLE: "Welcome , here are some recent posts.",
-};
-
 export const ERROR_MESSAGES = {
   INVALID_POSTID: "Invalid post ID",
 };
@@ -137,6 +131,8 @@ export const POST_CATEGORIES = {
 export const COMMENTS_RESOURCES = {
   COMMENTS_TITLE: "Join the discussion!",
   COMMENTS_ADD: "Add Comment",
+  COMMENTS_EDIT: "Edit Comment",
+  COMMENTS_CANCEL: "Cancel",
   COMMENTS_AUTHOR_PREFIX: "Comment as ",
 };
 
@@ -145,7 +141,7 @@ export const COMMENTS_RESOURCES = {
 export const COMMENTS_VALIDATION = {
   COMMENTS_MAXCHAR: 1000,
   COMMENTS_BLANK_TEXT: "Comment can not be blank",
-  COMMENTS_EXCEED_TEXT: `Comment can not exceed 300 characters`,
+  COMMENTS_EXCEED_TEXT: `Comment can not exceed the maximum number of characters`,
 };
 
 export const POST_VALIDATION = {
