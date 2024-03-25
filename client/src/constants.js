@@ -156,3 +156,15 @@ export const POST_VALIDATION = {
   POST_BODY_BLANK_TEXT: "Post can not be blank",
   POST_BODY_EXCEED_TEXT: `Post can not exceed 1000 characters`,
 };
+
+export const EDIT_PROFILE_VALIDATION = {
+  FIRST_NAME_MAXCHAR: 20,
+  FIRST_NAME_BLANK_TEXT: "First name can not be blank",
+  FIRST_NAME_EXCEED_TEXT: `First name can not exceed 20 characters`,
+  LAST_NAME_MAXCHAR: 20,
+  LAST_NAME_BLANK_TEXT: "Last name can not be blank",
+  LAST_NAME_EXCEED_TEXT: `Last name can not exceed 20 characters`,
+  BIO_MAXCHAR: 300,
+  BIO_BLANK_TEXT: "Bio can not be blank",
+  BIO_EXCEED_TEXT: `Bio can not exceed 300 characters`,
+};

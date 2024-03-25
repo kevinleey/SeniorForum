@@ -61,6 +61,15 @@
   background-color: #7a0d0d;
 }
 
+.input-form {
+  position: relative;
+}
+
+
+.error-message {
+  color: red;
+}
+
 @media (max-width: 600px) {
   #button {
     padding: 15px;
