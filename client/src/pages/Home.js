@@ -74,8 +74,8 @@ function Home() {
     <div id="page-background">
       <Navbar />
       <div id="page-container">
-        <button onClick = {handleLogin}>Login</button>
-        <button onClick = {handleLogout}>Logout</button>
+        { /*<button onClick = {handleLogin}>Login</button>*/ }
+        {/*<button onClick = {handleLogout}>Logout</button>*/}
         <h1 className="page-title">
           {isAuthenticated ? 'You are authenticated! ' : 'You are not authenticated! '}
           {currentUser
