@@ -15,7 +15,7 @@ import { fetchPosts } from "../features/posts/postsThunks";
 function Account() {
   const posts = useSelector(selectAllPosts);
   const currentUser = useSelector(selectCurrentUser);
-  const { user: auth0User, isLoading, getAccessTokenSilently } = useAuth0();
+  const { user: auth0User, isLoading, getAccessTokenSilently, loginWithRedirect } = useAuth0();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -51,8 +51,10 @@ function Account() {
   }, [currentUser, dispatch]);
 
   if (!currentUser) {
-    window.location.href = "http://localhost:3001/login";
-    return null;
+    //window.location.href = "http://localhost:3001/login";
+    //return null;
+    loginWithRedirect();
+
   }
 
   const currPosts = posts.filter(
