@@ -27,6 +27,9 @@ export const userSlice = createSlice({
       // New reducer
       state.currentUser = action.payload;
     },
+    resetCurrentUser: (state, action) => {
+      state.currentUser = null;
+    },
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
@@ -53,7 +56,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { addUser, updateUser, setCurrentUser } = userSlice.actions;
+export const { addUser, updateUser, setCurrentUser, resetCurrentUser } = userSlice.actions;
 
 export default userSlice.reducer;
 

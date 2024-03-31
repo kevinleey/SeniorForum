@@ -15,20 +15,25 @@ const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   return data;
 });
 
-/*const fetchCurrUser = createAsyncThunk(
+const fetchCurrUser = createAsyncThunk(
   "users/fetchCurrUser",
   async (user, thunkAPI) => {
+      if(!user) {
+          console.log("user is undefined");
+          return thunkAPI.rejectWithValue({ error: 'User is undefined' });
+      }
     try {
-      const response = await axios.get(`/users/me`); // /profile is the route that returns the current user's data.
+      const response = await axios.get(`/users/me/${user.sub}`); // /profile is the route that returns the current user's data.
+        console.log("response.data:", response.data);
       return response.data;
     } catch (error) {
         console.log('Error in fetchUser:', error);
       return thunkAPI.rejectWithValue({ error: error.message });
     }
   },
-);*/
+);
 
-const fetchCurrUser = createAsyncThunk(
+/*const fetchCurrUser = createAsyncThunk(
     "users/fetchCurrUser",
     async (userID, thunkAPI) => {
         //const getAccessTokenSilently = thunkAPI.getState().auth.getAccessTokenSilently;
@@ -41,6 +46,6 @@ const fetchCurrUser = createAsyncThunk(
             return thunkAPI.rejectWithValue({ error: error.message });
         }
     },
-);
+);*/
 
 export { fetchUsers, fetchCurrUser, fetchUser };

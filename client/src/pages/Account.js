@@ -24,7 +24,7 @@ function Account() {
       dispatch(fetchCurrUser(auth0User));
       dispatch(setCurrentUser(auth0User));
     }
-  }, [dispatch, isLoading, auth0User]);*/
+  }, [dispatch, isLoading, auth0User]);
 
   /*useEffect(() => {
     const getUser = async () => {

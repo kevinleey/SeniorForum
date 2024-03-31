@@ -5,6 +5,7 @@ const { requiresAuth } = pkg;
 const router = express.Router();
 
 router.get("/me/:userID", usersController.getProfile);
+router.get("/me", usersController.getProfile);
 router.put("/me", requiresAuth(), usersController.editProfile);
 router.get("/", usersController.getAllUsers);
 router.get("/:id", usersController.getUserById);

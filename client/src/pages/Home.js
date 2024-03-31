@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAllPosts } from "../features/posts/postsSlice";
 import PostList from "../components/posts/PostList";
 import Footer from "../components/Footer";
-import { selectCurrentUser, setCurrentUser } from "../features/users/userSlice";
+import { selectCurrentUser, setCurrentUser, resetCurrentUser } from "../features/users/userSlice";
 import { fetchCurrUser } from "../features/users/userThunks";
 import "../styles/home.css";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -19,7 +19,7 @@ function Home() {
   const { user, isLoading, isAuthenticated, loginWithRedirect, logout, getAccessTokenSilently } = useAuth0();
   const error = useSelector((state) => state.users.error);
 
-  useEffect(() => {
+ /* useEffect(() => {
     if (!isLoading && isAuthenticated) {
       const getData = async () => {
         if (user && user.sub) {
@@ -31,25 +31,34 @@ function Home() {
       }
       getData();
     }
-  }, [isLoading, isAuthenticated]);
+  }, [isLoading, isAuthenticated]);*/
 
-  useEffect(() => {
+ /* useEffect(() => {
     if (user && user.sub) {
       console.log('user.sub: ', user.sub);
       dispatch(fetchCurrUser(user.sub));
       dispatch(setCurrentUser());
     }
-  }, [user]);
+  }, [user]);*/
 
+  useEffect(() => {
+    if(!isLoading && isAuthenticated && user) {
+      dispatch(fetchCurrUser(user));
+    }
+  }, [dispatch, isAuthenticated, isLoading, user]);
+
+  /*useEffect(() => {
+    console.log("CurrentUser: ", currentUser);
+  }, [currentUser]);*/
 
   const handleLogin = async () => {
     console.log('Logging in...');
     try {
       const token = await getAccessTokenSilently();
-      console.log('Access token:', token);
+      //console.log('Access token:', token);
       await loginWithRedirect();
     } catch (error) {
-      console.log('Error getting access token:', error);
+      //console.log('Error getting access token:', error);
       await loginWithRedirect();
     }
   }
@@ -57,6 +66,8 @@ function Home() {
   const handleLogout = async () => {
     console.log('Logging out...');
     await logout({ returnTo: window.location.origin });
+    dispatch(resetCurrentUser());
+    console.log("CurrentUser: ", currentUser);
   }
 
   return (
