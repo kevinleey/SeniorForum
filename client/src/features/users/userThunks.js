@@ -24,7 +24,7 @@ const fetchCurrUser = createAsyncThunk(
       }
     try {
       const response = await axios.get(`/users/me/${user.sub}`); // /profile is the route that returns the current user's data.
-        console.log("response.data:", response.data);
+        //console.log("response.data:", response.data);
       return response.data;
     } catch (error) {
         console.log('Error in fetchUser:', error);

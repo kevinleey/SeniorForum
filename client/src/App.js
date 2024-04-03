@@ -29,6 +29,14 @@ function App() {
 
   let previousPosts = useRef(currentPosts);
 
+  const { user, isLoading, getAccessTokenSilently, isAuthenticated } = useAuth0();
+
+  useEffect(() => {
+    if(!isLoading && isAuthenticated && user) {
+      dispatch(fetchCurrUser(user));
+    }
+  }, [dispatch, isAuthenticated, isLoading, user]);
+
   useEffect(() => {
     if (postsStatus === "idle") {
       dispatch(fetchPosts());

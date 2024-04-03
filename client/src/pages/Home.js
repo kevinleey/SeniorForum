@@ -19,37 +19,7 @@ function Home() {
   const { user, isLoading, isAuthenticated, loginWithRedirect, logout, getAccessTokenSilently } = useAuth0();
   const error = useSelector((state) => state.users.error);
 
- /* useEffect(() => {
-    if (!isLoading && isAuthenticated) {
-      const getData = async () => {
-        if (user && user.sub) {
-          let id = user.sub;
-          console.log('user.sub: ', id);
-          await dispatch(fetchCurrUser(id));
-          await dispatch(setCurrentUser());
-        }
-      }
-      getData();
-    }
-  }, [isLoading, isAuthenticated]);*/
 
- /* useEffect(() => {
-    if (user && user.sub) {
-      console.log('user.sub: ', user.sub);
-      dispatch(fetchCurrUser(user.sub));
-      dispatch(setCurrentUser());
-    }
-  }, [user]);*/
-
-  useEffect(() => {
-    if(!isLoading && isAuthenticated && user) {
-      dispatch(fetchCurrUser(user));
-    }
-  }, [dispatch, isAuthenticated, isLoading, user]);
-
-  /*useEffect(() => {
-    console.log("CurrentUser: ", currentUser);
-  }, [currentUser]);*/
 
   const handleLogin = async () => {
     console.log('Logging in...');
