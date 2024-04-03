@@ -27,7 +27,7 @@ const getProfile = async (req, res) => {
 };
 
 const editProfile = async (req, res) => {
-  let auth0UserId = req.oidc.user.sub;
+  let auth0UserId = req.params.userID;
   auth0UserId = auth0UserId.replace("auth0|", "");
   const user = await User.findById(auth0UserId);
   if (!user) {

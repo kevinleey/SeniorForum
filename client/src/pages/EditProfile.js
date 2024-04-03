@@ -11,6 +11,7 @@ import "../styles/edit-profile.css";
 import { useNavigate } from "react-router-dom";
 import { EDIT_PROFILE_VALIDATION } from "../constants";
 import validator from "validator";
+import axios from "axios";
 
 const {
   FIRST_NAME_MAXCHAR: maxFirstNameChar,
@@ -28,7 +29,7 @@ function EditProfile() {
   const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const { user: auth0User, isLoading, isAuthenticated } = useAuth0();
+  const { user, isLoading, isAuthenticated } = useAuth0();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -57,7 +58,7 @@ function EditProfile() {
       setLastNameCharCount(currentUser.lastName.length);
       setBioCharCount(currentUser.bio.length);
     }
-  }, [dispatch, isLoading, auth0User, currentUser]);
+  }, [dispatch, isLoading, user, currentUser]);
 
   const handleFirstNameChange = (e) => {
     const { value } = e.target;
@@ -142,7 +143,7 @@ function EditProfile() {
     };
 
     try {
-      const response = await fetch("/users/me", {
+     /* const response = await fetch(`/users/me/${user.sub}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -156,6 +157,15 @@ function EditProfile() {
         setShowMessage(true);
         setTimeout(() => setShowMessage(false), 2000);
         //alert("Your changes have been saved :)")'
+      } else {
+        console.error(`HTTP error! status: ${response.status}`);
+      }*/
+      const response = await axios.put(`/users/me/${user.sub}`, updatedUser);
+
+      if (response.status === 200) {
+        dispatch(setCurrentUser(response.data));
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 2000);
       } else {
         console.error(`HTTP error! status: ${response.status}`);
       }
