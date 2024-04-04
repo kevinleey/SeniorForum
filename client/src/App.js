@@ -10,7 +10,7 @@ import AddPostPage from "./pages/AddPostPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
 import { fetchCurrUser, fetchUsers } from "./features/users/userThunks";
-import {selectAllUsers, setCurrentUser} from "./features/users/userSlice";
+import {selectAllUsers, selectCurrentUser, setCurrentUser} from "./features/users/userSlice";
 import { selectAllPosts } from "./features/posts/postsSlice";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
@@ -25,10 +25,11 @@ function App() {
   const currentPosts = useSelector(selectAllPosts);
   const usersStatus = useSelector((state) => state.users.status);
   const users = useSelector(selectAllUsers);
-  const timerRef = useRef(null);
 
+  const timerRef = useRef(null);
   let previousPosts = useRef(currentPosts);
 
+  const currentUser = useSelector(selectCurrentUser);
   const { user, isLoading, getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   useEffect(() => {

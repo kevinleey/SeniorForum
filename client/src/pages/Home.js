@@ -19,7 +19,11 @@ function Home() {
   const { user, isLoading, isAuthenticated, loginWithRedirect, logout, getAccessTokenSilently } = useAuth0();
   const error = useSelector((state) => state.users.error);
 
-
+  useEffect(() => {
+    if(currentUser && (!currentUser.firstName || !currentUser.lastName)) {
+      navigate("/edit-profile");
+    }
+  }, [currentUser, navigate]);
 
   const handleLogin = async () => {
     console.log('Logging in...');

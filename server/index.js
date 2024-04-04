@@ -24,9 +24,9 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   baseURL: "http://localhost:3000",
-  clientID: "7CEAotFZme2gstjkZWCwTzoKfM9f1OrV",
-  issuerBaseURL: "https://dev-xva3bwyqfub0c5sf.us.auth0.com/",
-  secret: "jAifA-5yGNbcpOJPgv0ZZRgNkdGhzsmafoe_CRasvctssfpVgWFQ6GfHG_kW6BZA",
+  clientID: process.env.AUTH_CLIENT_ID, //"7CEAotFZme2gstjkZWCwTzoKfM9f1OrV",
+  issuerBaseURL: process.env.AUTH_ISSUER_BASE_URL,  //"https://dev-xva3bwyqfub0c5sf.us.auth0.com/",
+  secret: process.env.AUTH_SECRET       //"jAifA-5yGNbcpOJPgv0ZZRgNkdGhzsmafoe_CRasvctssfpVgWFQ6GfHG_kW6BZA",
 };
 
 const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.9bfewjc.mongodb.net/?retryWrites=true&w=majority`;
@@ -37,7 +37,7 @@ app.use(auth(config));
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
 
-app.post("/auth0-proxy", async (req, res) => {
+/*app.post("/auth0-proxy", async (req, res) => {
   try {
     // Make a request to Auth0 server
     const response = await fetch("https://dev-xva3bwyqfub0c5sf.us.auth0.com/authorize", {
@@ -64,15 +64,15 @@ app.post("/auth0-proxy", async (req, res) => {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error: " });
   }
-});
+});*/
 
-app.get("/admin-page", (req, res) => {
+/*app.get("/admin-page", (req, res) => {
   if(req.user && req.user.role === 'Admin') {
     res.send("Welcome to the admin page");
   } else {
     res.status(401).send("Unauthorized");
   }
-});
+});*/
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
