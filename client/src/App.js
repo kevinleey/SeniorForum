@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import EditPostPage from "./pages/EditPostPage";
 import Admin from "./pages/Admin";
+import AccountSettings   from "./pages/AccountSettings";
 import {useAuth0} from "@auth0/auth0-react";
 import axios from "axios";
 
@@ -86,6 +87,7 @@ function App() {
           <Route path="/edit-post/:postId" element={<EditPostPage />} />
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/admin-page" element={<Admin />} />
+          <Route path="/account-settings" element={<AccountSettings />} />
         </Routes>
       </BrowserRouter>
     </div>

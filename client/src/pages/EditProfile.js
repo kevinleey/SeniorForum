@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import "../styles/edit-profile.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentUser, setCurrentUser } from "../features/users/userSlice";
-import { fetchCurrUser } from "../features/users/userThunks";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/account.css";
 import "../styles/edit-profile.css";
@@ -45,10 +44,6 @@ function EditProfile() {
   const [bioError, setBioError] = useState("");
 
   useEffect(() => {
-    /*if (!isLoading && auth0User) {
-      dispatch(fetchCurrUser(auth0User));
-      dispatch(setCurrentUser(auth0User));
-    }*/
     if (currentUser) {
       setFirstName(currentUser.firstName);
       setLastName(currentUser.lastName);
@@ -143,23 +138,6 @@ function EditProfile() {
     };
 
     try {
-     /* const response = await fetch(`/users/me/${user.sub}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedUser),
-      });
-
-      if (response.ok) {
-        const updatedUserData = await response.json();
-        dispatch(setCurrentUser(updatedUserData));
-        setShowMessage(true);
-        setTimeout(() => setShowMessage(false), 2000);
-        //alert("Your changes have been saved :)")'
-      } else {
-        console.error(`HTTP error! status: ${response.status}`);
-      }*/
       const response = await axios.put(`/users/me/${user.sub}`, updatedUser);
 
       if (response.status === 200) {

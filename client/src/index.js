@@ -11,7 +11,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Auth0Provider
-        domain= "dev-xva3bwyqfub0c5sf.us.auth0.com"
+        domain= "dev-xva3bwyqfub0c5sf.us.auth0.com"    //The domain, clientID, and audience are all public information, as long as secret is hidden
         clientId= "7CEAotFZme2gstjkZWCwTzoKfM9f1OrV"
         authorizationParams={{
             redirect_uri: window.location.origin

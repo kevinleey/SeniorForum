@@ -25,8 +25,8 @@ export const NAV_ITEMS = [
     href: "/account",
     text: "MY ACCOUNT", //sends to user profile
     subItems: [
-      { href: "", text: "Account Settings" }, //will send to account settings page (unmade)
-      { href: "http://localhost:3001/login", text: "Login" }, //redirects user to Auth0 login page, will change to logout if user is logged in
+      { href: "/account-settings", text: "Account Settings" },
+      { href: "http://localhost:3001/login", text: "Login" },
     ],
   },
 ];

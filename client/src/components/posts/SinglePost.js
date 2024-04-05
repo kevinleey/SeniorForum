@@ -26,13 +26,6 @@ function SinglePost({ post, comments }) {
   const dispatch = useDispatch();
   const { user: auth0User, isLoading, loginWithRedirect } = useAuth0();
 
-  /*useEffect(() => {
-    if (!isLoading && auth0User) {
-      dispatch(fetchCurrUser(auth0User));
-      dispatch(setCurrentUser(auth0User));
-    }
-  }, [dispatch, isLoading, auth0User]);*/
-
   if (!currentUser) {
     loginWithRedirect();
     return null;
