@@ -49,9 +49,18 @@ function EditProfile() {
       setLastName(currentUser.lastName);
       setBio(currentUser.bio);
 
-      setFirstNameCharCount(currentUser.firstName.length);
-      setLastNameCharCount(currentUser.lastName.length);
-      setBioCharCount(currentUser.bio.length);
+      if(currentUser.firstName) {
+        setFirstNameCharCount(currentUser.firstName.length);
+      }
+
+      if(currentUser.lastName) {
+        setLastNameCharCount(currentUser.lastName.length);
+      }
+
+        if(currentUser.bio) {
+          setBioCharCount(currentUser.bio.length);
+        }
+
     }
   }, [dispatch, isLoading, user, currentUser]);
 
@@ -100,7 +109,7 @@ function EditProfile() {
 
     const sanitizedFirstName = validator.escape(firstName);
     const sanitizedLastName = validator.escape(lastName);
-    const sanitizedBio = validator.escape(bio);
+    const sanitizedBio = bio ? validator.escape(bio) : "";
 
     console.log("Sanitized first name:", sanitizedFirstName);
     console.log("Sanitized last name:", sanitizedLastName);
