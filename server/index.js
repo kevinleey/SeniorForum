@@ -28,6 +28,8 @@ app.use(
 );
 app.use(sanitize());
 
+app.disable('x-powered-by');
+
 const config = {
   authRequired: false,
   auth0Logout: true,
