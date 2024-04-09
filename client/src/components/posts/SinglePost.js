@@ -24,17 +24,10 @@ function SinglePost({ post, comments }) {
 
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const { user: auth0User, isLoading } = useAuth0();
-
-  useEffect(() => {
-    if (!isLoading && auth0User) {
-      dispatch(fetchCurrUser(auth0User));
-      dispatch(setCurrentUser(auth0User));
-    }
-  }, [dispatch, isLoading, auth0User]);
+  const { user: auth0User, isLoading, loginWithRedirect } = useAuth0();
 
   if (!currentUser) {
-    window.location.href = "http://localhost:3001/login";
+    loginWithRedirect();
     return null;
   }
 

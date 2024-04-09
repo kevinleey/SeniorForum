@@ -27,6 +27,12 @@ export const userSlice = createSlice({
       // New reducer
       state.currentUser = action.payload;
     },
+    resetCurrentUser: (state, action) => {
+      state.currentUser = null;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -43,11 +49,14 @@ export const userSlice = createSlice({
       })
       .addCase(fetchCurrUser.fulfilled, (state, action) => {
         state.currentUser = action.payload;
+      })
+      .addCase(fetchCurrUser.rejected, (state, action) => {
+        state.error = action.error.message;
       });
   },
 });
 
-export const { addUser, updateUser, setCurrentUser } = userSlice.actions;
+export const { addUser, updateUser, setCurrentUser, resetCurrentUser } = userSlice.actions;
 
 export default userSlice.reducer;
 

@@ -4,13 +4,13 @@ import Footer from "../components/Footer";
 import "../styles/edit-profile.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCurrentUser, setCurrentUser } from "../features/users/userSlice";
-import { fetchCurrUser } from "../features/users/userThunks";
 import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/account.css";
 import "../styles/edit-profile.css";
 import { useNavigate } from "react-router-dom";
 import { EDIT_PROFILE_VALIDATION } from "../constants";
 import validator from "validator";
+import axios from "axios";
 
 const {
   FIRST_NAME_MAXCHAR: maxFirstNameChar,
@@ -28,7 +28,7 @@ function EditProfile() {
   const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const { user: auth0User, isLoading } = useAuth0();
+  const { user, isLoading, isAuthenticated } = useAuth0();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -44,20 +44,25 @@ function EditProfile() {
   const [bioError, setBioError] = useState("");
 
   useEffect(() => {
-    if (!isLoading && auth0User) {
-      dispatch(fetchCurrUser(auth0User));
-      dispatch(setCurrentUser(auth0User));
-    }
     if (currentUser) {
       setFirstName(currentUser.firstName);
       setLastName(currentUser.lastName);
       setBio(currentUser.bio);
 
-      setFirstNameCharCount(currentUser.firstName.length);
-      setLastNameCharCount(currentUser.lastName.length);
-      setBioCharCount(currentUser.bio.length);
+      if(currentUser.firstName) {
+        setFirstNameCharCount(currentUser.firstName.length);
+      }
+
+      if(currentUser.lastName) {
+        setLastNameCharCount(currentUser.lastName.length);
+      }
+
+        if(currentUser.bio) {
+          setBioCharCount(currentUser.bio.length);
+        }
+
     }
-  }, [dispatch, isLoading, auth0User, currentUser]);
+  }, [dispatch, isLoading, user, currentUser]);
 
   const handleFirstNameChange = (e) => {
     const { value } = e.target;
@@ -104,7 +109,7 @@ function EditProfile() {
 
     const sanitizedFirstName = validator.escape(firstName);
     const sanitizedLastName = validator.escape(lastName);
-    const sanitizedBio = validator.escape(bio);
+    const sanitizedBio = bio ? validator.escape(bio) : "";
 
     console.log("Sanitized first name:", sanitizedFirstName);
     console.log("Sanitized last name:", sanitizedLastName);
@@ -142,20 +147,12 @@ function EditProfile() {
     };
 
     try {
-      const response = await fetch("/users/me", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedUser),
-      });
+      const response = await axios.put(`/users/me/${user.sub}`, updatedUser);
 
-      if (response.ok) {
-        const updatedUserData = await response.json();
-        dispatch(setCurrentUser(updatedUserData));
+      if (response.status === 200) {
+        dispatch(setCurrentUser(response.data));
         setShowMessage(true);
         setTimeout(() => setShowMessage(false), 2000);
-        //alert("Your changes have been saved :)")'
       } else {
         console.error(`HTTP error! status: ${response.status}`);
       }
@@ -185,22 +182,28 @@ function EditProfile() {
     <div id="page-overview">
       <Navbar />
       <div id="page-container">
+
         <h1>Edit Profile Page</h1>
+        <br/>
+        {!currentUser.firstName || !currentUser.lastName ? <h2>Welcome to the forum! Please update your first and last name to continue.</h2> : null}
+
         <div id="edit-profile-container">
+
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="26"
-            height="26"
-            fill="currentColor"
-            id="bi-arrow-left"
-            viewBox="0 0 16 16"
-            onClick={handleClick}
+              xmlns="http://www.w3.org/2000/svg"
+              width="26"
+              height="26"
+              fill="currentColor"
+              id="bi-arrow-left"
+              viewBox="0 0 16 16"
+              onClick={handleClick}
           >
             <path
-              fillRule="evenodd"
-              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+                fillRule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
             />
           </svg>
+
           <form onSubmit={handleSubmit}>
             <div id="form-container">
               <label>
@@ -263,12 +266,12 @@ function EditProfile() {
             {/* Add more fields as needed */}
             <div id="save-changes">
               {showMessage && <p>Your changes have been saved :)</p>}
-              <input id="button" type="submit" value="Save" />
+              <input id="button" type="submit" value="Save"/>
             </div>
           </form>
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 }

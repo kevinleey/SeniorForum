@@ -15,16 +15,33 @@ import { fetchPosts } from "../features/posts/postsThunks";
 function Account() {
   const posts = useSelector(selectAllPosts);
   const currentUser = useSelector(selectCurrentUser);
-  const { user: auth0User, isLoading } = useAuth0();
+  const { user: auth0User, isLoading, getAccessTokenSilently, loginWithRedirect } = useAuth0();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (!isLoading && auth0User) {
       dispatch(fetchCurrUser(auth0User));
       dispatch(setCurrentUser(auth0User));
     }
   }, [dispatch, isLoading, auth0User]);
+
+  /*useEffect(() => {
+    const getUser = async () => {
+      if (!isLoading) {
+        try {
+          await getAccessTokenSilently();
+          if (auth0User) {
+            dispatch(fetchCurrUser(auth0User));
+            dispatch(setCurrentUser(auth0User));
+          }
+        } catch (error) {
+          navigate("/login");
+        }
+      }
+    };
+    getUser();
+  }, [dispatch, isLoading, auth0User, getAccessTokenSilently, navigate]);*/
 
   useEffect(() => {
     if (currentUser) {
@@ -34,8 +51,10 @@ function Account() {
   }, [currentUser, dispatch]);
 
   if (!currentUser) {
-    window.location.href = "http://localhost:3001/login";
-    return null;
+    //window.location.href = "http://localhost:3001/login";
+    //return null;
+    loginWithRedirect();
+
   }
 
   const currPosts = posts.filter(

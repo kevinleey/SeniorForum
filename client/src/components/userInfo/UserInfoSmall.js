@@ -17,12 +17,12 @@ function UserInfoSmall({ user }) {
   const { user: auth0User, isLoading } = useAuth0();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (!isLoading && auth0User) {
       dispatch(fetchCurrUser(auth0User));
       dispatch(setCurrentUser(auth0User));
     }
-  }, [dispatch, isLoading, auth0User]);
+  }, [dispatch, isLoading, auth0User]);*/
 
   let userProfileURI = `/profile/${user._id}`;
 
