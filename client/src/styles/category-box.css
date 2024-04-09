@@ -44,3 +44,11 @@
 #thread-count h3 {
   padding-bottom: 10px;
 }
+
+
+/*const sortPosts = (e) => {*/
+/*                         const value = e.target.value;*/
+/*                         if (value === "recent") {*/
+/*                         posts.sort((a, b) => a.dateCreated - b.dateCreated);*/
+/*                       }*/
+/*                       };*/

@@ -13,14 +13,13 @@ import Spinner from "../components/Spinner";
 
 function Home() {
   const posts = useSelector(selectAllPosts);
-  const [sortedPosts, setSortedPosts] = useState(posts);
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const selectSort = document.getElementById("sorting-dropdown");
   // const { user: auth0User, isLoading } = useAuth0();
   const navigate = useNavigate();
   const { isLoading } = useAuth0();
   const error = useSelector((state) => state.users.error);
+  const [sortType, setSortType] = useState("recent");
 
   useEffect(() => {
     if (currentUser && (!currentUser.firstName || !currentUser.lastName)) {
@@ -33,16 +32,20 @@ function Home() {
   }
 
   const sortPosts = (e) => {
-    // const value = e.target.value;
-    // console.log(value);
-    // let sortedPosts;
-    // if (value === "popular") {
-    //   sortedPosts = [...posts].sort((a, b) => b.comments.length - a.comments.length);
-    // } else {
-    //   sortedPosts = [...posts].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    // }
-    // dispatch()
-  };
+    setSortType(e.target.value);
+  }
+
+  let sortedPosts = [...posts];
+
+  if (sortType === "recent") {
+    sortedPosts.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
+  }
+  else if (sortType === "oldest") {
+    sortedPosts.sort((a, b) => new Date(a.dateCreated) - new Date(b.dateCreated));
+  }
+  else if (sortType === "popular") {
+    sortedPosts.sort((a, b) => b.comments.length - a.comments.length);
+  }
 
   return (
     <div id="page-background">
@@ -58,10 +61,11 @@ function Home() {
           {error && <div>Error: {error}</div>}
           <select id="sorting-dropdown" onChange={(e) => sortPosts(e)}>
             <option value="recent">Recent</option>
+            <option value="oldest">Oldest</option>
             <option value="popular">Popular</option>
           </select>
         </div>
-        <PostList posts={posts}/>
+        <PostList posts={sortedPosts}/>
       </div>
       <Footer/>
     </div>

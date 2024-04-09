@@ -2,3 +2,29 @@
   background-color: white;
   box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
+
+#page-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+#sorting-dropdown {
+  width: 200px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+#sorting-dropdown option {
+  text-align: center;
+  cursor: pointer;
+}
+
+#sorting-dropdown option:hover {
+  cursor: pointer;
+}
