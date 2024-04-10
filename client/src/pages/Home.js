@@ -20,6 +20,7 @@ function Home() {
   const { isLoading } = useAuth0();
   const error = useSelector((state) => state.users.error);
   const [sortType, setSortType] = useState("recent");
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     if (currentUser && (!currentUser.firstName || !currentUser.lastName)) {
@@ -35,6 +36,10 @@ function Home() {
     setSortType(e.target.value);
   }
 
+  const searchPosts = (e) => {
+    setSearchValue(e.target.value);
+  }
+
   let sortedPosts = [...posts];
 
   if (sortType === "recent") {
@@ -45,6 +50,10 @@ function Home() {
   }
   else if (sortType === "popular") {
     sortedPosts.sort((a, b) => b.comments.length - a.comments.length);
+  }
+
+  if (searchValue) {
+    sortedPosts = sortedPosts.filter((post) => post.createdBy.firstName.toLowerCase().includes(searchValue.toLowerCase()));
   }
 
   return (
@@ -59,6 +68,7 @@ function Home() {
               : "Welcome, here are some recent posts. Login to join the community!"}
           </h1>
           {error && <div>Error: {error}</div>}
+          <input type="search" id="home-post-search" placeholder="Search Users" onChange={(e) => searchPosts(e)}/>
           <select id="sorting-dropdown" onChange={(e) => sortPosts(e)}>
             <option value="recent">Recent</option>
             <option value="oldest">Oldest</option>

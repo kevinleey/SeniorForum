@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import { imageLinks } from "../constants";
@@ -23,6 +23,8 @@ function Account() {
   } = useAuth0();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [sortType, setSortType] = useState("recent");
+  const [searchValue, setSearchValue] = useState("");
 
   /*useEffect(() => {
     if (!isLoading && auth0User) {
@@ -69,6 +71,30 @@ function Account() {
     navigate("/edit-profile");
   };
 
+  const sortPosts = (e) => {
+    setSortType(e.target.value);
+  }
+
+  const searchPosts = (e) => {
+    setSearchValue(e.target.value);
+  }
+
+  let sortedPosts = [...currPosts];
+
+  if (sortType === "recent") {
+    sortedPosts.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
+  }
+  else if (sortType === "oldest") {
+    sortedPosts.sort((a, b) => new Date(a.dateCreated) - new Date(b.dateCreated));
+  }
+  else if (sortType === "popular") {
+    sortedPosts.sort((a, b) => b.comments.length - a.comments.length);
+  }
+
+  if (searchValue) {
+    sortedPosts = sortedPosts.filter((post) => post.title.toLowerCase().includes(searchValue.toLowerCase()));
+  }
+
   return (
     <div id="page-background">
       <Navbar />
@@ -106,15 +132,21 @@ function Account() {
             <div id="account-history">
               <div id="account-history-heading">
                 <h2>Post History</h2>
+                <input type="search" id="account-post-search" placeholder="Search Post Titles" onChange={(e) => searchPosts(e)} />
+                <select id="sorting-dropdown" onChange={(e) => sortPosts(e)}>
+                  <option value="recent">Recent</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="popular">Popular</option>
+                </select>
               </div>
               <div id="account-history-list">
-                <PostList posts={currPosts} />
+                <PostList posts={sortedPosts}/>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer/>
     </div>
   );
 }

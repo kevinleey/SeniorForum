@@ -7,6 +7,10 @@
   justify-content: space-between;
 }
 
+#home-post-search {
+  margin-left: 20%;
+}
+
 #sorting-dropdown {
   width: 200px;
   height: 30px;
