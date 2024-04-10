@@ -22,14 +22,16 @@
 }
 
 #category-title {
+  background-color: floralwhite;
   position: absolute;
   top: 0;
-  left: 6%;
+  left: 10%;
+  right: 10%;
   padding: 10px 20px;
   font-size: 20px;
   text-align: center;
   margin: auto;
-  width: 80%;
+  width: fit-content;
 }
 
 #thread-count {
