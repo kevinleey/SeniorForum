@@ -14,16 +14,16 @@ function Home() {
   const posts = useSelector(selectAllPosts);
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
-  const {  isLoading } = useAuth0();
+  const { isLoading } = useAuth0();
   const error = useSelector((state) => state.users.error);
 
   useEffect(() => {
-    if(currentUser && (!currentUser.firstName || !currentUser.lastName)) {
+    if (currentUser && (!currentUser.firstName || !currentUser.lastName)) {
       navigate("/edit-profile");
     }
   }, [currentUser, navigate]);
 
-  if(isLoading) {
+  if (isLoading) {
     return <Spinner />;
   }
 

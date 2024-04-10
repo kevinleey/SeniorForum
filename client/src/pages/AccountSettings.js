@@ -9,15 +9,21 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../styles/account.css";
 import "../styles/edit-profile.css";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 function AccountSettings() {
-    const currentUser = useSelector(selectCurrentUser);
-    const {user: auth0User, isLoading, getAccessTokenSilently, logout, loginWithRedirect} = useAuth0();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const currentUser = useSelector(selectCurrentUser);
+  const {
+    user: auth0User,
+    isLoading,
+    getAccessTokenSilently,
+    logout,
+    loginWithRedirect,
+  } = useAuth0();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    /*const handleChangePassword = async () => {
+  /*const handleChangePassword = async () => {
         try {
             console.log('password change triggered');
 
@@ -127,54 +133,55 @@ function AccountSettings() {
         }
     }*/
 
-    const handleChangePassword = async () => {
-        try {
-            const accessToken = await getAccessTokenSilently();
+  const handleChangePassword = async () => {
+    try {
+      const accessToken = await getAccessTokenSilently();
 
-            const passwordChangeResponse = await axios.post('https://dev-xva3bwyqfub0c5sf.us.auth0.com/dbconnections/change_password', {
-                client_id: '7CEAotFZme2gstjkZWCwTzoKfM9f1OrV',
-                email: currentUser.email,
-                connection: 'MongoDB',
-            }, {
-                headers: {
-                    'Content-Type' : 'application/json',
-                    'Authorization': `Bearer ${accessToken}`,
-                }
-            });
+      const passwordChangeResponse = await axios.post(
+        "https://dev-xva3bwyqfub0c5sf.us.auth0.com/dbconnections/change_password",
+        {
+          client_id: "7CEAotFZme2gstjkZWCwTzoKfM9f1OrV",
+          email: currentUser.email,
+          connection: "MongoDB",
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      );
 
-            if (passwordChangeResponse.status === 200) {
-                alert('Password reset email sent');
-            } else {
-                //const errorData = await passwordChangeResponse.json();
-                console.error('Error changing password:', passwordChangeResponse.data);
-                alert('Error changing password. Please check the console for details.');
-            }
-        } catch(error) {
-            console.error('Error sending password reset email', error);
-        }
+      if (passwordChangeResponse.status === 200) {
+        alert("Password reset email sent");
+      } else {
+        //const errorData = await passwordChangeResponse.json();
+        console.error("Error changing password:", passwordChangeResponse.data);
+        alert("Error changing password. Please check the console for details.");
+      }
+    } catch (error) {
+      console.error("Error sending password reset email", error);
     }
+  };
 
+  if (!currentUser) {
+    loginWithRedirect();
+    return null;
+  }
 
-    if (!currentUser) {
-        loginWithRedirect();
-        return null;
-    }
+  return (
+    <div id="page-background">
+      <Navbar />
+      <div id="page-container">
+        <h1 className="page-title">Account Settings</h1>
+        <div id="account-container">
+          {<button onClick={handleChangePassword}>Change Password</button>}
 
-    return (
-        <div id="page-background">
-            <Navbar />
-            <div id="page-container">
-                <h1 className="page-title">Account Settings</h1>
-                <div id="account-container">
-                    {<button onClick={handleChangePassword}>Change Password</button>}
-
-                    {/*{<button onClick={handleDeleteAccount}>Delete Account</button>}*/}
-                </div>
-                <Footer />
-            </div>
+          {/*{<button onClick={handleDeleteAccount}>Delete Account</button>}*/}
         </div>
-    );
-
+        <Footer />
+      </div>
+    </div>
+  );
 }
 export default AccountSettings;
-
