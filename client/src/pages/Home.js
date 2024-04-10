@@ -68,12 +68,16 @@ function Home() {
               : "Welcome, here are some recent posts. Login to join the community!"}
           </h1>
           {error && <div>Error: {error}</div>}
-          <input type="search" id="home-post-search" placeholder="Search Users" onChange={(e) => searchPosts(e)}/>
-          <select id="sorting-dropdown" onChange={(e) => sortPosts(e)}>
-            <option value="recent">Recent</option>
-            <option value="oldest">Oldest</option>
-            <option value="popular">Popular</option>
-          </select>
+          {currentUser &&
+            <input type="search" id="home-post-search" placeholder="Search Users" onChange={(e) => searchPosts(e)}/>
+          }
+          {currentUser &&
+            <select id="sorting-dropdown" onChange={(e) => sortPosts(e)}>
+              <option value="recent">Recent</option>
+              <option value="oldest">Oldest</option>
+              <option value="popular">Popular</option>
+            </select>
+          }
         </div>
         <PostList posts={sortedPosts}/>
       </div>
