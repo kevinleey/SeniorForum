@@ -100,6 +100,9 @@
 
 #account-post-search {
   margin-left: 45%;
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 30px;
 }
 
 #sorting-dropdown {

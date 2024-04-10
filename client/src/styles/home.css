@@ -9,6 +9,9 @@
 
 #home-post-search {
   margin-left: 20%;
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 30px;
 }
 
 #sorting-dropdown {

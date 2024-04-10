@@ -14,9 +14,14 @@ function Category() {
     (post) => post.categories.includes(categoryTitle) === true,
   );
   const [sortType, setSortType] = useState("recent");
+  const [searchValue, setSearchValue] = useState("");
 
   const sortPosts = (e) => {
     setSortType(e.target.value);
+  }
+
+  const searchPosts = (e) => {
+    setSearchValue(e.target.value);
   }
 
   let sortedPosts = [...categoryPosts];
@@ -31,12 +36,18 @@ function Category() {
     sortedPosts.sort((a, b) => b.comments.length - a.comments.length);
   }
 
+  if (searchValue) {
+    sortedPosts = sortedPosts.filter((post) => post.title.toLowerCase().includes(searchValue.toLowerCase()));
+  }
+
   return (
     <div id="page-background">
       <Navbar />
       <div id="page-container">
         <div id="page-title">
           <h1 className="page-header">{categoryTitle}</h1>
+          <input type="search" id="category-post-search" placeholder="Search Post Titles"
+                 onChange={(e) => searchPosts(e)}/>
           <select id="sorting-dropdown" onChange={(e) => sortPosts(e)}>
             <option value="recent">Recent</option>
             <option value="oldest">Oldest</option>
