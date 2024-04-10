@@ -11,12 +11,12 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Auth0Provider
-        domain= "dev-xva3bwyqfub0c5sf.us.auth0.com"    //The domain, clientID, and audience are all public information, as long as secret is hidden
-        clientId= "7CEAotFZme2gstjkZWCwTzoKfM9f1OrV"
+        domain="dev-xva3bwyqfub0c5sf.us.auth0.com" //The domain, clientID, and audience are all public information, as long as secret is hidden
+        clientId="7CEAotFZme2gstjkZWCwTzoKfM9f1OrV"
         authorizationParams={{
-            redirect_uri: window.location.origin
+          redirect_uri: window.location.origin,
         }}
-        audience= "https://dev-xva3bwyqfub0c5sf.us.auth0.com/api/v2/"
+        audience="https://dev-xva3bwyqfub0c5sf.us.auth0.com/api/v2/"
         scope={"read:current_user update:current_user_metadata"}
         useRefreshTokens={true}
         cacheLocation="localstorage"

@@ -11,7 +11,7 @@ export default configureStore({
     users: usersReducer,
     auth: (state = {}, action) => {
       const { getAccessTokenSilently } = useAuth0;
-      return { ...state, getAccessTokenSilently} ;
+      return { ...state, getAccessTokenSilently };
     },
   },
 });

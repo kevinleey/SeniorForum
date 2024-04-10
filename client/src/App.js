@@ -10,14 +10,18 @@ import AddPostPage from "./pages/AddPostPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "./features/posts/postsThunks";
 import { fetchCurrUser, fetchUsers } from "./features/users/userThunks";
-import {selectAllUsers, selectCurrentUser, setCurrentUser} from "./features/users/userSlice";
+import {
+  selectAllUsers,
+  selectCurrentUser,
+  setCurrentUser,
+} from "./features/users/userSlice";
 import { selectAllPosts } from "./features/posts/postsSlice";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import EditPostPage from "./pages/EditPostPage";
 import Admin from "./pages/Admin";
-import AccountSettings   from "./pages/AccountSettings";
-import {useAuth0} from "@auth0/auth0-react";
+import AccountSettings from "./pages/AccountSettings";
+import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 
 function App() {
@@ -31,10 +35,11 @@ function App() {
   let previousPosts = useRef(currentPosts);
 
   const currentUser = useSelector(selectCurrentUser);
-  const { user, isLoading, getAccessTokenSilently, isAuthenticated } = useAuth0();
+  const { user, isLoading, getAccessTokenSilently, isAuthenticated } =
+    useAuth0();
 
   useEffect(() => {
-    if(!isLoading && isAuthenticated && user) {
+    if (!isLoading && isAuthenticated && user) {
       dispatch(fetchCurrUser(user));
     }
   }, [dispatch, isAuthenticated, isLoading, user]);
@@ -49,7 +54,7 @@ function App() {
     if (usersStatus === "idle") {
       dispatch(fetchUsers());
     }
-   // dispatch(fetchCurrUser());
+    // dispatch(fetchCurrUser());
   }, [usersStatus, dispatch]);
 
   useEffect(() => {

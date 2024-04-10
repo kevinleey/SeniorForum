@@ -1,28 +1,28 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import { useAuth0 } from "@auth0/auth0-react";
-import {useDispatch, useSelector} from "react-redux";
-import {selectCurrentUser} from "../features/users/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentUser } from "../features/users/userSlice";
 import { useNavigate } from "react-router-dom";
 import { Tab, Nav } from "react-bootstrap";
 import axios from "axios";
 
 function Admin() {
+  const currentUser = useSelector(selectCurrentUser);
+  const { user, isLoading, isAuthenticated, getAccessTokenSilently, get } =
+    useAuth0();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const currentUser = useSelector(selectCurrentUser);
-    const { user, isLoading, isAuthenticated, getAccessTokenSilently, get } = useAuth0();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const [userRole, setUserRole] = useState(null);
+  const [loadingRole, setLoadingRole] = useState(true);
 
-    const [userRole, setUserRole] = useState(null);
-    const [loadingRole, setLoadingRole] = useState(true);
+  const [users, setUsers] = useState([]);
 
-    const [users, setUsers] = useState([]);
+  const [activeKey, setActiveKey] = useState("users");
 
-    const [activeKey, setActiveKey] = useState('users');
-
-    /*const fetchUserRole = async (userId) => {
+  /*const fetchUserRole = async (userId) => {
         console.log('fetchUserRole called with userId:', userId);
        let config = {
            method: 'get',
@@ -42,22 +42,25 @@ function Admin() {
        }
     };*/
 
-    useEffect(() => {
-        if(!isLoading && isAuthenticated && user) {
-            let userRole = user['http://localhost:3000/role'];
-            setUserRole(userRole);
-            setLoadingRole(false);
-        }
-    }, [isLoading, isAuthenticated, user]);
+  useEffect(() => {
+    if (!isLoading && isAuthenticated && user) {
+      let userRole = user["http://localhost:3000/role"];
+      setUserRole(userRole);
+      setLoadingRole(false);
+    }
+  }, [isLoading, isAuthenticated, user]);
 
-    useEffect(() => {
-        if(!isAuthenticated && !isLoading || (!isLoading && !loadingRole && (!userRole || userRole !== 'Admin'))) {
-            navigate("/");
-        }
-    }, [isLoading, userRole, navigate]);
+  useEffect(() => {
+    if (
+      (!isAuthenticated && !isLoading) ||
+      (!isLoading && !loadingRole && (!userRole || userRole !== "Admin"))
+    ) {
+      navigate("/");
+    }
+  }, [isLoading, userRole, navigate]);
 
-    //Not currently working, as it appears that the credential types we have access to as a single-page application are not sufficient to access the scope read:users
-    /*useEffect(() => {
+  //Not currently working, as it appears that the credential types we have access to as a single-page application are not sufficient to access the scope read:users
+  /*useEffect(() => {
         const getUsers = async () => {
             try {
                 const auth0Domain = "dev-xva3bwyqfub0c5sf.us.auth0.com";
@@ -91,21 +94,25 @@ function Admin() {
         getUsers();
     }, []);*/
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    return (
-        <div id="page-background">
-            <Navbar />
-            <div id="page-container">
-                <h1 className="page-title">Admin Dashboard</h1>
-                {currentUser ? <h3>Welcome {currentUser.firstName}</h3> : <h2>Welcome Admin</h2>}
-                {userRole ? <p>User Role: {userRole}</p> : <p>User role not found.</p>}
+  return (
+    <div id="page-background">
+      <Navbar />
+      <div id="page-container">
+        <h1 className="page-title">Admin Dashboard</h1>
+        {currentUser ? (
+          <h3>Welcome {currentUser.firstName}</h3>
+        ) : (
+          <h2>Welcome Admin</h2>
+        )}
+        {userRole ? <p>User Role: {userRole}</p> : <p>User role not found.</p>}
 
-                <br/>
+        <br />
 
-                {/* <div className="users-container">
+        {/* <div className="users-container">
                     <h2>Users</h2>
                     {users.map((user) => (
                         <div key={user.sub}>
@@ -114,13 +121,11 @@ function Admin() {
                         </div>
                     ))}
                 </div> */}
+      </div>
 
-            </div>
-
-
-            <Footer/>
-        </div>
-    );
+      <Footer />
+    </div>
+  );
 }
 
 export default Admin;

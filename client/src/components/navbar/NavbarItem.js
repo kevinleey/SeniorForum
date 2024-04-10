@@ -13,17 +13,23 @@ function NavbarItem({ href, text, subItems, auth }) {
 
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const { user: auth0User, isLoading, loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const {
+    user: auth0User,
+    isLoading,
+    loginWithRedirect,
+    logout,
+    isAuthenticated,
+  } = useAuth0();
 
- const handleAuthAction = async (event) => {
-   event.preventDefault()
-   if (!currentUser) {
-       await loginWithRedirect();
-   }else {
-        await logout();
-        dispatch(setCurrentUser(null));
-   }
- }
+  const handleAuthAction = async (event) => {
+    event.preventDefault();
+    if (!currentUser) {
+      await loginWithRedirect();
+    } else {
+      await logout();
+      dispatch(setCurrentUser(null));
+    }
+  };
 
   const authText = currentUser ? "Logout" : "Login"; //If the user is authenticated, change the text to Logout
   const authHref = currentUser
@@ -45,7 +51,11 @@ function NavbarItem({ href, text, subItems, auth }) {
             <Link
               className="dropdown-item"
               to={item.text === "Login" ? authHref : item.href}
-              onClick={(event) => item.text === "Login" || item.text === "Logout" ? handleAuthAction(event) : null }
+              onClick={(event) =>
+                item.text === "Login" || item.text === "Logout"
+                  ? handleAuthAction(event)
+                  : null
+              }
             >
               {item.text === "Login" ? authText : item.text}
             </Link>

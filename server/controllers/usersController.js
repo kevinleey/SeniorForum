@@ -18,11 +18,11 @@ const getProfile = async (req, res) => {
     auth0Id = auth0Id.replace("auth0|", "");
     const user = await User.findById(auth0Id);
     if (!user) {
-      return res.status(404).json({error: "User not found"});
+      return res.status(404).json({ error: "User not found" });
     }
     res.send(user);
   } catch (error) {
-    res.status(500).json({error: error.message});
+    res.status(500).json({ error: error.message });
   }
 };
 

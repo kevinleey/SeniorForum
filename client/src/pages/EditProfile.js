@@ -49,18 +49,17 @@ function EditProfile() {
       setLastName(currentUser.lastName);
       setBio(currentUser.bio);
 
-      if(currentUser.firstName) {
+      if (currentUser.firstName) {
         setFirstNameCharCount(currentUser.firstName.length);
       }
 
-      if(currentUser.lastName) {
+      if (currentUser.lastName) {
         setLastNameCharCount(currentUser.lastName.length);
       }
 
-        if(currentUser.bio) {
-          setBioCharCount(currentUser.bio.length);
-        }
-
+      if (currentUser.bio) {
+        setBioCharCount(currentUser.bio.length);
+      }
     }
   }, [dispatch, isLoading, user, currentUser]);
 
@@ -182,25 +181,28 @@ function EditProfile() {
     <div id="page-overview">
       <Navbar />
       <div id="page-container">
-
         <h1>Edit Profile Page</h1>
-        <br/>
-        {!currentUser.firstName || !currentUser.lastName ? <h2>Welcome to the forum! Please update your first and last name to continue.</h2> : null}
+        <br />
+        {!currentUser.firstName || !currentUser.lastName ? (
+          <h2>
+            Welcome to the forum! Please update your first and last name to
+            continue.
+          </h2>
+        ) : null}
 
         <div id="edit-profile-container">
-
           <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="26"
-              height="26"
-              fill="currentColor"
-              id="bi-arrow-left"
-              viewBox="0 0 16 16"
-              onClick={handleClick}
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            fill="currentColor"
+            id="bi-arrow-left"
+            viewBox="0 0 16 16"
+            onClick={handleClick}
           >
             <path
-                fillRule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+              fillRule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
             />
           </svg>
 
@@ -266,12 +268,12 @@ function EditProfile() {
             {/* Add more fields as needed */}
             <div id="save-changes">
               {showMessage && <p>Your changes have been saved :)</p>}
-              <input id="button" type="submit" value="Save"/>
+              <input id="button" type="submit" value="Save" />
             </div>
           </form>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
