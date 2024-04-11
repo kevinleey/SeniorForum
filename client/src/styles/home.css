@@ -1,3 +1,36 @@
 #posts-box {
   background-color: white;
 }
+
+#page-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+#home-post-search {
+  margin-left: 20%;
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 30px;
+}
+
+#sorting-dropdown {
+  width: 200px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+#sorting-dropdown option {
+  text-align: center;
+  cursor: pointer;
+}
+
+#sorting-dropdown option:hover {
+  cursor: pointer;
+}

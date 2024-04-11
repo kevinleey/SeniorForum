@@ -97,3 +97,31 @@
   transform: scale(0.95);
   background-color: #7a0d0d;
 }
+
+#account-post-search {
+  margin-left: 45%;
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 30px;
+}
+
+#sorting-dropdown {
+  width: 200px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+#sorting-dropdown option {
+  text-align: center;
+  cursor: pointer;
+}
+
+#sorting-dropdown option:hover {
+  cursor: pointer;
+}
