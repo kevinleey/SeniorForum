@@ -76,7 +76,10 @@ function Account() {
   }
 
   const searchPosts = (e) => {
-    setSearchValue(e.target.value);
+    let tmp = e.target.value;
+    tmp = tmp.replace(/\$/g, "");
+    tmp = tmp.replace(/<script>/g, "");
+    setSearchValue(tmp);
   }
 
   let sortedPosts = [...currPosts];
