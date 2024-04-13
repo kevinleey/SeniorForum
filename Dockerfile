@@ -1,7 +1,7 @@
 FROM node:latest
-WORKDIR /app
-COPY package.json ./
+WORKDIR /server
+COPY ./package*.json ./
 RUN npm install
-COPY . .
-EXPOSE 3000
+COPY .. .
+EXPOSE 3001
 CMD ["npm","start"]
