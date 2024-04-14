@@ -106,3 +106,21 @@
   padding-left: 20px;
   margin: 10px;
 }
+
+input:disabled {
+  background-color: darkgrey;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+textarea:disabled {
+  background-color: darkgrey;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+button:disabled {
+  background-color: darkgrey;
+  color: #fff;
+  cursor: not-allowed;
+}

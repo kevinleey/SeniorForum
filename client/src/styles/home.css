@@ -5,6 +5,11 @@
 #page-title {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.page-header {
+  width: 100%;
 }
 
 #home-post-search {

@@ -8,7 +8,6 @@ import { selectAllPosts } from "../features/posts/postsSlice";
 import PostList from "../components/posts/PostList";
 import { selectCurrentUser, setCurrentUser } from "../features/users/userSlice";
 import { useNavigate } from "react-router-dom";
-import { fetchCurrUser } from "../features/users/userThunks";
 import { useAuth0 } from "@auth0/auth0-react";
 import { fetchPosts } from "../features/posts/postsThunks";
 
@@ -26,30 +25,6 @@ function Account() {
   const [sortType, setSortType] = useState("recent");
   const [searchValue, setSearchValue] = useState("");
 
-  /*useEffect(() => {
-    if (!isLoading && auth0User) {
-      dispatch(fetchCurrUser(auth0User));
-      dispatch(setCurrentUser(auth0User));
-    }
-  }, [dispatch, isLoading, auth0User]);
-
-  /*useEffect(() => {
-    const getUser = async () => {
-      if (!isLoading) {
-        try {
-          await getAccessTokenSilently();
-          if (auth0User) {
-            dispatch(fetchCurrUser(auth0User));
-            dispatch(setCurrentUser(auth0User));
-          }
-        } catch (error) {
-          navigate("/login");
-        }
-      }
-    };
-    getUser();
-  }, [dispatch, isLoading, auth0User, getAccessTokenSilently, navigate]);*/
-
   useEffect(() => {
     if (currentUser) {
       // Fetch the posts again
@@ -58,8 +33,6 @@ function Account() {
   }, [currentUser, dispatch]);
 
   if (!currentUser) {
-    //window.location.href = "http://localhost:3001/login";
-    //return null;
     loginWithRedirect();
   }
 
@@ -106,8 +79,8 @@ function Account() {
         <div id="account-container">
           <div id="image-area">
             <img
-              src={imageLinks.USER.USER_PICTURE_LINK}
-              alt={imageLinks.USER.USER_PICTURE_TEXT}
+                src={currentUser.picture ? currentUser.picture : imageLinks.USER.USER_PICTURE_LINK}
+                alt={imageLinks.USER.USER_PICTURE_TEXT}
             />
             <div id="follow-bar">
               <p>Followers</p>

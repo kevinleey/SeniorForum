@@ -110,9 +110,9 @@ function EditProfile() {
     const sanitizedLastName = validator.escape(lastName);
     const sanitizedBio = bio ? validator.escape(bio) : "";
 
-    console.log("Sanitized first name:", sanitizedFirstName);
-    console.log("Sanitized last name:", sanitizedLastName);
-    console.log("Sanitized bio:", sanitizedBio);
+    //console.log("Sanitized first name:", sanitizedFirstName);
+    //console.log("Sanitized last name:", sanitizedLastName);
+    //console.log("Sanitized bio:", sanitizedBio);
 
     if (sanitizedFirstName.trim() === "") {
       setFirstNameError(firstNameBlankText);

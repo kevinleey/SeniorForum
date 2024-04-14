@@ -22,6 +22,8 @@ const {
 } = CV;
 
 function CommentForm({ existingComment, onSubmitSuccess }) {
+  const currentUser = useSelector(selectCurrentUser);
+  const isBanned = currentUser && currentUser.banned;
   const dispatch = useDispatch();
   const user = useSelector(selectCurrentUser);
   const postId = useSelector(selectCurrentPostId);
@@ -91,7 +93,8 @@ function CommentForm({ existingComment, onSubmitSuccess }) {
         value={commentData}
         onChange={handleInputChange}
         name="comment"
-        placeholder={placeholderString}
+        placeholder={isBanned? "Cannot comment while banned" : placeholderString}
+        disabled={isBanned}
       />
       <div className="input-form-footer">
         <div>
@@ -100,7 +103,7 @@ function CommentForm({ existingComment, onSubmitSuccess }) {
           </span>
           {error && <span className="error-message">{error}</span>}
         </div>
-        <button type="submit" className="submit-button">
+        <button type="submit" className="submit-button" disabled={isBanned}>
           {existingComment ? editText : addText}
         </button>
       </div>

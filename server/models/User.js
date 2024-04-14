@@ -7,6 +7,9 @@ const userSchema = new Schema({
   email: String,
   assocPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
   bio: String,
+  banned: Boolean,
+  admin: Boolean,
+  picture: String,
 });
 
 const User = model("User", userSchema);

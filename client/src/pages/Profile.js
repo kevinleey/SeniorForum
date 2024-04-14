@@ -51,7 +51,7 @@ function Profile() {
         <div id="account-container">
           <div id="image-area">
             <img
-              src={imageLinks.USER.USER_PICTURE_LINK}
+              src={user.picture ? user.picture : imageLinks.USER.USER_PICTURE_LINK}
               alt={imageLinks.USER.USER_PICTURE_TEXT}
             />
             <div id="follow-bar">
@@ -72,8 +72,7 @@ function Profile() {
             <h2 className="bio">Bio:</h2>
             <div id="account-bio">
               <p>
-                I am a caregiver for my mother who has dementia. I am looking
-                for advice on how to handle her mood swings.
+                {user.bio}
               </p>
             </div>
             <div id="account-history">
