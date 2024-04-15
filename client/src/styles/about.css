@@ -1,14 +1,3 @@
 #about-container {
   min-height: 626px;
 }
-
-.about-pic {
-    width: 50%;
-    height: auto;
-    border-radius: 50%;
-    margin: 10px;
-    border: #3b3b3b;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}

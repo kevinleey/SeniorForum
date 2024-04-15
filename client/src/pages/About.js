@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
+import imageforabout from "../images/imageforabout.jpg"
 
 function About() {
     return (
@@ -14,12 +15,11 @@ function About() {
                     University of Alabama Retirement Association (TUARA) to provide retirees of the UA System an
                     opportunity to learn more from each other about dementia and caregiving. It is a secure space for
                     caregivers to support each other by asking and answering questions about about their caregiving
-                    experiences. </p>
-
+                    experiences. <br/><br/> <br/><br/></p>
+                <center>
+                    <img src={imageforabout} alt="About" width="500"/>
+                    </center>
             </div>
-        {/*<div>*/}
-        {/*    <img className="about-pic" src="../images/aboutimage.jpg" alt="About Photo"/>*/}
-        {/*</div>*/}
             <Footer/>
         </div>
     )
