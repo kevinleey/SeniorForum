@@ -77,6 +77,19 @@ navBar a {
   font-weight: bold;
 }
 
+.title-container {
+  padding-bottom: 10px;
+}
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .member-container {
   display: flex;
   border: #3b3b3b 2px solid;
