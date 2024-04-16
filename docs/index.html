@@ -114,66 +114,86 @@
       </p>
     </div>
 
-    <button id="button1" onclick="upcomingTasks('red')">
-      Click for Upcoming Tasks
-    </button>
+  <div class="section-container" style="display: block; padding-left: 10px;">
+      <button id="button1" onclick="upcomingTasks('red')">
+        Click for Upcoming Tasks
+      </button>
 
-    <button id="button2" onclick="completedTasks('green')">
-      Click for Completed Tasks
-    </button>
-    <p id="output"></p>
+      <button id="button2" onclick="completedTasks('green')">
+        Click for Completed Tasks
+      </button>
+      <p id="output"></p>
+    </div>
 
     <script>
+
+      var isUpcomingTasksVisible = false;
+      var isCompletedTasksVisible = false;
+
       function upcomingTasks(color) {
         var outputNTask = document.getElementById("output");
-        outputNTask.textContent =
-          "Upcoming Tasks: \n" +
-          "Task 1:  Docker configuration\n" +
-          "Task 2:  Implementation of testing library\n" +
-          "Task 3:  Add an Admin Dashboard to see user accounts\n" +
-          "Task 4:  Implement deleting a post of any user (admin)\n" +
-          "Task 5:  Implement deleting any user (admin)\n" +
-          "Task 6:  Change Password and Delete Account in Account Settings\n" +
-          "Task 7:  Create tutorial for users \n" +
-          "Task 8:  Implement a sorting function for posts\n" +
-          "Task 9:  Add a reusable Spinner component\n" +
-          "Task 10: Create Help component to guide users" +
-          "Task 11: Implement following a user\n" +
-          "Task 12: Implement unfollowing a user\n" +
-          "Task 13: Implement upvoting posts users like\n" +
-          "Task 14: Add user ability to turn off email notifications for comments\n";
-        outputNTask.style.color = color;
+        if(isUpcomingTasksVisible) {
+          outputNTask.textContent = "";
+          isUpcomingTasksVisible = false;
+        } else {
+          outputNTask.textContent =
+                  "Upcoming Tasks: \n" +
+                  "Task 1:  Docker configuration\n" +
+                  "Task 2:  Implementation of testing library\n" +
+                  "Task 3:  Add an Admin Dashboard to see user accounts\n" +
+                  "Task 4:  Implement deleting a post of any user (admin)\n" +
+                  "Task 5:  Implement deleting any user (admin)\n" +
+                  "Task 6:  Change Password and Delete Account in Account Settings\n" +
+                  "Task 7:  Create tutorial for users \n" +
+                  "Task 8:  Implement a sorting function for posts\n" +
+                  "Task 9:  Add a reusable Spinner component\n" +
+                  "Task 10: Create Help component to guide users" +
+                  "Task 11: Implement following a user\n" +
+                  "Task 12: Implement unfollowing a user\n" +
+                  "Task 13: Implement upvoting posts users like\n" +
+                  "Task 14: Add user ability to turn off email notifications for comments\n";
+          outputNTask.style.color = color;
+          isUpcomingTasksVisible = true;
+          isCompletedTasksVisible = false;
+        }
       }
 
       function completedTasks(colorText) {
         var outputOTask = document.getElementById("output");
-        outputOTask.textContent =
-          "Completed Tasks: \n" +
-          "Task 1:  Set up general project structure (client, server) using NodeJS and Express\n" +
-          "Task 2:  Create Profile page and navigate to page\n" +
-          "Task 3:  Edit profile page\n" +
-          "Task 4:  Add clicking categories on post which lead to Category page\n" +
-          "Task 5:  Create Navbar components\n" +
-          "Task 6:  Create Add Post feature and front end page\n" +
-          "Task 7:  Configure MongoDB on the server\n" +
-          "Task 8:  Add initial support for Auth0\n" +
-          "Task 9:  Integrate Redux for east state management\n" +
-          "Task 10:  Create Footer component\n" +
-          "Task 11: Create Category component" +
-          "Task 12: Create Post Overview component\n" +
-          "Task 13: Implement a hover-dropdown menu for Navbar items\n" +
-          "Task 14: Frontend and Backend for displaying a specific post\n" +
-          "Task 15: Create UI mockups for each page (in Figma)\n" +
-          "Task 16: Create User Authentication Page\n" +
-          "Task 17: Create Edit Post Form component" +
-          "Task 18: Create Post Deletion functionality\n" +
-          "Task 19: Implement notification system for comments on posts\n" +
-          "Task 20: Styling For Add and Edit Post\n" +
-          "Task 21: Editing and deleting comments\n" +
-          "Task 22: Implement polling\n" +
-          "Task 23: Implement text validation for add post and update posts" +
-          "Task 24: EditProfile input validation\n";
-        outputOTask.style.color = colorText;
+        if(isCompletedTasksVisible) {
+          outputOTask.textContent = "";
+          isCompletedTasksVisible = false;
+        } else {
+          outputOTask.textContent =
+                  "Completed Tasks: \n" +
+                  "Task 1:  Set up general project structure (client, server) using NodeJS and Express\n" +
+                  "Task 2:  Create Profile page and navigate to page\n" +
+                  "Task 3:  Edit profile page\n" +
+                  "Task 4:  Add clicking categories on post which lead to Category page\n" +
+                  "Task 5:  Create Navbar components\n" +
+                  "Task 6:  Create Add Post feature and front end page\n" +
+                  "Task 7:  Configure MongoDB on the server\n" +
+                  "Task 8:  Add initial support for Auth0\n" +
+                  "Task 9:  Integrate Redux for east state management\n" +
+                  "Task 10:  Create Footer component\n" +
+                  "Task 11: Create Category component" +
+                  "Task 12: Create Post Overview component\n" +
+                  "Task 13: Implement a hover-dropdown menu for Navbar items\n" +
+                  "Task 14: Frontend and Backend for displaying a specific post\n" +
+                  "Task 15: Create UI mockups for each page (in Figma)\n" +
+                  "Task 16: Create User Authentication Page\n" +
+                  "Task 17: Create Edit Post Form component" +
+                  "Task 18: Create Post Deletion functionality\n" +
+                  "Task 19: Implement notification system for comments on posts\n" +
+                  "Task 20: Styling For Add and Edit Post\n" +
+                  "Task 21: Editing and deleting comments\n" +
+                  "Task 22: Implement polling\n" +
+                  "Task 23: Implement text validation for add post and update posts" +
+                  "Task 24: EditProfile input validation\n";
+          outputOTask.style.color = colorText;
+            isCompletedTasksVisible = true;
+            isUpcomingTasksVisible = false;
+        }
       }
     </script>
     <br />
