@@ -38,7 +38,7 @@ const fetchCurrUser = createAsyncThunk(
     async (userID, thunkAPI) => {
         //const getAccessTokenSilently = thunkAPI.getState().auth.getAccessTokenSilently;
         try {
-            const response = await fetch(`http://localhost:3001/users/me/${userID}`);
+            const response = await fetch(`http://backend:3001/users/me/${userID}`);
             const data = await response.json();
             return data;
         } catch (error) {
