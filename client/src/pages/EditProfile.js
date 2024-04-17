@@ -28,7 +28,7 @@ function EditProfile() {
   const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const { user, isLoading, isAuthenticated } = useAuth0();
+  const { user, isLoading } = useAuth0();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
