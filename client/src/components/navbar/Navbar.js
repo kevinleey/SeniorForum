@@ -5,6 +5,8 @@ import { NAV_RESOURCES as navResources } from "../../constants";
 import "../../styles/navbar.css";
 import "../../styles/dropdown.css";
 import { Link } from "react-router-dom";
+import {selectCurrentUser} from "../../features/users/userSlice";
+import {useSelector} from "react-redux";
 
 function Navbar() {
   const {
@@ -13,6 +15,9 @@ function Navbar() {
     NAVBAR_ICON_URL: iconUrl,
     NAVBAR_ALT_TEXT: altText,
   } = navResources;
+
+  const currentUser = useSelector(selectCurrentUser);
+  const isAdmin = currentUser && currentUser.role === "Admin";
 
   return (
     <header>
@@ -36,6 +41,9 @@ function Navbar() {
                   subItems={item.subItems}
                 />
               ))}
+              {isAdmin && (
+                <NavbarItem text="ADMIN" href="/admin-page" />
+              )}
             </ul>
           </nav>
         </div>

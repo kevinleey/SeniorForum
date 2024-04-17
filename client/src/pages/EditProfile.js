@@ -28,7 +28,7 @@ function EditProfile() {
   const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
-  const { user, isLoading, isAuthenticated } = useAuth0();
+  const { user, isLoading } = useAuth0();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -110,9 +110,9 @@ function EditProfile() {
     const sanitizedLastName = validator.escape(lastName);
     const sanitizedBio = bio ? validator.escape(bio) : "";
 
-    console.log("Sanitized first name:", sanitizedFirstName);
-    console.log("Sanitized last name:", sanitizedLastName);
-    console.log("Sanitized bio:", sanitizedBio);
+    //console.log("Sanitized first name:", sanitizedFirstName);
+    //console.log("Sanitized last name:", sanitizedLastName);
+    //console.log("Sanitized bio:", sanitizedBio);
 
     if (sanitizedFirstName.trim() === "") {
       setFirstNameError(firstNameBlankText);

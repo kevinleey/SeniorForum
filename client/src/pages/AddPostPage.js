@@ -12,6 +12,7 @@ import {
 } from "../constants";
 import "../styles/navbar.css";
 import "../styles/new-post-page.css";
+import {useAuth0} from "@auth0/auth0-react";
 //import PostList from "../components/posts/PostList";
 
 const {
@@ -24,6 +25,9 @@ const {
 } = PV;
 
 function AddPostForm() {
+  const currentUser = useSelector(selectCurrentUser);
+  const { loginWithRedirect } = useAuth0();
+  const isBanned = currentUser && currentUser.banned;
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
@@ -42,6 +46,10 @@ function AddPostForm() {
   }
   const navigate = useNavigate();
   const user = useSelector(selectCurrentUser);
+
+if(!currentUser) {
+    loginWithRedirect();
+}
 
   const handleCheckboxChange = (category) => {
     setSelectedCategories((prevSelected) => {
@@ -119,7 +127,7 @@ function AddPostForm() {
         <div id="add-post-container">
           <div id="image-area">
             <img
-              src={imageLinks.USER.USER_PICTURE_LINK}
+              src={user.picture ? user.picture : imageLinks.USER.USER_PICTURE_LINK}
               alt={imageLinks.USER.USER_PICTURE_TEXT}
             />
           </div>
@@ -132,8 +140,9 @@ function AddPostForm() {
                 className={`add-post-input-title ${titleErr ? "invalid-input" : ""}`}
                 type="text"
                 value={title}
-                placeholder="Input your post title"
+                placeholder={isBanned ? "Cannot post while banned" : "Input your post title"}
                 onChange={(e) => handleTitleChange(e)}
+                disabled = {isBanned}
               />
               <span className={`char-remaining ${titleErr && "error-message"}`}>
                 {numTitleCharString}
@@ -150,9 +159,10 @@ function AddPostForm() {
             <div id="post-title-heading">
               <textarea
                 className={`add-post-input-text ${bodyErr ? "invalid-input" : ""}`}
-                placeholder="Input your post text"
+                placeholder={isBanned? "Cannot post while banned" : "Input your post text"}
                 value={text}
                 onChange={(e) => handleBodyChange(e)}
+                disabled = {isBanned}
               />
               <span className={`char-remaining ${bodyErr && "error-message"}`}>
                 {numBodyCharString}
@@ -173,6 +183,7 @@ function AddPostForm() {
                     value={category}
                     checked={selectedCategories.includes(category)}
                     onChange={() => handleCheckboxChange(category)}
+                    disabled = {isBanned}
                   />
                   {category}
                 </label>
@@ -182,6 +193,7 @@ function AddPostForm() {
             <button
               className="add-post-submit-button"
               onClick={() => handleAddPost()}
+              disabled={isBanned}
             >
               Add Post
             </button>

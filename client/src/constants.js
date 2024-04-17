@@ -23,7 +23,7 @@ export const NAV_ITEMS = [
     text: "ABOUT",
     subItems: [
       { href: "/about", text: "About Us" },
-      { href: "/about", text: "Contact" }, //Contact page not created yet, will send to About Us
+      { href: "https://caregiverconnect.ua.edu/", text: "Contact" }, //Contact page not created yet, will send to About Us
     ],
   },
   {
@@ -54,7 +54,7 @@ export const imageLinks = {
   USER: {
     USER_PICTURE_LINK:
       "https://www.challengedathletes.org/wp-content/uploads/2023/08/portrait-square-03.jpg",
-    USER_PICTURE_TEXT: "smiling man",
+    USER_PICTURE_TEXT: "profile picture",
   },
   ERROR: {
     ERROR_PICTURE_LINK:

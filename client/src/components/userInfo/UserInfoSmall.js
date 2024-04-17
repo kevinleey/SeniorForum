@@ -17,25 +17,12 @@ function UserInfoSmall({ user }) {
   const { user: auth0User, isLoading } = useAuth0();
   const navigate = useNavigate();
 
-  /*useEffect(() => {
-    if (!isLoading && auth0User) {
-      dispatch(fetchCurrUser(auth0User));
-      dispatch(setCurrentUser(auth0User));
-    }
-  }, [dispatch, isLoading, auth0User]);*/
-
   let userProfileURI = `/profile/${user._id}`;
 
   const handleProfileClick = (event) => {
-    //console.log('handleProfileClick function called');
     event.stopPropagation();
 
-    //console.log('user._id:', user._id);
-    //console.log('currentUser._id:', currentUser._id);
-
     if (!isLoading && currentUser && user._id === currentUser._id) {
-      //not working
-      // If true, navigate to '/account'
       navigate("/account");
     } else {
       navigate(userProfileURI);

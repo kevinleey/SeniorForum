@@ -6,7 +6,7 @@ function UserImage({ user }) {
   return (
     <img
       id="user-image"
-      src={imageLinks.USER.USER_PICTURE_LINK}
+      src={user.picture ? user.picture : imageLinks.USER.USER_PICTURE_LINK}
       alt={imageLinks.USER.USER_PICTURE_TEXT}
     />
   );

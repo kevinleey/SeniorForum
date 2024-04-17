@@ -63,6 +63,11 @@
   background-color: lightgrey;
   margin: 0 600px 5px 10px;
   padding-bottom: 50px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#account-bio p {
+  padding: 5px;
 }
 
 #account-history-heading {
@@ -71,6 +76,11 @@
   justify-content: space-between;
   align-items: center;
   margin-left: 10px;
+  margin-right: 10px;
+}
+
+#account-history-heading h2 {
+  width: 100%;
 }
 
 #account-history-list {
