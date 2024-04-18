@@ -35,7 +35,7 @@ export const NAV_ITEMS = [
     text: "MY ACCOUNT", //sends to user profile
     subItems: [
       { href: "/account-settings", text: "Account Settings" },
-      { href: "http://localhost:3001/login", text: "Login" },
+      { href: "http://backend:3001/login", text: "Login" },
     ],
   },
 ];
