@@ -117,5 +117,21 @@ navBar a {
   border: #3b3b3b;
 }
 
+.example-image {
+  width: 1000px;
+  height: auto;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subtitle {
+  display: block;
+  font-size: small;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 
 
