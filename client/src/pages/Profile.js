@@ -54,14 +54,6 @@ function Profile() {
               src={user.picture ? user.picture : imageLinks.USER.USER_PICTURE_LINK}
               alt={imageLinks.USER.USER_PICTURE_TEXT}
             />
-            <div id="follow-bar">
-              <p>Followers</p>
-              <p>Following</p>
-            </div>
-            <div id="follow-numbers">
-              <p>100</p>
-              <p>100</p>
-            </div>
           </div>
           <div id="main-content">
             <div id="account-header">

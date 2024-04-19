@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import express from "express";
 import pkg from "express-openid-connect";
+import sanitize from "express-mongo-sanitize";
 const { auth } = pkg;
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
@@ -25,6 +26,9 @@ app.use(
     ],
   }),
 );
+app.use(sanitize());
+
+app.disable('x-powered-by');
 
 const config = {
   authRequired: false,
