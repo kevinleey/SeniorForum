@@ -52,7 +52,8 @@ function SinglePost({ post, comments }) {
         </div>
         <div id="header-right">
           <div id="edit-button-main">
-            {((currentUser._id === post.createdBy._id) || currentUser.role === "Admin") && (
+            {(currentUser._id === post.createdBy._id ||
+              currentUser.role === "Admin") && (
               <div id="button-overview">
                 <h2>Edit Post</h2>
                 <div id="dropdown">

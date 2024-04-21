@@ -5,8 +5,8 @@ import { NAV_RESOURCES as navResources } from "../../constants";
 import "../../styles/navbar.css";
 import "../../styles/dropdown.css";
 import { Link } from "react-router-dom";
-import {selectCurrentUser} from "../../features/users/userSlice";
-import {useSelector} from "react-redux";
+import { selectCurrentUser } from "../../features/users/userSlice";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   const {
@@ -41,9 +41,7 @@ function Navbar() {
                   subItems={item.subItems}
                 />
               ))}
-              {isAdmin && (
-                <NavbarItem text="ADMIN" href="/admin-page" />
-              )}
+              {isAdmin && <NavbarItem text="ADMIN" href="/admin-page" />}
             </ul>
           </nav>
         </div>

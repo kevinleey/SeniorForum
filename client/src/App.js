@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -44,17 +44,20 @@ function App() {
     }
   }, [dispatch, isAuthenticated, isLoading, user]);
 
-  useEffect( () => {
+  useEffect(() => {
     const setProfilePicture = async () => {
       if (!isLoading && user && currentUser && currentUser.picture === "") {
         const updatedProfile = {
           picture: user.picture,
-        }
+        };
 
         try {
-          const response = await axios.put(`/users/me/${user.sub}`, updatedProfile);
+          const response = await axios.put(
+            `/users/me/${user.sub}`,
+            updatedProfile,
+          );
 
-          if(response.status === 200) {
+          if (response.status === 200) {
             console.log("User profile picture updated successfully.");
             dispatch(setCurrentUser(response.data));
           } else {
@@ -64,7 +67,7 @@ function App() {
           console.error("Error updating user profile picture : ", error);
         }
       }
-    }
+    };
     setProfilePicture();
   }, [isLoading, user, currentUser, dispatch]);
 

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/Footer";
 import { imageLinks } from "../constants";
@@ -46,29 +46,33 @@ function Account() {
 
   const sortPosts = (e) => {
     setSortType(e.target.value);
-  }
+  };
 
   const searchPosts = (e) => {
     let tmp = e.target.value;
     tmp = tmp.replace(/\$/g, "");
     tmp = tmp.replace(/<script>/g, "");
     setSearchValue(tmp);
-  }
+  };
 
   let sortedPosts = [...currPosts];
 
   if (sortType === "recent") {
-    sortedPosts.sort((a, b) => new Date(b.dateCreated) - new Date(a.dateCreated));
-  }
-  else if (sortType === "oldest") {
-    sortedPosts.sort((a, b) => new Date(a.dateCreated) - new Date(b.dateCreated));
-  }
-  else if (sortType === "popular") {
+    sortedPosts.sort(
+      (a, b) => new Date(b.dateCreated) - new Date(a.dateCreated),
+    );
+  } else if (sortType === "oldest") {
+    sortedPosts.sort(
+      (a, b) => new Date(a.dateCreated) - new Date(b.dateCreated),
+    );
+  } else if (sortType === "popular") {
     sortedPosts.sort((a, b) => b.comments.length - a.comments.length);
   }
 
   if (searchValue) {
-    sortedPosts = sortedPosts.filter((post) => post.title.toLowerCase().includes(searchValue.toLowerCase()));
+    sortedPosts = sortedPosts.filter((post) =>
+      post.title.toLowerCase().includes(searchValue.toLowerCase()),
+    );
   }
 
   return (
@@ -79,8 +83,12 @@ function Account() {
         <div id="account-container">
           <div id="image-area">
             <img
-                src={currentUser.picture ? currentUser.picture : imageLinks.USER.USER_PICTURE_LINK}
-                alt={imageLinks.USER.USER_PICTURE_TEXT}
+              src={
+                currentUser.picture
+                  ? currentUser.picture
+                  : imageLinks.USER.USER_PICTURE_LINK
+              }
+              alt={imageLinks.USER.USER_PICTURE_TEXT}
             />
           </div>
           <div id="main-content">
@@ -100,7 +108,12 @@ function Account() {
             <div id="account-history">
               <div id="account-history-heading">
                 <h2>Post History</h2>
-                <input type="search" id="account-post-search" placeholder="Search Post Titles" onChange={(e) => searchPosts(e)} />
+                <input
+                  type="search"
+                  id="account-post-search"
+                  placeholder="Search Post Titles"
+                  onChange={(e) => searchPosts(e)}
+                />
                 <select id="sorting-dropdown" onChange={(e) => sortPosts(e)}>
                   <option value="recent">Recent</option>
                   <option value="oldest">Oldest</option>
@@ -108,13 +121,13 @@ function Account() {
                 </select>
               </div>
               <div id="account-history-list">
-                <PostList posts={sortedPosts}/>
+                <PostList posts={sortedPosts} />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

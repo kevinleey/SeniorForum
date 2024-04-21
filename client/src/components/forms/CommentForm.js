@@ -93,7 +93,9 @@ function CommentForm({ existingComment, onSubmitSuccess }) {
         value={commentData}
         onChange={handleInputChange}
         name="comment"
-        placeholder={isBanned? "Cannot comment while banned" : placeholderString}
+        placeholder={
+          isBanned ? "Cannot comment while banned" : placeholderString
+        }
         disabled={isBanned}
       />
       <div className="input-form-footer">
