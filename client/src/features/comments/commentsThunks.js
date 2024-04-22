@@ -43,8 +43,10 @@ const addComment = createAsyncThunk(
       body: JSON.stringify(newComment),
     });
 
+    const data = await response.json();
+
     const commentWithUsername = {
-      ...newComment,
+      ...data,
       createdBy: {
         firstName: user.firstName,
         lastName: user.lastName,
@@ -63,7 +65,6 @@ const addComment = createAsyncThunk(
       message: postTitle,
     });
 
-    const data = await response.json();
     return data;
   },
 );
@@ -80,7 +81,6 @@ const editComment = createAsyncThunk(
       body: JSON.stringify(comment),
     });
     const data = await response.json();
-    console.log("I HATE TOMATOES");
     dispatch(commentUpdated(data));
   },
 );
