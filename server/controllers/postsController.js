@@ -1,6 +1,16 @@
 import Post from "../models/Post.js";
 import Comment from "../models/Comment.js";
 import mongoose from "mongoose";
+// import sanitize from "express-mongo-sanitize";
+// import app from "../index.js";
+
+// app.use(
+//   sanitize({
+//       onSanitize: ({ req, key }) => {
+//         console.warn(`This request[${key}] is sanitized`, req);
+//       }
+//     }
+//   ));
 
 const getAllPosts = async (req, res) => {
   const allPosts = await Post.find().populate("createdBy").exec();

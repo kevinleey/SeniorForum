@@ -1,7 +1,7 @@
 {
   "name": "seniorforum",
   "version": "1.0.0",
-  "proxy": "http://backend:3001",
+  "proxy": "http://localhost:3001",
   "description": "Seniors need a place to socialize with like-minded individuals, ask questions, or learn about events. App is to be used by seniors and possibly by caretakers as well.",
   "main": "index.js",
   "scripts": {
