@@ -121,8 +121,8 @@ navBar a {
   width: 1000px;
   height: auto;
   display: block;
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .subtitle {
@@ -132,6 +132,3 @@ navBar a {
   margin-right: auto;
   text-align: center;
 }
-
-
-

@@ -1,68 +1,68 @@
 .admin-table {
-    outline: 3px solid #202020;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 3px 3px 5px #202020;
+  outline: 3px solid #202020;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px #202020;
 }
 
 .admin-table-tabs {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 3px solid #202020;
-    padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 3px solid #202020;
+  padding: 10px;
 }
 
 .tab {
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 15px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
 }
 
 .tab.active {
-    background-color: #7a0d0d;
-    color: white;
+  background-color: #7a0d0d;
+  color: white;
 }
 
 .profile-pic {
-    width: 80px;
-    height: auto;
-    border-radius: 50%;
-    margin-right: 10px;
+  width: 80px;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 .user {
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    border-bottom: 1px solid #202020;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  border-bottom: 1px solid #202020;
 }
 
 .user-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .user h3 {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .user h3:hover {
-    color: #7a0d0d;
+  color: #7a0d0d;
 }
 
 .ban-button {
-    margin-left: auto;
-    margin-top: 20px;
-    height: 40px;
-    background-color: #7a0d0d;
-    color: white;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
+  margin-left: auto;
+  margin-top: 20px;
+  height: 40px;
+  background-color: #7a0d0d;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .ban-button:active {
-    background-color: #4a0d0d;
+  background-color: #4a0d0d;
 }

@@ -14,15 +14,17 @@ function Contribution({ contribution, isComment }) {
   const userProfileURI = `/profile/${createdBy._id}`;
   const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUser);
-  const willShowEditButton = (currentUser._id === createdBy._id || currentUser.role === "Admin") && isComment;
+  const willShowEditButton =
+    (currentUser._id === createdBy._id || currentUser.role === "Admin") &&
+    isComment;
 
   const handleToggleEditing = () => {
     setIsEditing((prevIsEditing) => !prevIsEditing);
   };
 
   const handleUsernameClick = (event) => {
-    if(currentUser._id === createdBy._id) {
-        navigate("/account");
+    if (currentUser._id === createdBy._id) {
+      navigate("/account");
     } else {
       navigate(userProfileURI);
     }

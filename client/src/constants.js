@@ -1,13 +1,13 @@
 // NAVBAR
-import otherPhoto from './utility/categoryImages/OtherPicture.jpeg';
-import techPhoto from './utility/categoryImages/TechPhoto.jpeg';
-import memoryChallenges from './utility/categoryImages/MemoryChallenges.jpg';
-import griefSupport from './utility/categoryImages/GriefSupport.jpg';
-import longDistance from './utility/categoryImages/LongDistance.jpg';
-import localResources from './utility/categoryImages/LocalResources.jpeg';
-import spousalCare from './utility/categoryImages/SpousalCare.jpeg';
-import familycare from './utility/categoryImages/FamilyCaregivers.jpg';
-import livingWith from './utility/categoryImages/LivingWith.jpg';
+import otherPhoto from "./utility/categoryImages/OtherPicture.jpeg";
+import techPhoto from "./utility/categoryImages/TechPhoto.jpeg";
+import memoryChallenges from "./utility/categoryImages/MemoryChallenges.jpg";
+import griefSupport from "./utility/categoryImages/GriefSupport.jpg";
+import longDistance from "./utility/categoryImages/LongDistance.jpg";
+import localResources from "./utility/categoryImages/LocalResources.jpeg";
+import spousalCare from "./utility/categoryImages/SpousalCare.jpeg";
+import familycare from "./utility/categoryImages/FamilyCaregivers.jpg";
+import livingWith from "./utility/categoryImages/LivingWith.jpg";
 
 export const NAV_ITEMS = [
   {
