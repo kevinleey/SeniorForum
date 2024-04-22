@@ -380,9 +380,32 @@
           <span class="bi bi-chevron-down" id="modify-arrow" style="color:#900f0f; font-size: 20px; font-weight: bold"></span>
       </h1>
 
-      <div id="modify-content" class="collapse">
-          Insert content here.
-      </div>
+      <ul id="modify-content" class="collapse">
+          <h4>General Info</h4>
+          <li><h5>Client/Server Architecture</h5></li>
+          <p class="step">
+              SeniorForum comprises a forum client and a server. The client contains all the front-end code which was built with React, and the server utilizes Express to talk to our MongoDB collection in order to provide information to the client for it to display on the web browser.
+          </p>
+          <li><h5>Front-end: React?</h5></li>
+          <p class="step">
+              SeniorForum uses the React framework to represent items on the page as reusable "components". A component essentially is a template for a particular element of the page. Components may be nested within one another, creating a tree of UI elements. For example, the "Home" component represents the home page, it renders the "Navbar" and "Footer" components at the top and bottom of the page respectively, and a "PostList" component in between. The "PostList" component itself then contains a number of "PostOverview" components.
+          </p>
+          <li><h5>Front-end: How does React get data?</h5></li>
+          <p class="step">
+              React components may obtain data from a number of ways. Traditionally, data is passed into components as "props", much like parameters to a function. Therefore, it would make sense to have the "source of data" somewhere high up in the tree so it may be passed down to components that need them. In a very simple React app, this would not pose much of an issue, but in a more complex app such as SeniorForum, it would be difficult to maintain and keep track of data flow up/down components.
+          </p>
+          <li><h5>Front-end: Redux?</h5></li>
+          <p class="step">
+              To mitigate this issue, we introduced the state management library, Redux. Redux gives our app a constant source of truth without having to worry about passing in props down a multitude of unrelated components. There is a "store" that contains crucial information obtained at various points of the app flow. Components can then use user-defined "selectors" to obtain this data from the store at any point.
+          </p>
+          <br>
+          <h4>Third-party Software</h4>
+          <li><h5>Database: MongoDB Atlas, currently on the free version</h5></li>
+          <li><h5>User Authentication: Auth0. also on the free version</h5></li>
+          <br>
+          <h4>Style Recommendations</h4>
+          <p class="step">Design-wise, the app should take inspiration from the university's Caregiver Connect website. There are a number of hex values for common colors, most importantly, the crimson that is seen in the Navbar is #900f0f. The font should remain consistent throughout the website.</p>
+      </ul>
 
   </div>
 
