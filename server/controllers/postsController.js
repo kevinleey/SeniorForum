@@ -105,13 +105,24 @@ const editComment = async (req, res) => {
 const deleteComment = async (req, res) => {
   const commentId = req.params.id;
   try {
-    const comment = Comment.findById(commentId);
+    const comment = await Comment.findById(commentId);
+
+    // TEMPORARY FIX. Essentially hexadecimally decrements the commentId by 2 to deal with the mismatch.
+    let lastTwoCharacters = commentId.slice(-2);
+    let modifiedLastTwoCharacters = (parseInt(lastTwoCharacters, 16) + 2).toString(16);
+    let modifiedCommentId = commentId.slice(0, -2) + modifiedLastTwoCharacters;
 
     if (!comment) return res.status(404).send("Comment not found");
-    else {
-      await comment.deleteOne();
-      return res.status(204).send();
-    }
+
+    const post = await Post.findOneAndUpdate(
+      { "comments._id": modifiedCommentId },
+      { $pull: { comments: { _id: modifiedCommentId } } },
+      { new: true }
+    );
+
+    // Delete the comment
+    await comment.deleteOne();
+    return res.status(204).send();
   } catch (error) {
     console.error("Error deleting comment:", error);
   }
@@ -126,4 +137,5 @@ export const postsController = {
   getCommentsByPostId,
   addComment,
   editComment,
+  deleteComment,
 };

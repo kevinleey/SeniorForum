@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { commentAdded, commentUpdated } from "./commentsSlice";
+import {commentAdded, commentDeleted, commentUpdated} from "./commentsSlice";
 import { selectUserById } from "../users/userSlice";
 import emailjs from "emailjs-com";
 import { selectPostByID } from "../posts/postsSlice";
@@ -85,4 +85,17 @@ const editComment = createAsyncThunk(
   },
 );
 
-export { fetchCommentsForPost, addComment, editComment };
+const deleteComment = createAsyncThunk(
+  "comments/deleteComment",
+  async (commentId, { dispatch }) => {
+    const response = await fetch(`/posts/delete/comment/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    dispatch(commentDeleted(commentId));
+  }
+)
+
+export { fetchCommentsForPost, addComment, editComment, deleteComment };
