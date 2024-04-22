@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { commentAdded, commentUpdated } from "./commentsSlice";
+import { commentAdded, commentDeleted, commentUpdated } from "./commentsSlice";
 import { selectUserById } from "../users/userSlice";
 import emailjs from "emailjs-com";
 import { selectPostByID } from "../posts/postsSlice";
@@ -43,8 +43,10 @@ const addComment = createAsyncThunk(
       body: JSON.stringify(newComment),
     });
 
+    const data = await response.json();
+
     const commentWithUsername = {
-      ...newComment,
+      ...data,
       createdBy: {
         firstName: user.firstName,
         lastName: user.lastName,
@@ -63,7 +65,6 @@ const addComment = createAsyncThunk(
       message: postTitle,
     });
 
-    const data = await response.json();
     return data;
   },
 );
@@ -80,9 +81,21 @@ const editComment = createAsyncThunk(
       body: JSON.stringify(comment),
     });
     const data = await response.json();
-    console.log("I HATE TOMATOES");
     dispatch(commentUpdated(data));
   },
 );
 
-export { fetchCommentsForPost, addComment, editComment };
+const deleteComment = createAsyncThunk(
+  "comments/deleteComment",
+  async (commentId, { dispatch }) => {
+    const response = await fetch(`/posts/delete/comment/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    dispatch(commentDeleted(commentId));
+  },
+);
+
+export { fetchCommentsForPost, addComment, editComment, deleteComment };

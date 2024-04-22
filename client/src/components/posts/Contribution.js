@@ -3,14 +3,16 @@ import "../../styles/contribution.css";
 import { timeSince } from "../../utility/timeSince";
 import UserImage from "../userInfo/UserImage";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/users/userSlice";
 import CommentForm from "../forms/CommentForm";
 import { COMMENTS_RESOURCES } from "../../constants";
+import { deleteComment } from "../../features/comments/commentsThunks";
 
 function Contribution({ contribution, isComment }) {
   const [isEditing, setIsEditing] = useState(false);
   const { createdBy } = contribution;
+  const dispatch = useDispatch();
   const userProfileURI = `/profile/${createdBy._id}`;
   const navigate = useNavigate();
   const currentUser = useSelector(selectCurrentUser);
@@ -30,6 +32,10 @@ function Contribution({ contribution, isComment }) {
     }
   };
 
+  const handleDeleteClick = async () => {
+    await dispatch(deleteComment(contribution._id));
+  };
+
   return (
     <div className="cont-container">
       <UserImage user={createdBy} />
@@ -40,9 +46,14 @@ function Contribution({ contribution, isComment }) {
           </span>
           <div className="cont-text-right">
             {willShowEditButton && !isEditing && (
-              <span className="cont-text-edit" onClick={handleToggleEditing}>
-                {COMMENTS_RESOURCES.COMMENTS_EDIT}
-              </span>
+              <div style={{ display: "inline" }}>
+                <span className="cont-text-edit" onClick={handleDeleteClick}>
+                  Delete
+                </span>
+                <span className="cont-text-edit" onClick={handleToggleEditing}>
+                  {COMMENTS_RESOURCES.COMMENTS_EDIT}
+                </span>
+              </div>
             )}
             {willShowEditButton && isEditing && (
               <span className="cont-text-edit" onClick={handleToggleEditing}>
