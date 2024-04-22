@@ -109,7 +109,9 @@ const deleteComment = async (req, res) => {
 
     // TEMPORARY FIX. Essentially hexadecimally decrements the commentId by 2 to deal with the mismatch.
     let lastTwoCharacters = commentId.slice(-2);
-    let modifiedLastTwoCharacters = (parseInt(lastTwoCharacters, 16) + 2).toString(16);
+    let modifiedLastTwoCharacters = (
+      parseInt(lastTwoCharacters, 16) + 2
+    ).toString(16);
     let modifiedCommentId = commentId.slice(0, -2) + modifiedLastTwoCharacters;
 
     if (!comment) return res.status(404).send("Comment not found");
@@ -117,7 +119,7 @@ const deleteComment = async (req, res) => {
     const post = await Post.findOneAndUpdate(
       { "comments._id": modifiedCommentId },
       { $pull: { comments: { _id: modifiedCommentId } } },
-      { new: true }
+      { new: true },
     );
 
     // Delete the comment

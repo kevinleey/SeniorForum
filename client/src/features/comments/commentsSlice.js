@@ -31,9 +31,9 @@ export const commentsSlice = createSlice({
     commentDeleted: (state, action) => {
       const commentId = action.payload;
       state.comments = state.comments.filter(
-        (comment) => !(comment._id === commentId)
+        (comment) => !(comment._id === commentId),
       );
-    }
+    },
   },
   extraReducers(builder) {
     builder
@@ -51,8 +51,12 @@ export const commentsSlice = createSlice({
   },
 });
 
-export const { setCurrentPostId, commentAdded, commentUpdated, commentDeleted } =
-  commentsSlice.actions;
+export const {
+  setCurrentPostId,
+  commentAdded,
+  commentUpdated,
+  commentDeleted,
+} = commentsSlice.actions;
 
 export default commentsSlice.reducer;
 

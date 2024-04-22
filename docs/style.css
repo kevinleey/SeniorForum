@@ -121,8 +121,8 @@ navBar a {
   width: 1000px;
   height: auto;
   display: block;
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
   border: #3b3b3b 2px solid;
 }
 
@@ -154,6 +154,3 @@ navBar a {
 .img-collection img {
   margin: 10px;
 }
-
-
-

@@ -9,7 +9,6 @@ import userRoutes from "./routes/users.js";
 import cors from "cors";
 import axios from "axios";
 
-
 const PORT = process.env.SERVER_PORT || 3001;
 dotenv.config();
 
@@ -31,9 +30,9 @@ app.use(
   sanitize({
     onSanitize: ({ req, key }) => {
       console.warn(`This request[${key}] is sanitized`, req);
-    }
-  }
-));
+    },
+  }),
+);
 
 app.disable("x-powered-by");
 

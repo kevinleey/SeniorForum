@@ -3,11 +3,11 @@ import "../../styles/contribution.css";
 import { timeSince } from "../../utility/timeSince";
 import UserImage from "../userInfo/UserImage";
 import { useNavigate } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser } from "../../features/users/userSlice";
 import CommentForm from "../forms/CommentForm";
 import { COMMENTS_RESOURCES } from "../../constants";
-import {deleteComment} from "../../features/comments/commentsThunks";
+import { deleteComment } from "../../features/comments/commentsThunks";
 
 function Contribution({ contribution, isComment }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -34,7 +34,7 @@ function Contribution({ contribution, isComment }) {
 
   const handleDeleteClick = async () => {
     await dispatch(deleteComment(contribution._id));
-  }
+  };
 
   return (
     <div className="cont-container">
@@ -46,11 +46,13 @@ function Contribution({ contribution, isComment }) {
           </span>
           <div className="cont-text-right">
             {willShowEditButton && !isEditing && (
-              <div style={{display: "inline"}}>
-                <span className="cont-text-edit" onClick={handleDeleteClick}>Delete</span>
+              <div style={{ display: "inline" }}>
+                <span className="cont-text-edit" onClick={handleDeleteClick}>
+                  Delete
+                </span>
                 <span className="cont-text-edit" onClick={handleToggleEditing}>
-    {COMMENTS_RESOURCES.COMMENTS_EDIT}
-  </span>
+                  {COMMENTS_RESOURCES.COMMENTS_EDIT}
+                </span>
               </div>
             )}
             {willShowEditButton && isEditing && (

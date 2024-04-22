@@ -10,6 +10,6 @@ router.post("/:id/comments", postsController.addComment);
 router.put("/:id/comments/:id", postsController.editComment);
 router.put("/:id", postsController.editPost);
 router.delete("/delete/:id", postsController.deletePost);
-router.delete("/delete/comment/:id", postsController.deleteComment)
+router.delete("/delete/comment/:id", postsController.deleteComment);
 
 export default router;
