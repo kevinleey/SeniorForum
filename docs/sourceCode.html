@@ -89,29 +89,80 @@
           <span class="bi bi-chevron-down" id="features-arrow" style="color:#900f0f; font-size: 20px; font-weight: bold"></span>
       </h1>
 
-      <ul id="features-content" class="collapse">
-          <li><h2 style="font-size: 20px;">Creating Profile</h2></li>
 
-          <p class="indented">
+      <ul id="features-content" class="collapse">
+          <hr />
+
+          <li><h2 style="font-size: 20px;">Creating / Editing Profile</h2></li>
+
+          <p class="step">
             Upon landing on our page, users are presented with a welcome message asking them to log in to view posts. To do this,
-            navigate to the top right of the navbar, hover over the 'Account' item which will reveal a dropdown menu. Click on 'Log In'.
+            navigate to the top right of the navbar, hover over the 'MY ACCCOUNT' item which will reveal a dropdown menu. Click on 'Log In'.
           </p>
 
           <img class="example-image" src="images/featuresImages/login.png" alt="Login"/>
-          <p class="subtitle">(Clicking directly on 'ACCOUNT' or attempting to interact with a post will also redirect to the login page.)</p>
+          <p class="subtitle">(Clicking directly on 'MY ACCOUNT' or attempting to interact with a post will also redirect to the login page.)</p>
 
           <br />
 
-          <p class="indented">
+          <p class="step">
             This will redirect you to the Auth0 login page where you can either log in with an existing account or create a new one.
               Clicking on "Sign Up" will take you to the registration page where you can create a new account.
           </p>
 
           <img class="example-image" src="images/featuresImages/signup.png" alt="Signup" style="width:250px; height:auto"/>
 
-          </br>
-          <li><h2 style="font-size: 20px;">Editing Profile</h2></li>
-          </br>
+          <br />
+
+          <p class="step">
+            After logging in, you will be redirected to the edit profile page where you will be asked to give yourself a first name, last name, and a bio.
+          </p>
+
+          <img class="example-image" src="images/featuresImages/newprofile.png" alt="Edit Profile" style="width:600px; height:auto"/>
+
+          <br />
+
+          <p class="step">
+            After saving your profile changes, you will be directed to your profile page. To return to the home page, click on either 'HOME' in the navbar or the 'Senior Forum' logo.
+          </p>
+
+          <img class="example-image" src="images/featuresImages/home.png" alt="Home" />
+
+          <br />
+
+          <p class="step">
+              You can return to your profile page at any time by clicking on 'MY ACCOUNT'. To edit your profile, go to your profile page and click on 'Edit Profile'. Here you can change your
+              first name, last name, and bio. Click 'Save' to save your changes. A user cannot leave their first name or last name blank, however, they may leave their bio blank if
+              they do not wish to have one.
+          </p>
+
+          <img class="example-image" src="images/featuresImages/return-to-edit.png" alt="Edit Profile" style="width:600px; height:auto"/>
+
+          <br />
+
+          <p class="step">
+              If you wish to change your password, you can do so by hovering over 'MY ACCOUNT' and clicking 'Account Settings'. This will take you to the account settings page where you can change your password.
+              Click the change password button to have an email sent with a reset link.
+          </p>
+
+          <img class="example-image" src="images/featuresImages/settings-nav.png" alt="Account Settings" />
+
+          <br />
+
+          <img class="example-image" src="images/featuresImages/settings.png" alt="Change Password" style="width: 400px; height: auto" />
+
+          <br />
+
+          <p class="step">
+              To log out, hover over 'MY ACCOUNT' and then 'Log Out'. This will log you out of the site and redirect you to the home page.
+          </p>
+
+          <img class="example-image" src="images/featuresImages/logout.png" alt="Logout" />
+
+          <br />
+
+          <hr />
+
           <li><h2 style="font-size: 20px;">Browsing</h2></li>
           <p class="indented">
               Once logged in, users start out on the home page where all posts are displayed. Users can browse through the posts and click on a post to view it.
@@ -231,13 +282,42 @@
           </div>
           </br>
           <li><h2 style="font-size: 20px;">Commenting</h2></li>
-          </br>
+          <hr />
           <li><h2 style="font-size: 20px;">Admins</h2></li>
+
+          <p class="step">
+            As an admin, there are a few additional features available to you. An extra item will appear on the navbar called 'ADMIN'. Clicking on this will take you to the admin page.
+          </p>
+
+          <img class="example-image" src="images/featuresImages/admin-nav.png" alt="Admin Nav" />
+
+          <br />
+
+          <p class="step">
+              On the admin page, you can see all users on the site. It will display their first name, last name, email, and profile picture. Clicking on their name will take you to their profile.
+              There is also a button for banning a user. This will restrict their abilities on the site. They won't be able to post or comment, but can still view posts.
+          </p>
+
+          <img class="example-image" src="images/featuresImages/ban.png" alt="User list" />
+
+            <br />
+
+            <p class="step">
+                As an admin, you also have the ability to edit or delete any user's post or comment. This can be done by visiting the post and hovering over the 'Edit post' button.
+                This will reveal a dropdown menu with the options to edit or delete the post. The same can be done for comments by clicking on 'Edit comment'.
+            </p>
+
+          <img class="example-image" src="images/featuresImages/admin-edit-post.png" alt="Edit Post" />
+
+          <br />
+
+          <img class="example-image" src="images/featuresImages/admin-edit-comment.png" alt="Edit Comment" />
+
       </ul>
   </div>
 
   <div class="section-container">
-      <h1 style="color: #000000" class="header" data-bs-toggle="collapse" data-bs-target="#modify-content">
+      <h1 style="color: #000000; cursor: pointer;" class="header" data-bs-toggle="collapse" data-bs-target="#modify-content">
           Modifying / Extending the Project
           <span class="bi bi-chevron-down" id="modify-arrow" style="color:#900f0f; font-size: 20px; font-weight: bold"></span>
       </h1>
@@ -249,7 +329,7 @@
   </div>
 
   <div class="section-container">
-      <h1 style="color: #000000" class="header" data-bs-toggle="collapse" data-bs-target="#faq-content"> <!-- Add target -->
+      <h1 style="color: #000000; cursor: pointer;" class="header" data-bs-toggle="collapse" data-bs-target="#faq-content"> <!-- Add target -->
           FAQs
           <span class="bi bi-chevron-down" id="faq-arrow" style="color:#900f0f; font-size: 20px; font-weight: bold"></span>
       </h1>
