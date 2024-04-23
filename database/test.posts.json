@@ -1,0 +1,377 @@
+[{
+  "_id": {
+    "$oid": "65bf9e7ac6162119795ffe48"
+  },
+  "title": "Are there any events for the elderly happening in Bham",
+  "text": "My grandfather is visiting Tuscaloosa this weekend but I will be pretty occupied with work and would like to find something for him to do during the day. Any recommendations? Thank you in advance!",
+  "dateCreated": {
+    "$date": "2024-02-04T14:26:02.471Z"
+  },
+  "comments": [
+    {
+      "_id": {
+        "$oid": "66031ac20d6013f50e59f453"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "661dcd9c64547dc7f1cc2b24"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6625d0a47496b64843e38228"
+      }
+    }
+  ],
+  "__v": 0,
+  "categories": [
+    "Local Recommendations",
+    "Tuscaloosa",
+    "Family Caregivers",
+    "Local Resources"
+  ],
+  "createdBy": {
+    "$oid": "65c1a7acdf0c8cf66fe8023b"
+  }
+},
+{
+  "_id": {
+    "$oid": "65c1a8f3df0c8cf66fe8023d"
+  },
+  "title": "Help with Setting Up Smartphone",
+  "text": "I recently got a smartphone, and it's a bit overwhelming. Can someone guide me through setting it up and using basic features?",
+  "dateCreated": {
+    "$date": "2022-07-04T15:28:08.919Z"
+  },
+  "comments": [
+    {
+      "_id": {
+        "$oid": "65d7efd84d34ed35bb1c502d"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66010a24b9adcd22d2f66e13"
+      }
+    }
+  ],
+  "__v": 0,
+  "categories": [
+    "Gadgets and Technology",
+    "Family Caregivers"
+  ],
+  "createdBy": {
+    "$oid": "65c1a7dcdf0c8cf66fe8023c"
+  }
+},
+{
+  "_id": {
+    "$oid": "65e53555d75253c3c35178dc"
+  },
+  "title": "How can I grow better tomatoes?",
+  "text": "I've been trying to grow tomatoes in my backyard, but they're not turning out well. Any suggestions?",
+  "categories": [
+    "Other",
+    "Local Resources",
+    "Long Distance Caregivers"
+  ],
+  "createdBy": {
+    "$oid": "65bda8ff41e03d616f0547a0"
+  },
+  "dateCreated": {
+    "$date": "2024-03-04T02:43:33.365Z"
+  },
+  "comments": [
+    {
+      "_id": {
+        "$oid": "6600f16deda2d4ac68470d56"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66010eedb9adcd22d2f66e3b"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66010f4db9adcd22d2f66ee9"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6602037c819ee7110c58fb45"
+  },
+  "title": "This is a test post!",
+  "text": "This is a test post.",
+  "categories": [
+    "Other"
+  ],
+  "createdBy": {
+    "$oid": "65e76e3c3fcfef7b2e5f552f"
+  },
+  "dateCreated": {
+    "$date": "2024-03-25T23:06:36.867Z"
+  },
+  "comments": [
+    {
+      "_id": {
+        "$oid": "660dad4c25a8f2aaa5a5ceb7"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660dad7925a8f2aaa5a5cec9"
+  },
+  "title": "<script>alert('XSS')</script>",
+  "text": "<script>alert('XSS')</script>",
+  "categories": [
+    "Other"
+  ],
+  "createdBy": {
+    "$oid": "6601ff4aed5a707020ed6c7c"
+  },
+  "dateCreated": {
+    "$date": "2024-04-03T19:26:49.062Z"
+  },
+  "comments": [
+    {
+      "_id": {
+        "$oid": "660dadab25a8f2aaa5a5cf15"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "660dae0c25a8f2aaa5a5cffb"
+  },
+  "title": "test",
+  "text": "test",
+  "categories": [
+    "Other"
+  ],
+  "createdBy": {
+    "$oid": "6601ff4aed5a707020ed6c7c"
+  },
+  "dateCreated": {
+    "$date": "2024-04-03T19:29:16.004Z"
+  },
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66105660b1316da192290d13"
+  },
+  "title": "This is a test post",
+  "text": "Testing!",
+  "categories": [
+    "Other",
+    "Technology"
+  ],
+  "createdBy": {
+    "$oid": "65e76e3c3fcfef7b2e5f552f"
+  },
+  "dateCreated": {
+    "$date": "2024-04-05T19:52:00.594Z"
+  },
+  "comments": [
+    {
+      "_id": {
+        "$oid": "6610567bb1316da192290d49"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661717e4b8ef22ec27c6d13a"
+  },
+  "title": "Test Title for search bar",
+  "text": "Test text",
+  "categories": [
+    "Other"
+  ],
+  "createdBy": {
+    "$oid": "65bda8ff41e03d616f0547a0"
+  },
+  "dateCreated": {
+    "$date": "2024-04-10T22:51:16.278Z"
+  },
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "661717f5b8ef22ec27c6d154"
+  },
+  "title": "Another post for the example",
+  "text": "Example text",
+  "categories": [
+    "Technology"
+  ],
+  "createdBy": {
+    "$oid": "65bda8ff41e03d616f0547a0"
+  },
+  "dateCreated": {
+    "$date": "2024-04-10T22:51:33.794Z"
+  },
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6625bf0ede303f83b2853221"
+  },
+  "title": "New Post 3",
+  "text": "Some wacky and random text",
+  "categories": [
+    "Other",
+    "Grief Support"
+  ],
+  "createdBy": {
+    "$oid": "65bda8ff41e03d616f0547a0"
+  },
+  "dateCreated": {
+    "$date": "2024-04-22T01:36:14.525Z"
+  },
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6625bf4ede303f83b2853253"
+  },
+  "title": "New Post 6",
+  "text": "Something truly enlightening ",
+  "categories": [
+    "Other",
+    "Local Resources"
+  ],
+  "createdBy": {
+    "$oid": "65bda8ff41e03d616f0547a0"
+  },
+  "dateCreated": {
+    "$date": "2024-04-22T01:37:18.875Z"
+  },
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6625bf65de303f83b285326d"
+  },
+  "title": "Need help with watering plants. Edited",
+  "text": "They won't water themselves for some reason. Edited",
+  "categories": [
+    "Local Resources",
+    "Spousal Caregivers",
+    "Other"
+  ],
+  "createdBy": {
+    "$oid": "65bda8ff41e03d616f0547a0"
+  },
+  "dateCreated": {
+    "$date": "2024-04-22T01:37:41.049Z"
+  },
+  "comments": [
+    {
+      "_id": {
+        "$oid": "6625c240e6c4af9ec18a147c"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6625ccd87496b64843e37f6c"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "66269ea609d9df0981784fca"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6626bf4ad144709932e8f9c7"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6626c060d144709932e8f9cf"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6626c110d144709932e8fa2a"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6626c1a0d144709932e8fa89"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6626c70a55ebbac5c6d3f0b7"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6626c7c61486bdde20a5d452"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6626c849761bd99409a1fa83"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6625c8b3de303f83b2853328"
+  },
+  "title": "Searching Posts Example",
+  "text": "Here is text related to the title",
+  "categories": [
+    "Local Resources",
+    "Other"
+  ],
+  "createdBy": {
+    "$oid": "65fb79e3d3ae7c025c3f0b16"
+  },
+  "dateCreated": {
+    "$date": "2024-04-22T02:17:23.583Z"
+  },
+  "comments": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6625c8e7de303f83b2853344"
+  },
+  "title": "Midtown Area",
+  "text": "Questions about the Midtown area in Tuscaloosa go here.",
+  "categories": [
+    "Other",
+    "Local Resources"
+  ],
+  "createdBy": {
+    "$oid": "65fb79e3d3ae7c025c3f0b16"
+  },
+  "dateCreated": {
+    "$date": "2024-04-22T02:18:15.760Z"
+  },
+  "comments": [],
+  "__v": 0
+}]

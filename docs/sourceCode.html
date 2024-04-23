@@ -70,6 +70,15 @@
           </p>
           <br />
           <br />
+          <p class="headerLeft">External Resources</p>
+          <p class="indented">
+              EmailJS - We use the free version, more information on tiered pricing here:
+              <a href="https://www.emailjs.com/pricing/">EmailJS Pricing</a><br />
+              Auth0 - We use the free version, more information on tiered pricing here: <a href="https://auth0.com/pricing">Auth0 Pricing</a> <br />
+              MongoDB Atlas - We use the free version, more information on tiered pricing here: <a href="https://www.mongodb.com/products/platform/atlas-cloud-providers/aws/pricing#:~:text=MongoDB%20Atlas%20offers%20a%20perpetual%20free%20tier%20and,transfer%2C%20so%20changing%20configurations%20is%20no%20big%20deal.">MongoDB Atlas Pricing</a> <br />
+          </p>
+          <br />
+          <br />
           <p class="headerLeft">Running the App</p>
           <p class="indented">
             Server and client must be running simultaneously, for this you need two
@@ -79,6 +88,11 @@
             2. Client: In another terminal window, cd into the /client folder and run
             npm start to start the client.<br />
             3. Visit localhost:3000 to see the client in action.
+          </p>
+          <p class="headerLeft">Running the App Using Docker Container</p>
+          <p class="indented">
+              Run docker compose up --force-recreate --build <br />
+              Since we are mainly running locally, make sure any instance of localhost:3001 is replaced with backend:3001 when using docker.<br />
           </p>
       </div>
     </div>
@@ -399,12 +413,39 @@
               To mitigate this issue, we introduced the state management library, Redux. Redux gives our app a constant source of truth without having to worry about passing in props down a multitude of unrelated components. There is a "store" that contains crucial information obtained at various points of the app flow. Components can then use user-defined "selectors" to obtain this data from the store at any point.
           </p>
           <br>
+          <h4>How To Make Changes</h4>
+          <p class="step">To make changes to our project, follow the install processes described in the How To Run section of the Source Code. Use GitHub to access our current code of our project. To access our database, there are exported JSON files which contain our database contents in the GitHub. To make changes, we recommend using Webstorm. We found editing the GitHub through Webstorm was most efficient.</p>
+          <br>
           <h4>Third-party Software</h4>
-          <li><h5>Database: MongoDB Atlas, currently on the free version</h5></li>
-          <li><h5>User Authentication: Auth0. also on the free version</h5></li>
+          <p class="step">Database: MongoDB Atlas, free version</p>
+          <p class="step">User Authentication: Auth0, free version</p>
+          <p class="step">User Comment Notifications: EmailJS, free version</p>
+          <br>
+          <h4>Build Management</h4>
+          <p class="step">Compiler: Node.JS</p>
+          <p class="step">Project Languages: JavaScript, HTML, and CSS</p>
+          <p class="step">Dependencies: In both the client folder and root folder, there are “package.json” and “package-lock.json” files that hold the dependencies. The one in the client folder is specific to the frontend and the files in the root folder are specific to the server side. </p>
+          <br>
+          <h4>Automated Testing</h4>
+          <p class="step">To Run: From the client directory, execute “npm test” from the command line. The existing automated test cases will be run and the results will be displayed in the command line.</p>
+          <p class="step">Location of Test Cases: Test cases exist in test files and test files usually exist in the same directory/location as the component.</p>
           <br>
           <h4>Style Recommendations</h4>
           <p class="step">Design-wise, the app should take inspiration from the university's Caregiver Connect website. There are a number of hex values for common colors, most importantly, the crimson that is seen in the Navbar is #900f0f. The font should remain consistent throughout the website.</p>
+          <p class="step">As part of our styling expectations, we ran prettier when using Webstorm to create consistent code style. This helps with appropriate spacing and indentation.</p>
+          <br>
+          <h4>Major Issue</h4>
+          <p class="step">For hosting on the server, the database should be hosted in the container and not cloud hosted. This was a major issue we faced as databases that are cloud hosted can not be accessed by the server. In order to complete hosting for our project, the current database needs to be migrated. </p>
+          <br>
+          <h4>Backlog</h4>
+          <p class="step">The backlog can be seen in our project backlog document. To find this document select Deliverables from the navigation bar. Select Project Backlog from Sprint 3 to see tasks that still need to be completed. </p>
+          <h4>Bug List</h4>
+          <p class="step">Deleting posts doesn’t delete the comments associated with them from the collection. <br><br>
+              The generated ObjectID for a new comment (in the Comments collection) does not match the ObjectID that gets added to the comments array of the associated post (in the Posts collection). 99% of the time it’s incremented by 2. As a result, when deleting comments, the comment ID that is deleted from the post must be decremented by 2. <br><br>
+              When a user posts a new comment, their profile picture shows up as the placeholder image until the page is refreshed. <br><br>
+              The ban button does not automatically update after clicking, until page is refreshed. <br><br>
+          </p>
+          <br>
       </ul>
 
   </div>
@@ -414,8 +455,8 @@
           FAQs
           <span class="bi bi-chevron-down" id="faq-arrow" style="color:#900f0f; font-size: 20px; font-weight: bold"></span>
       </h1>
-
       <ul id="faq-content" class="collapse">
+          <p class="headerLeft">FAQs</p>
           <li><h2 style="font-size: 20px;">What are the different categories on the forum?</h2></li>
           <p class="step">
               The forum has 9 categories to select from which are shown below. On the Categories page, you can select a category to see all the posts within that category.
@@ -457,6 +498,15 @@
               To search for a post you created select My Account in the top right of the nav bar. All your posts will be in the Post History section of your account page. You can use the search bar to find post titles. You can sort posts by recent, oldest, and popular.
           </p>
           <img class="example-image" src="images/featuresImages/accountSearch.png" alt="Account Search"/>
+          <p class="headerLeft">Problems Encountered In Installing Parts of the Application</p>
+          <p class="indented">
+              We ran into problems hosting the project because of the way our database was set up. The database should be hosted in the container and not cloud hosted. This migration needs to be completed in order to complete hosting.<br />
+              While using Auth0, we ran into issues fully deleting users. We implemented banning users instead of deleting them. This turned out to work better for the purpose of our forum.<br />
+          </p>
+          <p class="headerLeft">Possible Issues with External Resources</p>
+          <p class="indented">
+              There may be potential issues with external resources such as Auth0 and EmailJS. If there is a major update to Auth0 or EmailJS, there may need to be changes to our implementation of these resources. <br />
+          </p>
       </ul>
 
   </div>
