@@ -124,7 +124,9 @@ function EditPostForm() {
         <div id="add-post-container">
           <div id="image-area">
             <img
-              src={imageLinks.USER.USER_PICTURE_LINK}
+              src={
+                user.picture ? user.picture : imageLinks.USER.USER_PICTURE_LINK
+              }
               alt={imageLinks.USER.USER_PICTURE_TEXT}
             />
           </div>
