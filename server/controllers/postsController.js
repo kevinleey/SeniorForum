@@ -116,14 +116,15 @@ const deleteComment = async (req, res) => {
 
     if (!comment) return res.status(404).send("Comment not found");
 
-    const post = await Post.findOneAndUpdate(
-      { "comments._id": modifiedCommentId },
-      { $pull: { comments: { _id: modifiedCommentId } } },
-      { new: true },
-    );
-
-    // Delete the comment
     await comment.deleteOne();
+
+    // Need to sort this out in the future
+    // const post = await Post.findOneAndUpdate(
+    //   { "comments._id": modifiedCommentId },
+    //   { $pull: { comments: { _id: modifiedCommentId } } },
+    //   { new: true },
+    // );
+
     return res.status(204).send();
   } catch (error) {
     console.error("Error deleting comment:", error);
