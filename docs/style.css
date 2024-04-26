@@ -145,6 +145,12 @@ navBar a {
   /*box-shadow: #818181 2px 2px 2px;*/
 }
 
+.step-block {
+  background-color: #efefef;
+  padding: 3px;
+    border-radius: 3px 3px 3px 3px;
+}
+
 .img-collection {
   display: flex;
   flex-wrap: wrap;
