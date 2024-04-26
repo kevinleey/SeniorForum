@@ -502,6 +502,97 @@
               The ban button does not automatically update after clicking, until page is refreshed. <br><br>
           </p>
           <br>
+            <h4>Auth0</h4>
+          <p class="step">
+              In order for a developer to edit any Auth0 related settings, they would need to sign in to the account connected to our application. The login information can be exchanged when needed, and changed after the initial login to better suit the next developer (i.e. email and password). Once they are logged into the account, they can make administrative changes to the setup.
+              This includes changing the allowed callback URLs, allowed web origins, and allowed logout URLs. These settings can be found in the Auth0 dashboard under the application settings under "Application URIs".
+          </p>
+
+          <img class="example-image" src="images/extendingImages/auth0-settings.png" alt="Auth0 Settings" style="width: 600px; height: auto;" />
+          <br>
+          <img class="example-image" src="images/extendingImages/auth0-uri.png" alt="Application URIs" style="width: 600px; height: auto;" />
+          <br>
+
+          <div class="step-block">
+              <p>
+                  It is important for the developer to set up their .env file to include the following:
+              </p>
+
+              <ul>
+                  <li>AUTH_SECRET={I cannot show this here, please check the application settings.}</li>
+                  <li>AUTH_ISSUER_BASE_URL="https://dev-xva3bwyqfub0c5sf.us.auth0.com"</li>
+                  <li>AUTH_CLIENT_ID="7CEAotFZme2gstjkZWCwTzoKfM9f1OrV"</li>
+              </ul>
+              <br>
+              <p>
+                  These values can also be found on the Auth0 website in the application settings. The secret is the most important to keep in the
+                  env file as revealing it could compromise the security of the application.
+              </p>
+          </div>
+
+          <br>
+
+          <div class="step-block">
+              <p>
+                  All documentation for understanding and changing other Auth0 settings can be found on the Auth0 website. The documentation is very detailed and can be found at the following link:
+              </p>
+              <a href="https://auth0.com/docs">Auth0 Documentation</a>
+          </div>
+
+          <br>
+          <br>
+
+          <h4>Removing/Replacing Auth0</h4>
+          <div class="step-block">
+              <p>If the decision is made to remove Auth0 from the project, the following steps should be taken:</p>
+              <ul>
+                <h5>Backend</h5>
+                <li>In server/index.js, you can find a config with the client credentials (i.e. client ID, secret, etc.). This should be removed.</li>
+                <img class="example-image" src="images/extendingImages/auth0-config.png" alt="Auth0 config" style="width: 600px; height: auto;"/>
+                <br>
+                <li>Furthermore, the app.use for said config should also be deleted.</li>
+                <img class="example-image" src="images/extendingImages/auth-config2.png" alt="Auth0 config" style="width: 600px; height: auto;"/>
+                <br>
+                <li>
+                    Any routes using the requiresAuth() middleware should be edited to remove the middleware. All routes that trigger user controller functions that use an id should be adjusted
+                    as seen fit to work with the new authentication system.
+                </li>
+                <img class="example-image" src="images/extendingImages/auth-routes.png" alt="Auth0 routes" style="width: 600px; height: auto;"/>
+                <br>
+                <img class="example-image" src="images/extendingImages/auth-controllers.png" alt="Auth0 routes" style="width: 600px; height: auto;"/>
+                <br>
+                <li>Finally, all imports related to Auth0 should be removed. All dependencies in server/package.json related to Auth0 should be removed</li>
+                <br>
+                <h5>Frontend</h5>
+                <li>In client/src/index.js, the Auth0Provider wrapper that surrounds "App" should be removed. Make care not to accidentally remove "App" altogether.</li>
+                <img class="example-image" src="images/extendingImages/auth-wrapper.png" alt="Auth0 Provider" style="width: 600px; height: auto;"/>
+                <br>
+                <li>Any instances of "const { ... } = useAuth()" should be removed</li>
+                <img class="example-image" src="images/extendingImages/auth-useauth0.png" alt="useAuth" style="width: 600px; height: auto;"/>
+                <br>
+                <li>All useEffects that use variables from useAuth() should be deleted or edited, i.e. the useEffect for setting the logged-in user in App.js:</li>
+                <img class="example-image" src="images/extendingImages/auth-useeffect.png" alt="useEffect" style="width: 600px; height: auto;"/>
+                <br>
+                <li>
+                    The login/logout logic in navbarItem.js should be changed to reflect the new authentication system. It currently uses the functions "loginWithRedirect()" and "logout()".
+                    These functions are specific to Auth0.
+                </li>
+                <img class="example-image" src="images/extendingImages/auth-login.png" alt="login" style="width: 600px; height: auto;"/>
+                <br>
+                <li>The "loginWithRedirect()" function is used several places in the code to force a login if there is no logged-in user, such as the account page. Make sure to also remove/edit these instances. </li>
+                <br>
+                <li>
+                    The current profile picture system uses an automated picture that is present in the Auth0 user object. This will need to be edited/removed. The function that sets the picture can be found
+                    in App.js. Following the changing of this function, the developer should take care to also edit/remove instances where the profile picture is checked, though this should be minimal as a placeholder image will be in place of the
+                    automated picture.
+                </li>
+                <img class="example-image" src="images/extendingImages/auth-setpicture.png" alt="Set picture" style="width: 600px; height: auto;"/>
+                <br>
+                <img class="example-image" src="images/extendingImages/auth-checkpic.png" alt="Check picture" style="width: 600px; height: auto;"/>
+                <br>
+                <li>Finally, all imports related to Auth0 should be removed. All dependencies in client/package.json should be removed.</li>
+              </ul>
+          </div>
       </ul>
 
   </div>
@@ -555,12 +646,12 @@
           </p>
           <img class="example-image" src="images/featuresImages/accountSearch.png" alt="Account Search"/>
           <p class="headerLeft">Problems Encountered In Installing Parts of the Application</p>
-          <p class="indented">
+          <p class="step">
               We ran into problems hosting the project because of the way our database was set up. The database should be hosted in the container and not cloud hosted. This migration needs to be completed in order to complete hosting.<br />
               While using Auth0, we ran into issues fully deleting users. We implemented banning users instead of deleting them. This turned out to work better for the purpose of our forum.<br />
           </p>
           <p class="headerLeft">Possible Issues with External Resources</p>
-          <p class="indented">
+          <p class="step">
               There may be potential issues with external resources such as Auth0 and EmailJS. If there is a major update to Auth0 or EmailJS, there may need to be changes to our implementation of these resources. <br />
           </p>
       </ul>
