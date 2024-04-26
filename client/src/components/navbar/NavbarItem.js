@@ -30,10 +30,10 @@ function NavbarItem({ href, text, subItems }) {
     }
   };
 
-  // const authText = currentUser ? "Logout" : "Login"; //If the user is authenticated, change the text to Logout
-  // const authHref = currentUser
-  //   ? "http://localhost:3001/logout"
-  //   : "http://localhost:3001/login"; //If the user is authenticated, change the link to the logout link
+  const authText = currentUser ? "Logout" : "Login"; //If the user is authenticated, change the text to Logout
+  const authHref = currentUser
+    ? "http://localhost:3001/logout"
+    : "http://localhost:3001/login"; //If the user is authenticated, change the link to the logout link
 
   return (
     <li className="nav-item">
