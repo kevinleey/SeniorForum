@@ -416,6 +416,62 @@
           <h4>How To Make Changes</h4>
           <p class="step">To make changes to our project, follow the install processes described in the How To Run section of the Source Code. Use GitHub to access our current code of our project. To access our database, there are exported JSON files which contain our database contents in the GitHub. To make changes, we recommend using Webstorm. We found editing the GitHub through Webstorm was most efficient.</p>
           <br>
+          <h4>Understanding The Project Directory</h4>
+          <p class="step">To make changes to our project, you will need to know the location of files. Below is an explanation of our project directory.</p>
+          <p class="step">SeniorForum <br>
+              &emsp; .github <br> &emsp;&emsp; pull_request_template.md --> This is where you can change the default pull request.
+              <br>&emsp; client
+                <br> &emsp;&emsp; public --> This folder contains items used for the creation of the React web app.
+                <br> &emsp;&emsp; src
+                    <br> &emsp;&emsp;&emsp; app
+                        <br> &emsp;&emsp;&emsp;&emsp; store.js
+                    <br> &emsp;&emsp;&emsp; components
+                        <br> &emsp;&emsp;&emsp;&emsp; categories -->
+                        <br> &emsp;&emsp;&emsp;&emsp; forms --> Contains the comment form and input validation for comments.
+                        <br> &emsp;&emsp;&emsp;&emsp; navbar --> Contains the navbar set up and checks if user is an admin for the extra navbar item.
+                        <br> &emsp;&emsp;&emsp;&emsp; posts --> Contains the post list where pagination is implemented and single post page where users can delete posts.
+                        <br> &emsp;&emsp;&emsp;&emsp; userInfo --> Contains the files for user images on the home page.
+                        <br> &emsp;&emsp;&emsp;&emsp; users -->
+                        <br> &emsp;&emsp;&emsp;&emsp; Error.js
+                        <br> &emsp;&emsp;&emsp;&emsp; Footer.js
+                        <br> &emsp;&emsp;&emsp;&emsp; Spinner.js
+                    <br> &emsp;&emsp;&emsp; features
+                        <br> &emsp;&emsp;&emsp;&emsp; comments -->
+                        <br> &emsp;&emsp;&emsp;&emsp; posts -->
+                        <br> &emsp;&emsp;&emsp;&emsp; users -->
+                    <br> &emsp;&emsp;&emsp; images --> This folder stores photos such as the photo in the about page.
+                    <br> &emsp;&emsp;&emsp; pages --> This folder holds the pages of our project including about and account.
+                    <br> &emsp;&emsp;&emsp; styles --> This folder holds the CSS files for the pages. If you want to change the styling of a page, go to the style folder and select the CSS file matching the page you want to change.
+                    <br> &emsp;&emsp;&emsp; utility
+                    <br> &emsp;&emsp;&emsp;&emsp; categoryImages --> This folder holds the images for the categories page. If you wanted to replace any of the category images, you would put it in this file.
+                    <br> &emsp;&emsp;&emsp; App.js -->
+                    <br> &emsp;&emsp;&emsp; constants.js -->
+                    <br> &emsp;&emsp;&emsp; index.js -->
+                    <br> &emsp;&emsp; .dockerignore --> Use this file to edit the docker containers.
+                    <br> &emsp;&emsp; .gitignore
+                    <br> &emsp;&emsp; Dockerfile --> Use this file to edit the docker containers.
+                    <br> &emsp;&emsp; package.json
+                    <br> &emsp;&emsp; package-lock.json
+                    <br> &emsp;&emsp; README.md
+               <br> &emsp; database --> This includes an image of our database from MongoDB Atlas
+               <br> &emsp; docs --> This includes all the files for our documentation and team website.
+               <br> &emsp; server
+                <br> &emsp;&emsp; controllers -->
+                <br> &emsp;&emsp; models -->
+                <br> &emsp;&emsp; routes -->
+                <br> &emsp;&emsp; index.js -->
+              <br> &emsp; .dockerignore --> Use this file to edit the docker containers.
+              <br> &emsp; .env --> This files contains mongo username, mongo password, and Auth0 credentials.
+              <br> &emsp; .gitignore
+              <br> &emsp; docker-compose.yml --> Use this file to edit the docker containers.
+              <br> &emsp; Dockerfile --> Use this file to edit the docker containers.
+              <br> &emsp; package.json
+              <br> &emsp; package-lock.json
+              <br> &emsp; README.md
+          </p>
+
+
+          <br>
           <h4>Third-party Software</h4>
           <p class="step">Database: MongoDB Atlas, free version</p>
           <p class="step">User Authentication: Auth0, free version</p>
